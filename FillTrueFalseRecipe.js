@@ -9,7 +9,4 @@
     ];
 
     var recipe = window.recipe.FillTrueFalseRecipe = new window.recipe.Recipe(steps);
-    recipe.start = function () {
-        Backbone.history.loadUrl('#createAssessment/close?cm=assessment');
-    };
 })();

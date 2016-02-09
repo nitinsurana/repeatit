@@ -18,7 +18,7 @@ $(function () {
         }
     });
 
-    $("#results li").click(function () {
+    $("#results").on('click', 'li', function () {
         window.close();
         var recipe = $(this).data('recipe');
 
