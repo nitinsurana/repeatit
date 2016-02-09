@@ -1,8 +1,6 @@
 # RepeatIt
 > A User Action Simulator.
 
-![Screenshot](http://i.imgur.com/RK4GhXu.jpg)
-
 ## Steps to create a new Recipe
 
 1. Create a new Recipe.js file (for e.g. MyNewRecipe.js)
