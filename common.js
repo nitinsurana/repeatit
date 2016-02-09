@@ -8,7 +8,7 @@ function Recipe(steps) {
     };
     this.stop = function () {
     };
-    this.steps = [];
+    this.steps = steps;
     this.wait = 20;      //seconds
 }
 

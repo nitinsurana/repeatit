@@ -6,7 +6,7 @@ $(function () {
 
         var nn = function() {
             var s = document.createElement('script');
-            s.textContent = 'RecipePlayer(ReceipeList[0])';
+            s.textContent = 'RecipePlayer(window.recipelist[0])';
             (document.head || document.documentElement).appendChild(s);
             s.parentNode.removeChild(s);
         };
