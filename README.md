@@ -21,3 +21,11 @@
 >NOTE - Make sure the `id` of the new entry matches with the global namespace of the recipe. For e.g. window.recipe.myNewRecipe should always have `id = myNewRecipe`
 
 3. Before committing run the gulp task `scripts` so that your recipe is minified and added to the extension (inject.js)
+
+
+
+## Todos
+
+1. Make the search box functional so that recipes can be searched by their title in real-time i.e. search as you type (after initial loading)
+2. Load recipes.json only once for the entire browser session
+3. Placeholder for search input
