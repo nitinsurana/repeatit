@@ -1,7 +1,4 @@
 window.recipe = {};
-window.recipelist = [
-    'PassageCreateRecipe'
-];
 
 window.recipe.Recipe = function(steps) {
     this.start = function () {

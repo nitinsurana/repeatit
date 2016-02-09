@@ -1,0 +1,14 @@
+[
+  {
+    "id": "FillTrueFalseRecipe",
+    "title": "Fill T/F",
+    "description": "It will fill T/F question, solution, hint & answerChoices",
+    "version": "0.1"
+  },
+  {
+    "id": "PassageCreateRecipe",
+    "title": "Create Passage 3 w T/Fs",
+    "description": "Creates a passage with 3 T/F questions",
+    "version": "0.1"
+  }
+]
