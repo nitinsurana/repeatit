@@ -3,16 +3,16 @@ window.recipelist = [
     'PassageCreateRecipe'
 ];
 
-function Recipe(steps) {
+window.recipe.Recipe = function(steps) {
     this.start = function () {
     };
     this.stop = function () {
     };
     this.steps = steps;
     this.wait = 20;      //seconds
-}
+};
 
-function RecipePlayer(recipe) {
+window.recipe.RecipePlayer = function(recipe) {
     var index = 0;
     var waitCount = 0;
     var play = function (steps, index) {
@@ -56,4 +56,4 @@ function RecipePlayer(recipe) {
     play(recipe.steps, index);
 
     typeof recipe.stop === 'function' && recipe.stop.call(recipe);
-}
+};

@@ -121,7 +121,7 @@
         }
     ];
 
-    var PassageCreateRecipe = window.recipe.PassageCreateRecipe = new Recipe(steps);
+    var PassageCreateRecipe = window.recipe.PassageCreateRecipe = new window.recipe.Recipe(steps);
 
     PassageCreateRecipe.start = function () {
         Backbone.history.loadUrl('#createAssessment/close?cm=assessment');

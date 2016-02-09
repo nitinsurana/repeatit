@@ -8,3 +8,7 @@ gulp.task('scripts', function () {
         .pipe(uglify())
         .pipe(gulp.dest('./'));
 });
+
+gulp.task('watchjs',function(){
+    gulp.watch('*.js', ['scripts']);
+});
