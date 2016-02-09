@@ -1,5 +1,5 @@
 # RepeatIt
-> A User Action Simulator.
+> A User Action Simulator Chrome Extension
 
 ## Steps to create a new Recipe
 
