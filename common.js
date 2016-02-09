@@ -53,7 +53,7 @@ function RecipePlayer(recipe) {
     };
     typeof recipe.start === 'function' && recipe.start.call(recipe);
 
-    play(steps, index);
+    play(recipe.steps, index);
 
     typeof recipe.stop === 'function' && recipe.stop.call(recipe);
 }
