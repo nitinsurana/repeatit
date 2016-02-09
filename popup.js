@@ -5,13 +5,13 @@ $(function () {
 
         var nn = function () {
             var s = document.createElement('script');
-            s.textContent = 'window.recipe.RecipePlayer(' + recipe + ')';
+            s.textContent = 'window.recipe.RecipePlayer({recipe})';
             (document.head || document.documentElement).appendChild(s);
             s.parentNode.removeChild(s);
         };
 
         chrome.tabs.executeScript({
-            code: '(' + nn + ')();'
+            code: '(' + nn.toString().replace('{recipe}', 'window.recipe.' + recipe) + ')();'
         });
     });
 });
