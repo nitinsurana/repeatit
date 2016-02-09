@@ -1,6 +1,18 @@
 # RepeatIt
 > A User Action Simulator Chrome Extension
 
+
+
+## Installation
+
+1. Clone this repo
+2. Visit `chrome://extensions` in Chrome
+3. Select `Developer Mode`
+4. Click on `Load unpacked extension`
+5. Select the directory in which this repo is cloned
+
+
+
 ## Steps to create a new Recipe
 
 1. Create a new Recipe.js file (for e.g. MyNewRecipe.js)
