@@ -31,3 +31,10 @@
 4. Create Mini-Recipes which has no existence alone but can always be clubbed with actual Recipes (`steps : [{selection, action, type}]`)
 5. Organization of all Recipes and Mini-Recipes in directories and corresponding gulp task changes
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
+
+
+## RoadMap
+
+1. Ability to record actions and create a recipe at run-time
+2. Ability to run these recipes from Selenium
+3. Put this extension in Chrome Store
