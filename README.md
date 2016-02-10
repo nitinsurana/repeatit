@@ -38,3 +38,4 @@
 1. Ability to record actions and create a recipe at run-time
 2. Ability to run these recipes from Selenium
 3. Put this extension in Chrome Store
+4. Implement usageCount of every recipe globally (across all installations)
