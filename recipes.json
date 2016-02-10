@@ -10,5 +10,11 @@
     "title": "Create Passage 3 w T/Fs",
     "description": "Creates a passage with 3 T/F questions",
     "version": "0.1"
+  },
+  {
+    "id": "FillMCQRecipe",
+    "title": "Create MCQ",
+    "description": "Creates a Multiple Choice Question",
+    "version": "0.1"
   }
 ]
