@@ -1,4 +1,4 @@
-# RepeatIt
+# Repeat It
 > A User Action Simulator Chrome Extension
 
 
@@ -32,6 +32,11 @@
 5. Organization of all Recipes and Mini-Recipes in directories and corresponding gulp task changes
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
 7. Create a video showing installation and usage.
+8. When recording show some kind of highlighting in the extension icon and Record button.
+9. Create a options page to import/export all/selective recipes/recordings but these won't be available to all extension installations. (Needs fileSystem permission)
+10. Upgrade extension to use Backbone so that recipelist can be a Backbone collection with unique recipe ids and appropriate events to update popup.html DOM.
+11. Recorded recipes should wait for DOM manipulation and ajax-requests to complete before triggering the next step.
+
 
 
 ## RoadMap
