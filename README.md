@@ -31,6 +31,7 @@
 4. Create Mini-Recipes which has no existence alone but can always be clubbed with actual Recipes (`steps : [{selection, action, type}]`)
 5. Organization of all Recipes and Mini-Recipes in directories and corresponding gulp task changes
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
+7. Create a video showing installation and usage.
 
 
 ## RoadMap
