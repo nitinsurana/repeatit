@@ -22,13 +22,13 @@ $(function () {
     var runRecipe = function (recipeid) {
         var nn = function () {
             var s = document.createElement('script');
-            s.textContent = 'window.recipe.RecipePlayer({recipe})';
+            s.textContent = 'window.recipe.RecipePlayer(window.recipe["{recipe}"])';
             (document.head || document.documentElement).appendChild(s);
             s.parentNode.removeChild(s);
         };
 
         chrome.tabs.executeScript({
-            code: '(' + nn.toString().replace('{recipe}', 'window.recipe.' + recipeid) + ')();'
+            code: '(' + nn.toString().replace('{recipe}', recipeid) + ')();'
         });
     };
 
@@ -42,46 +42,24 @@ $(function () {
     });
 
     $("#start-recording").click(function () {
-        chrome.tabs.executeScript({
-            code: "window.postMessage({type:'FROM_REPEATIT',action:'START_RECORDING'},'*');"
+        chrome.storage.sync.get('recordingCount', function (c) {
+            var recordingCount = c.recordingCount || 0;
+            recordingCount++;
+            chrome.storage.sync.set({'recordingCount': recordingCount}, function () {
+                console.log("Incremented recordingCount Chrome Storage");
+            });
+            chrome.tabs.executeScript({
+                code: "window.postMessage({type:'FROM_REPEATIT',action:'START_RECORDING'},'*');"
+            });
         });
     });
 
     $("#stop-recording").click(function () {
-        chrome.tabs.executeScript({
-            code: "window.postMessage({type:'FROM_REPEATIT',action:'STOP_RECORDING'},'*');"
-        });
-    });
-
-    $("#replay-recording").click(function () {
         chrome.storage.sync.get('recordingCount', function (c) {
-            var recordingCount = c.recordingCount || 0;
-            runRecipe('RecordingRecipe-' + recordingCount);
-        });
-
-    });
-
-    setTimeout(function () {
-        $("#search").focus();
-    }, 100);
-
-    chrome.runtime.onMessage.addListener(function (message, MessageSender, sendReponse) {
-        // Sender MessageSender: https://developer.chrome.com/extensions/runtime#type-MessageSender
-        // function sendResponse: needed to send response, not needed in current context (?)
-        console.log("Got message from content_script : " + message);
-        switch (message.action) {
-            case 'ADD_RECORDING':
-                addRecordingToRecipes(message.steps);
-                break;
-        }
-
-        sendReponse({status: "success"});
-    });
-
-    function addRecordingToRecipes(steps) {
-        var recordingCount = 0;
-        chrome.storage.sync.get('recordingCount', function (c) {
-            var recordingCount = c.recordingCount || 0;
+            var recordingCount = c.recordingCount;
+            chrome.tabs.executeScript({
+                code: "window.postMessage({type:'FROM_REPEATIT',action:'STOP_RECORDING', recordingCount:" + recordingCount + "},'*');"
+            });
             var recipeData = {
                 "id": "RecordingRecipe-" + recordingCount,
                 "title": "Recording Recipe - " + recordingCount,
@@ -94,9 +72,18 @@ $(function () {
             });
 
             createRecipeLIs();
-            chrome.storage.sync.set({'recordingCount': recordingCount}, function () {
-                console.log("Saved recordingCount Chrome Storage");
-            });
         });
-    }
+    });
+
+    $("#replay-recording").click(function () {
+        chrome.storage.sync.get('recordingCount', function (c) {
+            var recordingCount = c.recordingCount || 0;
+            runRecipe('RecordingRecipe-' + recordingCount);
+        });
+    });
+
+    setTimeout(function () {
+        $("#search").focus();
+    }, 100);
+
 });

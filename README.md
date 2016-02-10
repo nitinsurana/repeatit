@@ -36,6 +36,7 @@
 9. Create a options page to import/export all/selective recipes/recordings but these won't be available to all extension installations. (Needs fileSystem permission)
 10. Upgrade extension to use Backbone so that recipelist can be a Backbone collection with unique recipe ids and appropriate events to update popup.html DOM.
 11. Recorded recipes should wait for DOM manipulation and ajax-requests to complete before triggering the next step.
+12. Create a wait-step such that the next action should wait unless that many seconds for the QA/Tester to see the expected result
 
 
 

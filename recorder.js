@@ -45,12 +45,7 @@
                         break;
                     case 'STOP_RECORDING':
                         var s = window.recipe.Recorder.stopRecording();
-                        window.postMessage({                                //Goes to the contentscript
-                            type: 'FROM_EDULASTIC',
-                            action: 'STOPPED_RECORDING',
-                            steps: s
-                        }, '*');
-                        var recipe = window.recipe.RecordingRecipe = new window.recipe.Recipe();
+                        var recipe = window.recipe["RecordingRecipe-" + event.data.recordingCount] = new window.recipe.Recipe();
                         recipe.steps = s;
                         break;
                 }
