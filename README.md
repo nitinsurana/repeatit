@@ -39,3 +39,4 @@
 2. Ability to run these recipes from Selenium
 3. Put this extension in Chrome Store
 4. Implement usageCount of every recipe globally (across all installations)
+5. Implement normalCompletionTime for every recipes' manual execution and record actual execution average across all installations to show how much did we saved.
