@@ -42,3 +42,5 @@
 4. Implement usageCount of every recipe globally (across all installations)
 5. Implement normalCompletionTime for every recipes' manual execution and record actual execution average across all installations to show how much did we saved.
 6. Recipe options and a way to edit options for every recipe and local saving without affecting any other installation.
+7. Write a plugin for firefox
+8. Create gulp tasks to create packaged extensions to be installed in chrome & firefox, with versions and add them to releases.
