@@ -38,7 +38,8 @@
 11. Recorded recipes should wait for DOM manipulation and ajax-requests to complete before triggering the next step.
 12. Create a wait-step such that the next action should wait unless that many seconds for the QA/Tester to see the expected result
 13. Create a way for extension users to see the pre-requisite & description for every extension and then execute it when
-14. Create a way for recipes to take input for e.g. "Create Assessment with 5 random qTypes" to take what qTypes and assessment-name.
+14. Create a way for recipes to take input for e.g. "Create Assessment with 5 random qTypes" to take what qTypes and assessment-name. Best would be to create a page on github wiki for every recipe 
+with screenshots and if possible with videos showing how does that particular recipe works.
 
 
 
