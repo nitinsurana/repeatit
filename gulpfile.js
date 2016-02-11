@@ -10,5 +10,5 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('watchjs', function () {
-    gulp.watch(['**/*.js', '!inject.js'], ['scripts']);
+    gulp.watch(['**/*.js', '!inject.js', '!options/*.js'], ['scripts']);
 });

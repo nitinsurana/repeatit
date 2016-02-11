@@ -4,32 +4,46 @@
  *	
  */
 
-body, section {			/* Change width and height to own preferences */
-	width: 500px;
-	height: 400px;
-	overflow-x: hidden;
+body, section {
+    /* Change width and height to own preferences */
+    width: 500px;
+    height: 400px;
+    overflow-x: hidden;
 }
 
 /* Basic style tweaks */
-section { padding: 5px;}
-.navbar { margin-bottom: 2px; }
+section {
+    padding: 5px;
+}
+
+.navbar {
+    margin-bottom: 2px;
+}
 
 /* Scroll Bar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); }
-::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive  { background: red; }
-
-#results li{
-	cursor: pointer;
-	padding: 10px;
-	border: 1px solid;
-	background: lightgoldenrodyellow;
+::-webkit-scrollbar {
+    width: 6px;
 }
 
-#results li:hover, #results li:nth-child(2):hover{
-	background: orange;
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-#results li:nth-child(2n){
-	background: greenyellow;
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive {
+    background: red;
+}
+
+#results li {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid;
+    background: lightgoldenrodyellow;
+}
+
+#results li:hover, #results li:nth-child(2):hover {
+    background: orange;
+}
+
+#results li:nth-child(2n) {
+    background: greenyellow;
 }
