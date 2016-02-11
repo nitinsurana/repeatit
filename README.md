@@ -25,7 +25,7 @@
 
 ## Todos
 
-1. Make the search box functional so that recipes can be searched by their title in real-time i.e. search as you type (after initial loading)
+1. ~~[Make the search box functional so that recipes can be searched by their title in real-time i.e. search as you type (after initial loading)](https://github.com/nitinsurana/repeatit/commit/9a7b0d28942e91253162f63c3de009a6f214805a)~~
 2. ~~[Load recipes.json only once for the entire browser session](https://github.com/nitinsurana/repeatit/commit/b01439e8a5a1d9c6d1ce65b307c636f13cc62eef)~~
 3. Placeholder for search input
 4. Create Mini-Recipes which has no existence alone but can always be clubbed with actual Recipes (`steps : [{selection, action, type}]`)
@@ -40,6 +40,7 @@
 13. Create a way for extension users to see the pre-requisite & description for every extension and then execute it when
 14. Create a way for recipes to take input for e.g. "Create Assessment with 5 random qTypes" to take what qTypes and assessment-name. Best would be to create a page on github wiki for every recipe 
 with screenshots and if possible with videos showing how does that particular recipe works.
+15. Create a way for recipes to define pre-requisities and if not matched then show an error-dialog/alert to the user.
 
 
 
