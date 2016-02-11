@@ -49,7 +49,9 @@ for every recipe with screenshots and if possible with videos showing how does t
 14. Create a way for recipes to take input for e.g. "Create Assessment with 5 random qTypes" to take what qTypes and assessment-name. 
 15. Create a way for recipes to define pre-requisities and if not matched then show an error-dialog/alert to the user.
 16. ~~[Add more steps type (redactor, input, recipe), currently it supports only click](https://github.com/nitinsurana/repeatit/commit/5dd629e6c44f17ab34aef6d65ba6d4a7e345c68d)~~
-17. Add ability in the UI to add multiple param-sets for a particular Recipe & then use one at a time. (Login - Instructor, Student, Admin) 
+17. Add ability in the UI to add multiple param-sets for a particular Recipe & then use one at a time. (Login - Instructor, Student, Admin)
+18. Add created_by and author_link to original author of Recipe and show them in popup.html
+19. In popup.html show recently used recipes at the top with search working in the same order. 
 
 
 

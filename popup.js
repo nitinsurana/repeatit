@@ -18,7 +18,6 @@ $(function () {
                 "data-recipeid": recipelist[i].id
             }).html("<span>" + recipelist[i].title + "</span>");
             $results.append($li);
-            //window.recipelist.push(response[i].id);
         }
     }
 

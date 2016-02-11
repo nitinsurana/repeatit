@@ -1,7 +1,7 @@
 [
   {
     "id": "FillTrueFalseRecipe",
-    "title": "Fill T/F",
+    "title": "Fill TrueFalse Question",
     "description": "It will fill T/F question, solution, hint & answerChoices",
     "version": "0.1",
     "type": "parent"
@@ -10,6 +10,13 @@
     "id": "PassageCreateRecipe",
     "title": "Create Passage with 3 T/F questions",
     "description": "Creates a passage with 3 TrueFalse questions",
+    "version": "0.1",
+    "type": "parent"
+  },
+  {
+    "id": "TrueFalseCreateRecipe",
+    "title": "Create True False Question",
+    "description": "Creates a new assessment with TrueFalse question",
     "version": "0.1",
     "type": "parent"
   },
