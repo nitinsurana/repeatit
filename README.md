@@ -37,6 +37,8 @@
 10. Upgrade extension to use Backbone so that recipelist can be a Backbone collection with unique recipe ids and appropriate events to update popup.html DOM.
 11. Recorded recipes should wait for DOM manipulation and ajax-requests to complete before triggering the next step.
 12. Create a wait-step such that the next action should wait unless that many seconds for the QA/Tester to see the expected result
+13. Create a way for extension users to see the pre-requisite & description for every extension and then execute it when
+14. Create a way for recipes to take input for e.g. "Create Assessment with 5 random qTypes" to take what qTypes and assessment-name.
 
 
 
