@@ -26,7 +26,7 @@
 ## Todos
 
 1. Make the search box functional so that recipes can be searched by their title in real-time i.e. search as you type (after initial loading)
-2. Load recipes.json only once for the entire browser session
+2. ~~[Load recipes.json only once for the entire browser session](https://github.com/nitinsurana/repeatit/commit/b01439e8a5a1d9c6d1ce65b307c636f13cc62eef)~~
 3. Placeholder for search input
 4. Create Mini-Recipes which has no existence alone but can always be clubbed with actual Recipes (`steps : [{selection, action, type}]`)
 5. Organization of all Recipes and Mini-Recipes in directories and corresponding gulp task changes
