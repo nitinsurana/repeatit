@@ -3,12 +3,26 @@
     "id": "FillTrueFalseRecipe",
     "title": "Fill T/F",
     "description": "It will fill T/F question, solution, hint & answerChoices",
-    "version": "0.1"
+    "version": "0.1",
+    "type": "parent"
   },
   {
     "id": "PassageCreateRecipe",
     "title": "Create Passage with 3 T/F questions",
     "description": "Creates a passage with 3 TrueFalse questions",
-    "version": "0.1"
+    "version": "0.1",
+    "type": "parent"
+  },
+  {
+    "id": "OpenTFRecipe",
+    "title": "",
+    "description": "From LOSV will select Create and then T/F questionType",
+    "type": "child"
+  },
+  {
+    "id": "CreateAssessmentRecipe",
+    "title": "",
+    "description": "Will navigate to #createAssessment/close?cm=assessment and click on Create",
+    "type": "child"
   }
 ]

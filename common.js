@@ -25,30 +25,42 @@
             }
             var c = setInterval(function () {
                 var s = steps[index];
-                var $ele = s.selector ? $(s.selector) : $(getSingleElement(s.tagName, s.index));
-                if ($ele.length > 0) {
-                    doAction($ele, s.action);
+                if (s.type === 'recipe') {
                     clearInterval(c);
                     waitCount = 0;
-                    play(steps, ++index);
+                    var recipeToInject = window.recipe[s.recipeId];
+                    typeof recipeToInject.start === 'function' && recipeToInject.start.call(recipeToInject, s.params);
+                    steps.splice.apply(steps, [index, 1].concat(recipeToInject.steps));
+                    play(steps, index);
                 } else {
-                    console.log("Looking for " + s.selector + "  " + s.tagName + "   " + s.index);
-                    waitCount++;
-                    var count = steps.wait || recipe.wait;
-                    if (waitCount > count) {
+                    var $ele = s.selector ? $(s.selector) : $(getSingleElement(s.tagName, s.index));
+                    if ($ele.length > 0) {
+                        doAction($ele, s.action, s.value);
+                        clearInterval(c);
                         waitCount = 0;
-                        index--;
+                        play(steps, ++index);
+                    } else {
+                        console.log("Looking for " + s.selector + "  " + s.tagName + "   " + s.index);
+                        waitCount++;
+                        var count = steps.wait || recipe.wait;
+                        if (waitCount > count) {
+                            waitCount = 0;
+                            index--;
+                        }
                     }
                 }
             }, 500);
         };
-        var doAction = function ($this, action) {
+        var doAction = function ($this, action, val) {
             if (typeof action === 'function') {
                 action.call($this);
             } else {
                 switch (action) {
                     case 'click':
                         $this.click();
+                        break;
+                    case 'redactor':
+                        $this.redactor('set', val);
                         break;
                     default :
                         $this.click();
@@ -59,7 +71,7 @@
 
         typeof recipe.start === 'function' && recipe.start.call(recipe);
 
-        play(recipe.steps, index);
+        play(recipe.steps.slice(), index);      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
 
         typeof recipe.stop === 'function' && recipe.stop.call(recipe);
     };

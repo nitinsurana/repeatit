@@ -23,13 +23,20 @@
 
 
 
+## Recipes to create
+1. Fill Question Generic Recipe (should support as many questions as possible)
+2. Create Assessment Recipe
+3. Create T/F Recipe    (CreateAssessmentRecipe, OpenTF (child-recipe), FillTF or FillQuestionRecipe)
+4. Create a login recipe (ask extension owner to define params)
+
+
 ## Todos
 
 1. ~~[Make the search box functional so that recipes can be searched by their title in real-time i.e. search as you type (after initial loading)](https://github.com/nitinsurana/repeatit/commit/9a7b0d28942e91253162f63c3de009a6f214805a)~~
 2. ~~[Load recipes.json only once for the entire browser session](https://github.com/nitinsurana/repeatit/commit/b01439e8a5a1d9c6d1ce65b307c636f13cc62eef)~~
 3. Placeholder for search input
-4. Create Mini-Recipes which has no existence alone but can always be clubbed with actual Recipes (`steps : [{selection, action, type}]`)
-5. Organization of all Recipes and Mini-Recipes in directories and corresponding gulp task changes
+4. Create Child-Recipes which has no existence alone but can always be clubbed with actual Recipes (`steps : [{selection, action, type}]`)
+5. Organization of all Recipes and Child-Recipes in directories and corresponding gulp task changes
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
 7. Create a video showing installation and usage.
 8. When recording show some kind of highlighting in the extension icon and Record button.
@@ -41,6 +48,8 @@
 14. Create a way for recipes to take input for e.g. "Create Assessment with 5 random qTypes" to take what qTypes and assessment-name. Best would be to create a page on github wiki for every recipe 
 with screenshots and if possible with videos showing how does that particular recipe works.
 15. Create a way for recipes to define pre-requisities and if not matched then show an error-dialog/alert to the user.
+16. Add more steps type (redactor, input, recipe), currently it supports only click
+17. Add ability in the UI to add multiple param-sets for a particular Recipe & then use one at a time. (Login - Instructor, Student, Admin) 
 
 
 

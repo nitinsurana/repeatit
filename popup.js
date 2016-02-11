@@ -11,6 +11,9 @@ $(function () {
     function createRecipeLIs() {
         $results.empty();
         for (var i in recipelist) {
+            if (recipelist[i].type === "child") {
+                continue;
+            }
             var $li = $("<li>", {
                 "data-recipeid": recipelist[i].id
             }).html("<span>" + recipelist[i].title + "</span>");
