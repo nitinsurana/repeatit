@@ -86,4 +86,25 @@ $(function () {
         $("#search").focus();
     }, 100);
 
+
+    var searchTimeout = null;
+
+    function findRecipes(searchTerm) {
+        $results.find("li").each(function () {
+            if ($(this).text().toLowerCase().indexOf(searchTerm) == -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    }
+
+    $('#search').keyup(function () {
+        clearTimeout(searchTimeout);
+        var $target = $(this);
+        searchTimeout = setTimeout(function () {
+            findRecipes($target.val());
+        }, 200);
+    });
+
 });

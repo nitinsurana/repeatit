@@ -7,8 +7,8 @@
   },
   {
     "id": "PassageCreateRecipe",
-    "title": "Create Passage 3 w T/Fs",
-    "description": "Creates a passage with 3 T/F questions",
+    "title": "Create Passage with 3 T/F questions",
+    "description": "Creates a passage with 3 TrueFalse questions",
     "version": "0.1"
   }
 ]
