@@ -15,7 +15,7 @@
         return elems[index];
     };
 
-    window.recipe.RecipePlayer = function (recipe) {
+    window.recipe.RecipePlayer = function (recipe, params) {
         var index = 0;
         var waitCount = 0;
 
@@ -69,7 +69,7 @@
         };
 
 
-        typeof recipe.start === 'function' && recipe.start.call(recipe);
+        typeof recipe.start === 'function' && recipe.start.call(recipe, params);
 
         play(recipe.steps.slice(), index);      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
 

@@ -53,6 +53,7 @@ for every recipe with screenshots and if possible with videos showing how does t
 18. Add created_by and author_link to original author of Recipe and show them in popup.html
 19. In popup.html show recently used recipes at the top with search working in the same order.
 20. Add .jshintrc and a gulp task to run jshint over all .js files
+21. Add File-A-Bug feature in extension popup
 
 
 
