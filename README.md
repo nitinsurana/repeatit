@@ -57,6 +57,7 @@ for every recipe with screenshots and if possible with videos showing how does t
 22. Create a markdown file explaining types of recipes, procedure to create recipe, params, start & stop callbacks.
 23. Create a screencast for every recipe showing how the recipe works and what is the pre-requisite.
 24. Add ability to add recipe description in html (add pre-requisities here)
+25. Start adding extension .crx to releases so that people can download (don't forget to change the version number with every release)
 
 
 

@@ -16,8 +16,6 @@
 
     var recipe = window.recipe.FillTrueFalseRecipe = new window.recipe.Recipe(steps);
     recipe.start = function (params) {
-        //params will be object if injected in another extension as a step, else it'll be an encoded string passed by extension_script (popup.js)
-        params = typeof params !== 'object' ? JSON.parse(window.decodeURIComponent(params)) : params;
         this.steps[0].value = params.questionTitle;
 
         var answerIndex = Math.round(Math.random());

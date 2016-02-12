@@ -15,6 +15,15 @@
         return elems[index];
     };
 
+    var processParams = function (params) {
+        if (!params || params === 'undefined') {
+            return;
+        }
+        //params will be object if injected in another extension as a step, else it'll be an encoded string passed by extension_script (popup.js)
+        params = typeof params !== 'object' ? JSON.parse(window.decodeURIComponent(params)) : params;
+        return params;
+    };
+
     window.recipe.RecipePlayer = function (recipe, params) {
         var index = 0;
         var waitCount = 0;
@@ -29,7 +38,7 @@
                     clearInterval(c);
                     waitCount = 0;
                     var recipeToInject = window.recipe[s.recipeId];
-                    typeof recipeToInject.start === 'function' && recipeToInject.start.call(recipeToInject, s.params);
+                    typeof recipeToInject.start === 'function' && recipeToInject.start.call(recipeToInject, processParams(s.params));
                     steps.splice.apply(steps, [index, 1].concat(recipeToInject.steps));
                     play(steps, index);
                 } else {
@@ -56,8 +65,8 @@
                 action.call($this);
             } else {
                 switch (action) {
-                    case 'click':
-                        $this.click();
+                    case 'input':
+                        $this.val(window.recipe.utils.evaluate(val));
                         break;
                     case 'redactor':
                         $this.redactor('set', window.recipe.utils.evaluate(val));
@@ -69,7 +78,7 @@
         };
 
 
-        typeof recipe.start === 'function' && recipe.start.call(recipe, params);
+        typeof recipe.start === 'function' && recipe.start.call(recipe, processParams(params));
 
         play(recipe.steps.slice(), index);      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
 

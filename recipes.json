@@ -40,5 +40,25 @@
     "title": "",
     "description": "Will navigate to #createAssessment/close?cm=assessment and click on Create",
     "type": "child"
+  },
+  {
+    "id": "LoginRecipe",
+    "title": "Login",
+    "description": "Login into Edulastic",
+    "type": "parent",
+    "params": {
+      "instructor": {
+        "email": "nteacher@snapwiz.com",
+        "password": "snapwiz"
+      },
+      "student": {
+        "email": "nstudent@snapwiz.com",
+        "password": "snapwiz"
+      },
+      "admin": {
+        "email": "gaurav.author@snapwiz.com",
+        "password": "snapwiz"
+      }
+    }
   }
 ]
