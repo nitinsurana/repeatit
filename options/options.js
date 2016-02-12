@@ -1,5 +1,6 @@
 $(function () {
     var MainView = Backbone.View.extend({
+        el: ".container",
         initialize: function () {
             var self = this;
             this.accordionChoiceTemplate = $("#accordion-panel-template").text();
@@ -8,7 +9,6 @@ $(function () {
                 self.renderRecipes();
             });
         },
-        el: ".container",
         events: {
             "keyup #search": "searchOnKeyup"
         },
@@ -33,7 +33,9 @@ $(function () {
         renderRecipes: function () {
             var self = this;
             _.each(this.collection.models, function (model) {
-                self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
+                if (model.get('type') === 'parent') {
+                    self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
+                }
             });
             //Collapse all but first one
             self.$(".collapse").collapse();

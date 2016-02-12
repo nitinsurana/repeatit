@@ -25,8 +25,8 @@
 
 ## Recipes to create
 1. Fill Question Generic Recipe (should support as many questions as possible)
-2. Create Assessment Recipe
-3. Create T/F Recipe    (CreateAssessmentRecipe, OpenTF (child-recipe), FillTF or FillQuestionRecipe)
+2. ~~[Create Assessment Recipe](https://github.com/nitinsurana/repeatit/commit/5dd629e6c44f17ab34aef6d65ba6d4a7e345c68d)~~
+3. ~~[Create T/F Recipe    (CreateAssessmentRecipe, OpenTF (child-recipe), FillTF or FillQuestionRecipe)](https://github.com/nitinsurana/repeatit/commit/6d49ed954fdbffd488d16d66d210d5e1e7ae4651)~~
 4. Create a login recipe (ask extension owner to define params)
 
 
@@ -54,6 +54,9 @@ for every recipe with screenshots and if possible with videos showing how does t
 19. In popup.html show recently used recipes at the top with search working in the same order.
 20. Add .jshintrc and a gulp task to run jshint over all .js files
 21. Add File-A-Bug feature in extension popup
+22. Create a markdown file explaining types of recipes, procedure to create recipe, params, start & stop callbacks.
+23. Create a screencast for every recipe showing how the recipe works and what is the pre-requisite.
+24. Add ability to add recipe description in html (add pre-requisities here)
 
 
 

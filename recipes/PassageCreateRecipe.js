@@ -14,7 +14,7 @@
         {
             selector: '#passage_title',
             action: 'redactor',
-            value: 'something random'
+            value: 'Passage Title {datetime}'
         },
         {
             selector: '.tab-title-text',
@@ -24,9 +24,8 @@
         },
         {
             selector: '#question-edit-passage-text',
-            action: function () {
-                $(this).redactor('set', 'something random');
-            }
+            action: 'redactor',
+            value: 'Something Random {datetime}'
         },
         {
             selector: '#saveQuestionDetails1',
@@ -44,7 +43,7 @@
             type: 'recipe',
             recipeId: 'FillTrueFalseRecipe',
             params: {
-                questionTitle: 'p0'
+                questionTitle: 'p0 {datetime}'
             }
         },
         {
@@ -62,7 +61,7 @@
             type: 'recipe',
             recipeId: 'FillTrueFalseRecipe',
             params: {
-                questionTitle: 'p1'
+                questionTitle: 'p1 {datetime}'
             }
         },
         {
@@ -80,7 +79,7 @@
             type: 'recipe',
             recipeId: 'FillTrueFalseRecipe',
             params: {
-                questionTitle: 'p2'
+                questionTitle: 'p2 {datetime}'
             }
         },
         {

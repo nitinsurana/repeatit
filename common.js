@@ -60,7 +60,7 @@
                         $this.click();
                         break;
                     case 'redactor':
-                        $this.redactor('set', val);
+                        $this.redactor('set', window.recipe.utils.evaluate(val));
                         break;
                     default :
                         $this.click();
@@ -75,5 +75,15 @@
 
         typeof recipe.stop === 'function' && recipe.stop.call(recipe);
     };
+
+    window.recipe.utils = {
+        evaluate: function (str) {
+            str = str.replace(/{datetime}/g, new Date().toUTCString());
+            str = str.replace(/{date}/g, new Date().toDateString());
+            str = str.replace(/{time}/g, new Date().toTimeString());
+            return str;
+        }
+    }
+
 })();
 
