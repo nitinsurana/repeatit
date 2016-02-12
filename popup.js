@@ -35,16 +35,12 @@ $(function () {
             s.parentNode.removeChild(s);
         };
 
-        var recipeParams = paramSetName && recipelist.find(function (a) {
-                if (a.id === recipeid) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }).params[paramSetName];
-
-        chrome.tabs.executeScript({
-            code: '(' + nn.toString().replace('{recipe}', recipeid).replace('{params}', window.encodeURIComponent(JSON.stringify(recipeParams)).replace('\'', '')) + ')();'
+        var storageKey = 'params-' + recipeid;
+        chrome.storage.sync.get(storageKey, function (result) {
+            var recipeParams = result[storageKey][paramSetName];
+            chrome.tabs.executeScript({
+                code: '(' + nn.toString().replace('{recipe}', recipeid).replace('{params}', window.encodeURIComponent(JSON.stringify(recipeParams)).replace('\'', '')) + ')();'
+            });
         });
     };
 

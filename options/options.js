@@ -12,7 +12,11 @@ $(function () {
         },
         events: {
             "keyup #search": "searchOnKeyup",
-            "click .parameter-sets .reset": "resetParameterSets"
+            "click .parameter-sets .reset": "resetParameterSets",
+            "click .parameter-sets .save": "saveParameterSets"
+        },
+        saveParameterSets: function (e) {
+
         },
         resetParameterSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
