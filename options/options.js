@@ -12,9 +12,22 @@ $(function () {
         },
         events: {
             "keyup #search": "searchOnKeyup",
-            "click #resetParameterSets": "resetParameterSets"
+            "click .parameter-sets .reset": "resetParameterSets"
         },
         resetParameterSets: function (e) {
+            var recipeId = $(e.currentTarget).data('recipeid');
+            chrome.storage.sync.get('recipelist', function (r) {
+                var recipelist = r.recipelist;
+                var recipe = _.find(recipelist, function (recipe) {
+                    return recipe.id === recipeId;
+                });
+                var parameterSets = {};
+                parameterSets["params-" + recipe.id] = recipe.params;
+                chrome.storage.sync.set(parameterSets, function () {
+                    console.log("Reset ParameterSets to default : " + recipe.id);
+                    window.location.reload();       //Todo re-render of recipe accordion instead of reload
+                });
+            });
             //Todo code to reset parameterSets for the clicked recipe
             //Remove from storage params-recipeId
             //Take from storage - recipelist
@@ -46,7 +59,7 @@ $(function () {
                     self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
                     if (model.get('params')) {
                         self.renderParameterSets(model);
-                        self.$("#recipe-" + model.get('id')).find(".save-bar").show();
+                        self.$("#recipe-" + model.get('id')).find(".actions").show();
                     }
                 }
             });
