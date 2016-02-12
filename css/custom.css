@@ -47,3 +47,9 @@ section {
 #results li:nth-child(2n) {
     background: greenyellow;
 }
+
+/* Options Html - Start */
+.parameter-sets label{
+    text-transform: capitalize;
+}
+/* Options Html - Stop */

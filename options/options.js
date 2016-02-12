@@ -4,13 +4,22 @@ $(function () {
         initialize: function () {
             var self = this;
             this.accordionChoiceTemplate = $("#accordion-panel-template").text();
+            this.parameterSetTemplate = $("#parameterSetTemplate").text();
             chrome.storage.sync.get('recipelist', function (result) {
                 self.collection = new Backbone.Collection(result.recipelist);
                 self.renderRecipes();
             });
         },
         events: {
-            "keyup #search": "searchOnKeyup"
+            "keyup #search": "searchOnKeyup",
+            "click #resetParameterSets": "resetParameterSets"
+        },
+        resetParameterSets: function (e) {
+            //Todo code to reset parameterSets for the clicked recipe
+            //Remove from storage params-recipeId
+            //Take from storage - recipelist
+            //Save in storage
+            //Render this particular recipe
         },
         searchOnKeyup: function (e) {
             var self = this;
@@ -35,13 +44,36 @@ $(function () {
             _.each(this.collection.models, function (model) {
                 if (model.get('type') === 'parent') {
                     self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
+                    if (model.get('params')) {
+                        self.renderParameterSets(model);
+                        self.$("#recipe-" + model.get('id')).find(".save-bar").show();
+                    }
                 }
             });
-            //Collapse all but first one
-            self.$(".collapse").collapse();
-            setTimeout(function () {        //After the collapse animation for others complete, show the first one expanded
-                self.$(".collapse:eq(0)").collapse('show');
-            }, 500);
+            this.$(".collapse:eq(0)").addClass('in');
+        },
+        renderParameterSets: function (model) {
+            var self = this,
+                storageKey = 'params-' + model.get('id'),
+                $parameterSets = self.$("#recipe-" + model.get('id') + " .parameter-sets ");
+
+            chrome.storage.sync.get(storageKey, function (m) {
+                var params = m[storageKey];
+                _.each(params, function (value, key) {
+                    var tabTitle = '<li><a href="#parameterSet-' + model.get('id') + '-' + key + '" data-toggle="tab">' + key + '</a></li>'
+                    $parameterSets.find(".tabs-left").append(tabTitle);
+
+                    var tabContent = _.template(self.parameterSetTemplate)({
+                        data: {
+                            id: model.get('id') + '-' + key,
+                            params: value
+                        }
+                    });
+                    $parameterSets.find(".tab-content").append(tabContent);
+                });
+                $parameterSets.find(".tabs-left li:first").addClass('active');
+                $parameterSets.find(".tab-content .tab-pane:first").addClass('active');
+            });
         }
     });
     new MainView();

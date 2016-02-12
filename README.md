@@ -58,6 +58,9 @@ for every recipe with screenshots and if possible with videos showing how does t
 23. Create a screencast for every recipe showing how the recipe works and what is the pre-requisite.
 24. Add ability to add recipe description in html (add pre-requisities here)
 25. Start adding extension .crx to releases so that people can download (don't forget to change the version number with every release)
+26. Create a child-recipe to save solution/hint & modify points and use it internally in FillQuestionRecipe
+27. Allow user to create custom recipes by combining recipes with parameters.
+28. Change params variable in recipes.json to parameterSets and fix all impacts.
 
 
 

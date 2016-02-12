@@ -19,6 +19,7 @@ $(function () {
             }).html("<span>" + recipelist[i].title + "</span>");
             if (recipelist[i].params && Object.keys(recipelist[i].params).length > 0) {
                 for (var setName in recipelist[i].params) {
+                    //Todo use <span class="badge">4</span> instead of button
                     $li.append('<button type="button" class="pull-right btn btn-default btn-xs" data-setname="' + setName + '">' + setName + '</button>');
                 }
             }
