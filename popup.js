@@ -37,7 +37,7 @@ $(function () {
 
         var storageKey = 'params-' + recipeid;
         chrome.storage.sync.get(storageKey, function (result) {
-            var recipeParams = result[storageKey][paramSetName];
+            var recipeParams = result[storageKey] && result[storageKey][paramSetName];
             chrome.tabs.executeScript({
                 code: '(' + nn.toString().replace('{recipe}', recipeid).replace('{params}', window.encodeURIComponent(JSON.stringify(recipeParams)).replace('\'', '')) + ')();'
             });
