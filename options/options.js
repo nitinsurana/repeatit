@@ -16,7 +16,26 @@ $(function () {
             "click .parameter-sets .save": "saveParameterSets"
         },
         saveParameterSets: function (e) {
-
+            var recipeId = $(e.currentTarget).data('recipeid');
+            var $recipeContainer = this.$("#recipe-" + recipeId);
+            var paramSets = {};
+            //{setName:{paramKey:paramValue}, setName2:{paramKey2:paramValue2, paramKey3:paramValue3}}
+            $recipeContainer.find("[data-paramset]").each(function () {
+                var setName = $(this).data('paramset').replace(recipeId + '-', '');
+                paramSets[setName] = {};
+                $(this).find("[data-paramkey]").each(function () {
+                    var paramKey = $(this).data('paramkey');
+                    var paramValue = $(this).val();
+                    paramSets[setName][paramKey] = paramValue;
+                });
+            });
+            var storageKey = 'params-' + recipeId,
+                obj = {};
+            obj[storageKey] = paramSets;
+            chrome.storage.sync.set(obj, function () {
+                console.log("Saved ParameterSets to storage : " + recipeId);
+                window.location.reload();       //Todo re-render of reicpe instead of reload.
+            });
         },
         resetParameterSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
