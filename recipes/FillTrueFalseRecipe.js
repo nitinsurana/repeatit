@@ -28,5 +28,15 @@
 
         var answerIndex = Math.round(Math.random());
         this.steps[1].selector = '.true-false-answer-select:eq(' + answerIndex + ')';
+    };
+
+    recipe.preCondition = function () {
+        var status = true,
+            msg = '';
+        if ($(this.steps[0].selector).length === 0) {
+            status = false;
+            msg = "Please make sure to be in true/false question authoring view before using this recipe";
+        }
+        return {status: status, msg: msg};
     }
 })();

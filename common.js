@@ -6,6 +6,9 @@
         };
         this.stop = function () {
         };
+        this.preCondition = function () {
+            return {status: true};
+        };
         this.steps = steps;
         this.wait = 20;      //seconds
     };
@@ -80,7 +83,12 @@
             }
         };
 
+        var check = recipe.preCondition.call(recipe);
 
+        if (!check.status) {
+            window.alert(check.msg);
+            return;
+        }
         typeof recipe.start === 'function' && recipe.start.call(recipe, processParams(params));
 
         play(recipe.steps.slice(), index);      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
