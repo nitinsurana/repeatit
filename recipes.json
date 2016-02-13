@@ -7,12 +7,25 @@
     "type": "parent",
     "params": {
       "default": {
-        "questionTitle": "Filling T/F {datetime}",
-        "solution": "Some Solution"
+        "questionTitle": "Filling T/F {datetime}"
       },
       "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        "solution": "Some Solution"
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      }
+    }
+  },
+  {
+    "id": "FillTextEntryRecipe",
+    "title": "Fill TextEntry Question",
+    "description": "It will fill Text Entry question, solution, hint & answerChoice",
+    "version": "0.1",
+    "type": "parent",
+    "params": {
+      "default": {
+        "questionTitle": "Filling T/F {datetime}"
+      },
+      "ipsum": {
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
     }
   },
@@ -31,7 +44,14 @@
     "type": "parent"
   },
   {
-    "id": "OpenTFRecipe",
+    "id": "TextEntryCreateRecipe",
+    "title": "Create Text Entry Question",
+    "description": "Creates a new assessment with TextEntry question",
+    "version": "0.1",
+    "type": "parent"
+  },
+  {
+    "id": "OpenQuestionAuthoringRecipe",
     "title": "",
     "description": "From LOSV will select Create and then T/F questionType",
     "type": "child"
@@ -60,6 +80,16 @@
         "email": "gaurav.author@snapwiz.com",
         "password": "snapwiz"
       }
+    }
+  },
+  {
+    "id": "FillSolutionHintRecipe",
+    "title": "",
+    "description": "",
+    "type": "child",
+    "params": {
+      "solution": "Some sample solution",
+      "hint": "Some sample hint"
     }
   }
 ]

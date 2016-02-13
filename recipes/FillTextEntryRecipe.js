@@ -2,11 +2,17 @@
     var steps = [
         {
             selector: '#question-raw-content',
-            action: 'redactor'
+            action: 'redactorInsert'
         },
         {
-            selector: '.true-false-answer-select:eq(0)',
-            action: 'click'
+            selector: '.get-user-entry',
+            action: function () {
+                this.val('Correct Answer').trigger('keyup')
+            },
+            value: 'Correct Answer'
+        },
+        {
+            selector: '.accept_answer'
         },
         {
             type: 'recipe',
@@ -22,11 +28,8 @@
         }
     ];
 
-    var recipe = window.recipe.FillTrueFalseRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillTextEntryRecipe = new window.recipe.Recipe(steps);
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
-
-        var answerIndex = Math.round(Math.random());
-        this.steps[1].selector = '.true-false-answer-select:eq(' + answerIndex + ')';
     }
 })();

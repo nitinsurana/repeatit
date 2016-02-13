@@ -61,6 +61,7 @@ for every recipe with screenshots and if possible with videos showing how does t
 26. Create a child-recipe to save solution/hint & modify points and use it internally in FillQuestionRecipe
 27. Allow user to create custom recipes by combining recipes with parameters.
 28. Change params variable in recipes.json to parameterSets and fix all impacts.
+29. Create a gulp profile/task to changd contentscript.js & background.js loading json & inject.js urls to internal chrome extension urls during development
 
 
 

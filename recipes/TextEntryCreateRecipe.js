@@ -8,16 +8,16 @@
             type: 'recipe',
             recipeId: 'OpenQuestionAuthoringRecipe',
             params: {
-                qtype: 120
+                qtype: 125
             }
         },
         {
             type: 'recipe',
-            recipeId: 'FillTrueFalseRecipe',
+            recipeId: 'FillTextEntryRecipe',
             params: {
-                questionTitle: 'Creating Normal True False {datetime}'
+                questionTitle: 'Creating Normal Text Entry Question - {datetime}'
             }
         }
     ];
-    window.recipe.TrueFalseCreateRecipe = new window.recipe.Recipe(steps);
+    window.recipe.TextEntryCreateRecipe = new window.recipe.Recipe(steps);
 })();

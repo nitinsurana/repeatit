@@ -71,6 +71,9 @@
                     case 'redactor':
                         $this.redactor('set', window.recipe.utils.evaluate(val));
                         break;
+                    case 'redactorInsert':
+                        $this.redactor('getObject').insertHtml(window.recipe.utils.evaluate(val));
+                        break;
                     default :
                         $this.click();
                 }

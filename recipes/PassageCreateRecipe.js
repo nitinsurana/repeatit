@@ -37,7 +37,10 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenTFRecipe'
+            recipeId: 'OpenQuestionAuthoringRecipe',
+            params: {
+                qtype: 120
+            }
         },
         {
             type: 'recipe',
@@ -55,7 +58,10 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenTFRecipe'
+            recipeId: 'OpenQuestionAuthoringRecipe',
+            params: {
+                qtype: 120
+            }
         },
         {
             type: 'recipe',
@@ -73,7 +79,10 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenTFRecipe'
+            recipeId: 'OpenQuestionAuthoringRecipe',
+            params: {
+                qtype: 120
+            }
         },
         {
             type: 'recipe',
