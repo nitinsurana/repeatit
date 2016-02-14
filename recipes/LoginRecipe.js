@@ -14,7 +14,8 @@
     ];
     var recipe = window.recipe.LoginRecipe = new window.recipe.Recipe(steps);
     recipe.start = function (params) {
-        this.steps[0].value = params.email;
-        this.steps[1].value = params.password;
+        this.steps[0].value = params.self.email;
+        this.steps[1].value = params.self.password;
+        return $.Deferred().resolve();
     }
 })();

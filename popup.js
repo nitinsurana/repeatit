@@ -27,7 +27,7 @@ $(function () {
         }
     }
 
-    var runRecipe = function (recipeid, paramSetName) {
+    var runRecipe = function (recipeId, paramSetName) {
         var nn = function () {
             var s = document.createElement('script');
             s.textContent = 'window.recipe.RecipePlayer(window.recipe["{recipe}"],"{params}")';
@@ -35,12 +35,38 @@ $(function () {
             s.parentNode.removeChild(s);
         };
 
-        var storageKey = 'params-' + recipeid;
+        var storageKey = 'params-' + recipeId;
         chrome.storage.sync.get(storageKey, function (result) {
-            var recipeParams = result[storageKey] && result[storageKey][paramSetName];
-            chrome.tabs.executeScript({
-                code: '(' + nn.toString().replace('{recipe}', recipeid).replace('{params}', window.encodeURIComponent(JSON.stringify(recipeParams)).replace('\'', '')) + ')();'
-            });
+            var recipeParams = {
+                self: result[storageKey] && result[storageKey][paramSetName]
+            };
+            var promises = [];
+            for (var i in recipelist) {
+                var recipe = recipelist[i]
+                if (recipe.id === recipeId) {
+                    for (var j in recipe.children) {
+                        var childRecipeId = recipe.children[j];
+                        var defer = $.Deferred();
+                        promises.push(defer.promise());
+
+                        (function (childRecipeId, deferred) {
+                            var childStorageKey = 'params-' + childRecipeId;
+                            chrome.storage.sync.get(childStorageKey, function (childResult) {
+                                recipeParams[childRecipeId] = childResult[childStorageKey];      //all parameter-sets for child
+                                deferred.resolve();
+                            });
+                        })(childRecipeId, defer);
+                    }
+                    break;
+                }
+            }
+            $.when.apply($, promises)
+                .then(function () {
+                    var code = '(' + nn.toString().replace('{recipe}', recipeId).replace('{params}', window.encodeURIComponent(JSON.stringify(recipeParams)).replace('\'', '')) + ')();';
+                    chrome.tabs.executeScript({
+                        code: code
+                    });
+                });
         });
     };
 
@@ -53,7 +79,7 @@ $(function () {
         runRecipe(recipeid, setName);
     });
 
-    $(document).click(function () {
+    $('#closePopup').click(function () {
         window.close();
     });
 

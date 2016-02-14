@@ -1,16 +1,39 @@
 [
   {
+    "id": "FillClassicQuestionRecipe",
+    "title": "Fill Any Classic Question Type",
+    "description": "Fill TF, TE, ET, TDD, MS & MC question types",
+    "type": "parent",
+    "version": "0.1",
+    "params": {
+      "default": {
+        "content": "default"
+      },
+      "ipsum": {
+        "content": "ipsum"
+      }
+    },
+    "children": [
+      "FillTrueFalseRecipe",
+      "FillTextEntryRecipe",
+      "FillEssayRecipe",
+      "FillTextDropdownRecipe",
+      "FillMultipleSelectionRecipe",
+      "FillMultipleChoiceRecipe"
+    ]
+  },
+  {
     "id": "FillTrueFalseRecipe",
     "title": "Fill TrueFalse Question",
     "description": "It will fill T/F question, solution, hint & answerChoices",
     "version": "0.1",
-    "type": "parent",
+    "type": "child",
     "params": {
       "default": {
         "questionTitle": "Filling T/F {datetime}"
       },
       "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
     }
   },
@@ -19,13 +42,13 @@
     "title": "Fill TextEntry Question",
     "description": "It will fill Text Entry question, solution, hint & answerChoice",
     "version": "0.1",
-    "type": "parent",
+    "type": "child",
     "params": {
       "default": {
         "questionTitle": "Filling T/F {datetime}"
       },
       "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
     }
   },
@@ -34,13 +57,13 @@
     "title": "Fill Essay Question",
     "description": "It will fill Essay question, solution, hint",
     "version": "0.1",
-    "type": "parent",
+    "type": "child",
     "params": {
       "default": {
         "questionTitle": "Filling Essay Question {datetime}"
       },
       "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
     }
   },
@@ -49,13 +72,13 @@
     "title": "Fill Text Dropdown Question",
     "description": "It will fill Text Dropdown question, solution, hint",
     "version": "0.1",
-    "type": "parent",
+    "type": "child",
     "params": {
       "default": {
         "questionTitle": "Filling Text Dropdown Question {datetime}"
       },
       "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
     }
   },
@@ -64,13 +87,13 @@
     "title": "Fill Multiple Selection Question",
     "description": "It will fill Multiple Selection question, solution, hint & answerChoices",
     "version": "0.1",
-    "type": "parent",
+    "type": "child",
     "params": {
       "default": {
         "questionTitle": "Filling Multiple Selection Question {datetime}"
       },
       "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
     }
   },
@@ -79,13 +102,13 @@
     "title": "Fill Multiple Choice Question",
     "description": "It will fill Multiple Choice question, solution, hint & answerChoices",
     "version": "0.1",
-    "type": "parent",
+    "type": "child",
     "params": {
       "default": {
         "questionTitle": "Filling Multiple Choice Question {datetime}"
       },
       "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
       }
     }
   },
@@ -156,6 +179,10 @@
     "description": "Login into Edulastic",
     "type": "parent",
     "params": {
+      "default": {
+        "email": "nitin.cool4urchat@gmail.com",
+        "password": "snapwiz"
+      },
       "instructor": {
         "email": "nteacher@snapwiz.com",
         "password": "snapwiz"

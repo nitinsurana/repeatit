@@ -32,5 +32,6 @@
                 break;
         }
         this.steps[1].selector = s;
+        return $.Deferred().resolve();
     }
 })();

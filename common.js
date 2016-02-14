@@ -3,14 +3,13 @@
 
     window.recipe.Recipe = function (steps) {
         this.start = function () {
+            return $.Deferred().resolve();
         };
         this.stop = function () {
-        };
-        this.preCondition = function () {
-            return {status: true};
+            return $.Deferred().resolve();
         };
         this.steps = steps;
-        this.wait = 20;      //seconds
+        this.wait = 20;      //10 seconds
     };
 
     var getSingleElement = function (tagName, index) {
@@ -19,7 +18,7 @@
     };
 
     var processParams = function (params) {
-        if (!params || params === 'undefined') {
+        if (!params) {
             return;
         }
         //params will be object if injected in another extension as a step, else it'll be an encoded string passed by extension_script (popup.js)
@@ -41,7 +40,8 @@
                     clearInterval(c);
                     waitCount = 0;
                     var recipeToInject = window.recipe[s.recipeId];
-                    typeof recipeToInject.start === 'function' && recipeToInject.start.call(recipeToInject, processParams(s.params));
+                    //Todo convert below call to handle start promise success & failure
+                    recipeToInject.start.call(recipeToInject, processParams(s.params));
                     steps.splice.apply(steps, [index, 1].concat(recipeToInject.steps));
                     play(steps, index);
                 } else {
@@ -83,17 +83,13 @@
             }
         };
 
-        var check = recipe.preCondition.call(recipe);
-
-        if (!check.status) {
-            window.alert(check.msg);
-            return;
-        }
-        typeof recipe.start === 'function' && recipe.start.call(recipe, processParams(params));
-
-        play(recipe.steps.slice(), index);      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
-
-        typeof recipe.stop === 'function' && recipe.stop.call(recipe);
+        recipe.start.call(recipe, processParams(params))
+            .done(function () {
+                play(recipe.steps.slice(), index);      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
+                recipe.stop.call(recipe);
+            }).fail(function (msg) {
+                window.alert(msg);
+            });
     };
 
     window.recipe.utils = {

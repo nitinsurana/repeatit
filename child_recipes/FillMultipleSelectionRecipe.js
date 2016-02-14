@@ -51,5 +51,6 @@
         var answerIndex = Math.round(Math.random());        //0,1   -   Select 2 correct answers
         this.steps[5].selector = '.multiple-select-choice-icon:eq(' + answerIndex + ')';
         this.steps[6].selector = '.multiple-select-choice-icon:eq(' + (2 + answerIndex) + ')';
+        return $.Deferred().resolve();
     }
 })();

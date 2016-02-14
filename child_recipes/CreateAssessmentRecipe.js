@@ -9,5 +9,6 @@
         var url = '#createAssessment/close?cm=assessment';
         Backbone.history.navigate(url);
         Backbone.history.loadUrl(url);
+        return $.Deferred().resolve();
     }
 })();

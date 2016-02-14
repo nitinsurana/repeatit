@@ -61,5 +61,6 @@
         var answerIndex = Math.round(Math.random());
         this.steps[7].selector = '.text-drop-val:eq(' + answerIndex + ')';
         this.steps[8].selector = '.select-icon-text-drop-down:eq(' + answerIndex + ')';
+        return $.Deferred().resolve();
     }
 })();

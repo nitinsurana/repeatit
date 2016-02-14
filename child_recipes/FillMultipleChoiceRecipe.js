@@ -47,5 +47,6 @@
 
         var answerIndex = Math.round(Math.random() * 3);
         this.steps[5].selector = '.single-select-choice-icon:eq(' + answerIndex + ')';
+        return $.Deferred().resolve();
     }
 })();

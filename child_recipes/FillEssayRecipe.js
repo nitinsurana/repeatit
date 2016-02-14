@@ -2,17 +2,7 @@
     var steps = [
         {
             selector: '#question-raw-content',
-            action: 'redactorInsert'
-        },
-        {
-            selector: '.get-user-entry',
-            action: function () {
-                this.val('Correct Answer').trigger('keyup')
-            },
-            value: 'Correct Answer'
-        },
-        {
-            selector: '.accept_answer'
+            action: 'redactor'
         },
         {
             type: 'recipe',
@@ -28,8 +18,9 @@
         }
     ];
 
-    var recipe = window.recipe.FillTextEntryRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillEssayRecipe = new window.recipe.Recipe(steps);
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
+        return $.Deferred().resolve();
     }
 })();

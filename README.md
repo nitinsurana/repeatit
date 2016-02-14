@@ -38,7 +38,7 @@
 4. ~~[Create Child-Recipes which has no existence alone but can always be clubbed with actual Recipes](https://github.com/nitinsurana/repeatit/commit/5dd629e6c44f17ab34aef6d65ba6d4a7e345c68d)~~
 5. ~~[Organization of all Recipes and Child-Recipes in directories and corresponding gulp task changes](https://github.com/nitinsurana/repeatit/commit/e98ec17b5a62e445be2d6cb8c1573703d98b153c)~~
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
-7. Create a video showing installation and usage.
+7. [Create a video showing installation](https://www.youtube.com/watch?v=cnG9MnIIfjw) and usage.
 8. When recording show some kind of highlighting in the extension icon and Record button.
 9. Create a options page to import/export all/selective recipes/recordings but these won't be available to all extension installations. (Needs fileSystem permission)
 10. Upgrade extension to use Backbone so that recipelist can be a Backbone collection with unique recipe ids and appropriate events to update popup.html DOM.
@@ -76,3 +76,9 @@ for every recipe with screenshots and if possible with videos showing how does t
 7. Write a plugin for firefox
 8. Create gulp tasks to create packaged extensions to be installed in chrome & firefox, with versions and add them to releases.
 9. Add support for creating safari extension and gulp-task to do the same. 
+
+
+##Limitations
+
+1. Only websites having jquery can be automated.
+2. If the value of any variable defined in paramSet for a recipe contains `'`, the recipe does not work/run/execute. 
