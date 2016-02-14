@@ -78,7 +78,7 @@ $(function () {
         renderRecipes: function () {
             var self = this;
             _.each(this.collection.models, function (model) {
-                if (model.get('type') === 'parent') {
+                if (model.get('title').trim().length > 0) {
                     self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
                     if (model.get('params')) {
                         self.renderParameterSets(model);
