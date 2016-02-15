@@ -1,5 +1,5 @@
 (function () {
-    var recipesJsonUrl = 'https://rawgit.com/nitinsurana/repeatit/master/recipes.json';
+    var recipesJsonUrl = 'https://rawgit.com/nitinsurana/repeatit/master/src/recipes.json';
     //@ifdef DEBUG
     recipesJsonUrl = chrome.extension.getURL('recipes.json');
     //@endif

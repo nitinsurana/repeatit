@@ -1,5 +1,5 @@
 var s = document.createElement('script');
-s.src = 'https://rawgit.com/nitinsurana/repeatit/master/inject.js';
+s.src = 'https://rawgit.com/nitinsurana/repeatit/master/src/inject.js';
 //@ifdef DEBUG
 s.src = chrome.extension.getURL("inject.js");
 //@endif
