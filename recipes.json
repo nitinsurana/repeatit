@@ -198,6 +198,22 @@
     }
   },
   {
+    "id": "LoginLSRecipe",
+    "title": "Login to LS",
+    "description": "Login into LS",
+    "type": "parent",
+    "params": {
+      "instructor": {
+        "email": "instructor1.biology@epub.com",
+        "password": "snapwiz"
+      },
+      "student": {
+        "email": "student1.biology@epub.com",
+        "password": "snapwiz"
+      }
+    }
+  },
+  {
     "id": "FillSolutionHintRecipe",
     "title": "",
     "description": "",
