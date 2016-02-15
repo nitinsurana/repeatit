@@ -114,50 +114,50 @@
   },
   {
     "id": "PassageCreateRecipe",
-    "title": "Create Passage with 3 T/F questions",
-    "description": "Creates a passage with 3 TrueFalse questions",
+    "title": "Create Assessment with passage having 3 T/F questions",
+    "description": "Creates Assessment with passage having 3 T/F questions",
     "version": "0.1",
     "type": "parent"
   },
   {
     "id": "TrueFalseCreateRecipe",
-    "title": "Create True False Question",
-    "description": "Creates a new assessment with TrueFalse question",
+    "title": "Create Assessment with one True False Question",
+    "description": "Creates Assessment with one TrueFalse question",
     "version": "0.1",
     "type": "parent"
   },
   {
     "id": "TextEntryCreateRecipe",
-    "title": "Create Text Entry Question",
-    "description": "Creates a new assessment with TextEntry question",
+    "title": "Create Assessment with one Text Entry Question",
+    "description": "Creates Assessment with one TextEntry question",
     "version": "0.1",
     "type": "parent"
   },
   {
     "id": "TextDropdownCreateRecipe",
-    "title": "Create Text Dropdown Question",
-    "description": "Creates a new assessment with TextDropdown question",
+    "title": "Create Assessment with one Text Dropdown Question",
+    "description": "Creates Assessment with one TextDropdown question",
     "version": "0.1",
     "type": "parent"
   },
   {
     "id": "EssayCreateRecipe",
-    "title": "Create Essay Question",
-    "description": "Creates a new assessment with Essay question",
+    "title": "Create Assessment with one Essay Question",
+    "description": "Creates Assessment with one Essay question",
     "version": "0.1",
     "type": "parent"
   },
   {
     "id": "MultipleSelectionCreateRecipe",
-    "title": "Create Multiple Selection Question",
-    "description": "Creates a new assessment with Multiple Selection question",
+    "title": "Create Assessment with one Multiple Selection Question",
+    "description": "Creates Assessment with one MultipleSelection question",
     "version": "0.1",
     "type": "parent"
   },
   {
     "id": "MultipleChoiceCreateRecipe",
-    "title": "Create Multiple Choice Question",
-    "description": "Creates a new assessment with Multiple Choice question",
+    "title": "Create Assessment with one Multiple Choice Question",
+    "description": "Creates Assessment with one MultipleChoice question",
     "version": "0.1",
     "type": "parent"
   },
