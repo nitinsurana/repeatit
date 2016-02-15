@@ -124,42 +124,69 @@
     "title": "Create Assessment with one True False Question",
     "description": "Creates Assessment with one TrueFalse question",
     "version": "0.1",
-    "type": "parent"
+    "type": "child"
   },
   {
     "id": "TextEntryCreateRecipe",
     "title": "Create Assessment with one Text Entry Question",
     "description": "Creates Assessment with one TextEntry question",
     "version": "0.1",
-    "type": "parent"
-  },
-  {
-    "id": "TextDropdownCreateRecipe",
-    "title": "Create Assessment with one Text Dropdown Question",
-    "description": "Creates Assessment with one TextDropdown question",
-    "version": "0.1",
-    "type": "parent"
+    "type": "child"
   },
   {
     "id": "EssayCreateRecipe",
     "title": "Create Assessment with one Essay Question",
     "description": "Creates Assessment with one Essay question",
     "version": "0.1",
-    "type": "parent"
+    "type": "child"
+  },
+  {
+    "id": "TextDropdownCreateRecipe",
+    "title": "Create Assessment with one Text Dropdown Question",
+    "description": "Creates Assessment with one TextDropdown question",
+    "version": "0.1",
+    "type": "child"
   },
   {
     "id": "MultipleSelectionCreateRecipe",
     "title": "Create Assessment with one Multiple Selection Question",
     "description": "Creates Assessment with one MultipleSelection question",
     "version": "0.1",
-    "type": "parent"
+    "type": "child"
   },
   {
     "id": "MultipleChoiceCreateRecipe",
     "title": "Create Assessment with one Multiple Choice Question",
     "description": "Creates Assessment with one MultipleChoice question",
     "version": "0.1",
-    "type": "parent"
+    "type": "child"
+  },
+  {
+    "id": "CreateAssessmentWithClassicQuestionRecipe",
+    "title": "Create Assessment with one Classic Question",
+    "description": "Creates Assessment with one Classic question",
+    "version": "0.1",
+    "type": "parent",
+    "params": {
+      "tf": {
+        "qtype": 120
+      },
+      "te": {
+        "qtype": 125
+      },
+      "es": {
+        "qtype": 123
+      },
+      "tdd": {
+        "qtype": 129
+      },
+      "ms": {
+        "qtype": 122
+      },
+      "mc": {
+        "qtype": 116
+      }
+    }
   },
   {
     "id": "OpenQuestionAuthoringRecipe",

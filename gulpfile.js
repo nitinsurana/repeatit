@@ -8,8 +8,8 @@ var fs = require('fs');
 
 
 gulp.task('scripts', function () {
-    gulp.src(['common.js', 'recipes/*Recipe.js', 'child_recipes/*Recipe.js', 'recorder.js'])
-        .pipe(concat('inject.js'))
+    gulp.src(['src/common.js', 'src/recipes/*Recipe.js', 'src/child_recipes/*Recipe.js', 'src/recorder.js'])
+        .pipe(concat('src/inject.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./'));
 });
