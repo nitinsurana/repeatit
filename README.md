@@ -3,7 +3,7 @@
 
 
 
-## Installation
+## Installation ([Video](https://www.youtube.com/watch?v=cnG9MnIIfjw))
 
 1. Clone this repo
 2. Visit `chrome://extensions` in Chrome
@@ -13,21 +13,8 @@
 
 
 
-## Steps to create a new Recipe
+## [Steps to create a new Recipe](https://github.com/nitinsurana/repeatit/wiki/How-to-create-a-new-Recipe)
 
-1. Create a new Recipe.js file (for e.g. MyNewRecipe.js)
-2. Create a new entry in the array defined in recipes.json. 
-3. Before committing run the gulp task `scripts` so that your recipe is minified and added to the extension (inject.js)
-
->NOTE - Make sure the `id` of the new entry matches with the global namespace of the recipe. For e.g. window.recipe.myNewRecipe should always have `id = myNewRecipe`
-
-
-
-## Recipes to create
-1. Fill Question Generic Recipe (should support as many questions as possible)
-2. ~~[Create Assessment Recipe](https://github.com/nitinsurana/repeatit/commit/5dd629e6c44f17ab34aef6d65ba6d4a7e345c68d)~~
-3. ~~[Create T/F Recipe    (CreateAssessmentRecipe, OpenTF (child-recipe), FillTF or FillQuestionRecipe)](https://github.com/nitinsurana/repeatit/commit/6d49ed954fdbffd488d16d66d210d5e1e7ae4651)~~
-4. Create a login recipe (ask extension owner to define params)
 
 
 ## Todos
