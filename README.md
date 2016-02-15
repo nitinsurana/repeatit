@@ -62,6 +62,7 @@ for every recipe with screenshots and if possible with videos showing how does t
 27. Allow user to create custom recipes by combining recipes with parameters.
 28. Change params variable in recipes.json to parameterSets and fix all impacts.
 29. Create a gulp profile/task to changd contentscript.js & background.js loading json & inject.js urls to internal chrome extension urls during development
+30. Exclude inject.js from committing and create a task to pack the chrome extension and upload it in github releases section. 
 
 
 

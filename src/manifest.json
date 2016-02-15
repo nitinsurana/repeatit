@@ -35,7 +35,7 @@
         "https://*/*"
       ],
       "js": [
-        "contentscript.js"
+        "dist/contentscript.js"
       ]
     }
   ],
@@ -43,7 +43,7 @@
     "scripts": [
       "js/jquery-2.0.3.min.js",
       "js/underscore-min.js",
-      "background.js"
+      "dist/background.js"
     ]
   },
   "externally_connectable": {

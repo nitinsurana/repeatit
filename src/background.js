@@ -1,6 +1,8 @@
 (function () {
     var recipesJsonUrl = 'https://rawgit.com/nitinsurana/repeatit/master/recipes.json';
-    //var recipesJsonUrl = chrome.extension.getURL('recipes.json');       //Un-comment for local new recipes testing
+    //@ifdef DEBUG
+    recipesJsonUrl = chrome.extension.getURL('recipes.json');
+    //@endif
     $.ajax({
         url: recipesJsonUrl,
         dataType: 'json'
