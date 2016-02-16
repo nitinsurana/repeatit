@@ -8,16 +8,19 @@
             type: 'recipe',
             recipeId: 'OpenQuestionAuthoringRecipe',
             params: {
-                qtype: 125
+                qtype: 122
             }
         },
         {
             type: 'recipe',
-            recipeId: 'FillTextEntryRecipe',
+            recipeId: 'FillMultipleSelectionRecipe',
             params: {
-                questionTitle: 'Creating Normal Text Entry Question - {datetime}'
+                questionTitle: 'Creating Multiple Selection Question {datetime}'
             }
+        },
+        {
+            selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    window.recipe.TextEntryCreateRecipe = new window.recipe.Recipe(steps);
+    window.recipe.MultipleSelectionCreateRecipe = new window.recipe.Recipe(steps);
 })();

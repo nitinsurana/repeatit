@@ -17,6 +17,9 @@
             params: {
                 questionTitle: 'Creating Multiple Choice Question {datetime}'
             }
+        },
+        {
+            selector: '.lsm-createAssignment-done.selected'
         }
     ];
     window.recipe.MultipleChoiceCreateRecipe = new window.recipe.Recipe(steps);

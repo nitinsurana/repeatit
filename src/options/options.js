@@ -5,10 +5,9 @@ $(function () {
             var self = this;
             this.accordionChoiceTemplate = $("#accordion-panel-template").text();
             this.parameterSetTemplate = $("#parameterSetTemplate").text();
-            chrome.storage.sync.get('recipelist', function (result) {
-                self.collection = new Backbone.Collection(result.recipelist);
-                self.renderRecipes();
-            });
+            this.recipelist = chrome.extension.getBackgroundPage().recipelist;
+            self.collection = new Backbone.Collection(this.recipelist);
+            self.renderRecipes();
         },
         events: {
             "keyup #search": "searchOnKeyup",
@@ -39,17 +38,15 @@ $(function () {
         },
         resetParameterSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
-            chrome.storage.sync.get('recipelist', function (r) {
-                var recipelist = r.recipelist;
-                var recipe = _.find(recipelist, function (recipe) {
-                    return recipe.id === recipeId;
-                });
-                var parameterSets = {};
-                parameterSets["params-" + recipe.id] = recipe.params;
-                chrome.storage.sync.set(parameterSets, function () {
-                    console.log("Reset ParameterSets to default : " + recipe.id);
-                    window.location.reload();       //Todo re-render of recipe accordion instead of reload
-                });
+            var recipelist = this.recipelist;
+            var recipe = _.find(recipelist, function (recipe) {
+                return recipe.id === recipeId;
+            });
+            var parameterSets = {};
+            parameterSets["params-" + recipe.id] = recipe.params;
+            chrome.storage.sync.set(parameterSets, function () {
+                console.log("Reset ParameterSets to default : " + recipe.id);
+                window.location.reload();       //Todo re-render of recipe accordion instead of reload
             });
             //Todo code to reset parameterSets for the clicked recipe
             //Remove from storage params-recipeId

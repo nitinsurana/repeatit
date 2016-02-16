@@ -10,9 +10,7 @@
             url: recipesJsonUrl,
             dataType: 'json'
         }).done(function (response) {
-            chrome.storage.sync.set({'recipelist': response}, function () {
-                console.log("Saved recipelist in Chrome Storage");
-            });
+            window.recipelist = response;
             _.each(response, function (recipe) {
                 if (recipe.params) {
                     var storageKey = 'params-' + recipe.id,

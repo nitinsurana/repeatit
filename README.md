@@ -44,12 +44,12 @@ for every recipe with screenshots and if possible with videos showing how does t
 22. Create a markdown file explaining types of recipes, procedure to create recipe, params, start & stop callbacks.
 23. Create a screencast for every recipe showing how the recipe works and what is the pre-requisite.
 24. Add ability to add recipe description in html (add pre-requisities here)
-25. Start adding extension .crx to releases so that people can download (don't forget to change the version number with every release)
+25. ~~[Start adding extension .crx to releases so that people can download (don't forget to change the version number with every release)](https://github.com/nitinsurana/repeatit/commit/06b4f2aedb9f938b4355dc76d99966cd22cc79df)~~
 26. Create a child-recipe to save solution/hint & modify points and use it internally in FillQuestionRecipe
 27. Allow user to create custom recipes by combining recipes with parameters.
 28. Change params variable in recipes.json to parameterSets and fix all impacts.
-29. Create a gulp profile/task to changd contentscript.js & background.js loading json & inject.js urls to internal chrome extension urls during development
-30. Exclude inject.js from committing and create a task to pack the chrome extension and upload it in github releases section. 
+29. ~~[Create a gulp profile/task to change contentscript.js & background.js loading json & inject.js urls to internal chrome extension urls during development](https://github.com/nitinsurana/repeatit/commit/06b4f2aedb9f938b4355dc76d99966cd22cc79df)~~
+30. ~~[Exclude inject.js from committing and create a task to pack the chrome extension.](https://github.com/nitinsurana/repeatit/commit/06b4f2aedb9f938b4355dc76d99966cd22cc79df)~~ 
 
 
 

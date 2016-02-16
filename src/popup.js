@@ -2,11 +2,7 @@ $(function () {
     var $results = $("#results");
     $results.html('<li>Loading...</li>');
 
-    var recipelist = undefined;
-    chrome.storage.sync.get('recipelist', function (result) {
-        recipelist = result.recipelist;
-        createRecipeLIs();
-    });
+    var recipelist = chrome.extension.getBackgroundPage().recipelist;
 
     function createRecipeLIs() {
         $results.empty();
@@ -26,6 +22,7 @@ $(function () {
             $results.append($li);
         }
     }
+    createRecipeLIs();
 
     var runRecipe = function (recipeId, paramSetName) {
         var nn = function () {
@@ -109,9 +106,10 @@ $(function () {
                 "version": "0.1"
             };
             recipelist.push(recipeData);
-            chrome.storage.sync.set({'recipelist': recipelist}, function () {
-                console.log("Updated recipelist in Chrome Storage");
-            });
+            //Todo figure out a way to not lose recorded recipes
+            //chrome.storage.sync.set({'recipelist': recipelist}, function () {
+            //    console.log("Updated recipelist in Chrome Storage");
+            //});
 
             createRecipeLIs();
         });

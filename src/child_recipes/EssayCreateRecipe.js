@@ -8,16 +8,19 @@
             type: 'recipe',
             recipeId: 'OpenQuestionAuthoringRecipe',
             params: {
-                qtype: 129
+                qtype: 123
             }
         },
         {
             type: 'recipe',
-            recipeId: 'FillTextDropdownRecipe',
+            recipeId: 'FillEssayRecipe',
             params: {
-                questionTitle: 'Creating Text Dropdown Question - {datetime}'
+                questionTitle: 'Creating Essay Question - {datetime}'
             }
+        },
+        {
+            selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    window.recipe.TextDropdownCreateRecipe = new window.recipe.Recipe(steps);
+    window.recipe.EssayCreateRecipe = new window.recipe.Recipe(steps);
 })();

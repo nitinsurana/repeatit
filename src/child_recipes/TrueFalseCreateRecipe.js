@@ -8,16 +8,19 @@
             type: 'recipe',
             recipeId: 'OpenQuestionAuthoringRecipe',
             params: {
-                qtype: 123
+                qtype: 120
             }
         },
         {
             type: 'recipe',
-            recipeId: 'FillEssayRecipe',
+            recipeId: 'FillTrueFalseRecipe',
             params: {
-                questionTitle: 'Creating Essay Question - {datetime}'
+                questionTitle: 'Creating Normal True False {datetime}'
             }
+        },
+        {
+            selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    window.recipe.EssayCreateRecipe = new window.recipe.Recipe(steps);
+    window.recipe.TrueFalseCreateRecipe = new window.recipe.Recipe(steps);
 })();
