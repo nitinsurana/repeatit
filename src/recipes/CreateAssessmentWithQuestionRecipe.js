@@ -2,7 +2,10 @@
     var steps = [
         {
             type: 'recipe',
-            recipeId: ''
+            recipeId: '',
+            params: {
+                assessment: true
+            }
         }
     ];
     var recipe = window.recipe.CreateAssessmentWithClassicQuestionRecipe = new window.recipe.Recipe(steps);

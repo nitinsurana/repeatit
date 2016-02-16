@@ -1,8 +1,8 @@
 (function () {
     var steps = [
         {
-            type: 'recipe',
-            recipeId: 'CreateAssessmentRecipe'
+            type: 'wait',
+            seconds: 2
         },
         {
             type: 'recipe',
@@ -22,5 +22,19 @@
             selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    window.recipe.TextEntryCreateRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.TextEntryCreateRecipe = new window.recipe.Recipe(steps);
+    recipe.start = function (params) {
+        if (params && params.assessment) {
+            this.steps[0] = {
+                type: 'recipe',
+                recipeId: 'CreateAssessmentRecipe'
+            };
+        } else {
+            this.steps[0] = {
+                type: 'wait',
+                seconds: 2
+            }
+        }
+        return $.Deferred().resolve();
+    }
 })();

@@ -189,6 +189,33 @@
     }
   },
   {
+    "id": "AddClassicQuestionToAssessmentRecipe",
+    "title": "Add Classic Question to Assessment",
+    "description": "Adds a classic question to assessment being review (#assessmentReview/close)",
+    "version": "0.1",
+    "type": "parent",
+    "params": {
+      "tf": {
+        "qtype": 120
+      },
+      "te": {
+        "qtype": 125
+      },
+      "es": {
+        "qtype": 123
+      },
+      "tdd": {
+        "qtype": 129
+      },
+      "ms": {
+        "qtype": 122
+      },
+      "mc": {
+        "qtype": 116
+      }
+    }
+  },
+  {
     "id": "OpenQuestionAuthoringRecipe",
     "title": "",
     "description": "From LOSV will select Create and then T/F questionType",

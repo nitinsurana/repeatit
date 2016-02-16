@@ -44,6 +44,9 @@
                     recipeToInject.start.call(recipeToInject, processParams(s.params));
                     steps.splice.apply(steps, [index, 1].concat(recipeToInject.steps));
                     play(steps, index);
+                } else if (s.type === 'wait') {
+                    //Todo implement wait step
+                    ++index;
                 } else {
                     var $ele = s.selector ? $(s.selector) : $(getSingleElement(s.tagName, s.index));
                     if ($ele.length > 0) {
