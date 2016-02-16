@@ -294,5 +294,20 @@
         "selector": ".ls--custom-file-assignment-view"
       }
     }
+  },
+  {
+    "id": "AssignAssessmentRecipe",
+    "title": "Assign Assessment",
+    "description": "Assigns an assessment which is in review screen",
+    "version": "0.1",
+    "type": "parent",
+    "params": {
+      "r_n": {
+        "type": "right_now"
+      },
+      "pbul": {
+        "type": "publish_and_use_later"
+      }
+    }
   }
 ]

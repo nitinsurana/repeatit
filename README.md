@@ -49,7 +49,8 @@ for every recipe with screenshots and if possible with videos showing how does t
 27. Allow user to create custom recipes by combining recipes with parameters.
 28. Change params variable in recipes.json to parameterSets and fix all impacts.
 29. ~~[Create a gulp profile/task to change contentscript.js & background.js loading json & inject.js urls to internal chrome extension urls during development](https://github.com/nitinsurana/repeatit/commit/06b4f2aedb9f938b4355dc76d99966cd22cc79df)~~
-30. ~~[Exclude inject.js from committing and create a task to pack the chrome extension.](https://github.com/nitinsurana/repeatit/commit/06b4f2aedb9f938b4355dc76d99966cd22cc79df)~~ 
+30. ~~[Exclude inject.js from committing and create a task to pack the chrome extension.](https://github.com/nitinsurana/repeatit/commit/06b4f2aedb9f938b4355dc76d99966cd22cc79df)~~
+31. Add ability for selector to be a function which will be very useful for plugins, for e.g. the element might be present but it's still not initialized to redactor/select2 yet.
 
 
 
