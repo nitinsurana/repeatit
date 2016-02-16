@@ -66,8 +66,6 @@ $(function () {
                     chrome.tabs.executeScript({
                         code: code
                     });
-
-                    window.close();
                 });
         });
     };
