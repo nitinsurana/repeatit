@@ -199,7 +199,7 @@
   },
   {
     "id": "LoginLSRecipe",
-    "title": "Login to LS",
+    "title": "Login(LS)",
     "description": "Login into LS",
     "type": "parent",
     "params": {
@@ -221,6 +221,24 @@
     "params": {
       "solution": "Some sample solution",
       "hint": "Some sample hint"
+    }
+  },
+  {
+    "id": "CreateLSAssignmentRecipe",
+    "title": "Create an Assignment(LS)",
+    "description": "Creates an Assignment using on of the options",
+    "version": "0.1",
+    "type": "parent",
+    "params": {
+      "Custom": {
+        "selector": ".ls--create-custom-assignment-view"
+      },
+      "PreCreated": {
+        "selector": ".ls--question-banks-view"
+      },
+      "FileBased": {
+        "selector": ".ls--custom-file-assignment-view"
+      }
     }
   }
 ]
