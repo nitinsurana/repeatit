@@ -16,6 +16,7 @@ gulp.task('scripts', function () {
 
 gulp.task('watchjs', function () {
     gulp.watch(['**/*.js', '!inject.js', '!options/*.js'], ['scripts']);
+    gulp.watch(['src/background.js','src/contentscript.js'],['urls-dev']);
 });
 
 gulp.task('urls-dev', function () {
