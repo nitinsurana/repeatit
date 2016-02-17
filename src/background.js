@@ -1,4 +1,14 @@
 (function () {
+
+    chrome.browserAction.onClicked.addListener(function (activeTab) {
+        chrome.windows.create({
+            url: chrome.extension.getURL('popup.html'),
+            type: 'panel',
+            height: 489,
+            width: 500
+        });
+    });
+
     chrome.runtime.onInstalled.addListener(function () {
         chrome.storage.sync.clear();
 

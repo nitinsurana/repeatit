@@ -22,6 +22,31 @@ $(function () {
             $results.append($li);
         }
     }
+
+    function executeScriptInCurrentTab(code) {
+        chrome.windows.getAll(function (r) {
+            var eduWindow;
+            r.forEach(function (w) {
+                if (w.type === 'normal' && w.state === 'maximized') {
+                    eduWindow = w;
+                    return false;
+                }
+            });
+            if (eduWindow) {
+                chrome.tabs.query({
+                    active: true,
+                    windowId: eduWindow.id
+                }, function (t) {
+                    if (t.length == 1) {
+                        chrome.tabs.executeScript(t[0].id, {
+                            code: code
+                        })
+                    }
+                });
+            }
+        });
+    }
+
     createRecipeLIs();
 
     var runRecipe = function (recipeId, paramSetName) {
@@ -60,9 +85,7 @@ $(function () {
             $.when.apply($, promises)
                 .then(function () {
                     var code = '(' + nn.toString().replace('{recipe}', recipeId).replace('{params}', window.encodeURIComponent(JSON.stringify(recipeParams)).replace('\'', '')) + ')();';
-                    chrome.tabs.executeScript({
-                        code: code
-                    });
+                    executeScriptInCurrentTab(code);
                 });
         });
     };
