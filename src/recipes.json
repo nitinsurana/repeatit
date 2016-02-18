@@ -309,5 +309,33 @@
         "type": "publish_and_use_later"
       }
     }
+  },
+  {
+    "id": "LoginGliderRecipe",
+    "title": "Glider Login",
+    "description": "Login into Glider",
+    "type": "parent",
+    "params": {
+      "hm": {
+        "email": "nitin.cool4urchat@gmail.com",
+        "password": "snapwiz"
+      },
+      "hrm": {
+        "email": "nteacher@snapwiz.com",
+        "password": "snapwiz"
+      },
+      "ir": {
+        "email": "nstudent@snapwiz.com",
+        "password": "snapwiz"
+      },
+      "i": {
+        "email": "gaurav.author@snapwiz.com",
+        "password": "snapwiz"
+      },
+      "er": {
+        "email": "gaurav.author@snapwiz.com",
+        "password": "snapwiz"
+      }
+    }
   }
 ]
