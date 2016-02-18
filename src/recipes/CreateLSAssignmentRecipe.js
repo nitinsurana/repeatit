@@ -1,7 +1,7 @@
 (function () {
     var steps = [
         {
-            selector: '.ls-dashboard-new-assignment',
+            selector: '.ls-dashboard-new-assignment, #new-assignment-button',
             action: 'click'
         },
         {
