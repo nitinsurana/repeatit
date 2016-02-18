@@ -5,14 +5,40 @@ $(function () {
             var self = this;
             this.accordionChoiceTemplate = $("#accordion-panel-template").text();
             this.parameterSetTemplate = $("#parameterSetTemplate").text();
-            this.recipelist = chrome.extension.getBackgroundPage().recipelist;
+            this.settingsTemplate = $("#settings-template").text();
+            this.background = chrome.extension.getBackgroundPage().background;
+            this.recipelist = this.background.recipelist;
             self.collection = new Backbone.Collection(this.recipelist);
-            self.renderRecipes();
+            self.render();
         },
         events: {
             "keyup #search": "searchOnKeyup",
             "click .parameter-sets .reset": "resetParameterSets",
-            "click .parameter-sets .save": "saveParameterSets"
+            "click .parameter-sets .save": "saveParameterSets",
+            "click #saveSettings": "saveSettings"
+        },
+        render: function () {
+            this.renderSettings();
+            this.renderRecipes();
+        },
+        renderSettings: function () {
+            chrome.storage.sync.get('settings', $.proxy(function (r) {
+                this.$("#settings").html(_.template(this.settingsTemplate)({data: r.settings}));
+            }, this));
+        },
+        saveSettings: function (e) {
+            var self = this;
+            e.preventDefault();
+            var newSettings = {};
+            _.each(this.$("form").serializeArray(), function (o) {
+                newSettings[o.name] = o.value;
+            });
+            newSettings['popup'] = newSettings.popup === 'on' ? true : false;       //Converting checkbox to boolean
+            chrome.storage.sync.set({settings: newSettings}, function () {
+                console.log("Saved settings form to storage");
+                self.background.updatePopup(newSettings.popup);
+                window.alert("Saved Settings");
+            });
         },
         saveParameterSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');

@@ -2,7 +2,7 @@ $(function () {
     var $results = $("#results");
     $results.html('<li>Loading...</li>');
 
-    var recipelist = chrome.extension.getBackgroundPage().recipelist;
+    var recipelist = chrome.extension.getBackgroundPage().background.recipelist;
 
     function createRecipeLIs() {
         $results.empty();
@@ -50,6 +50,12 @@ $(function () {
     createRecipeLIs();
 
     var runRecipe = function (recipeId, paramSetName) {
+        chrome.storage.sync.get('settings', function (r) {
+            if (!r.settings.popup) {        //Close the extension if popup is false
+                window.close();
+            }
+        });
+
         var nn = function () {
             var s = document.createElement('script');
             s.textContent = 'window.recipe.RecipePlayer(window.recipe["{recipe}"],"{params}")';

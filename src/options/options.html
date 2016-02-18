@@ -21,17 +21,44 @@
 
 <body>
 <div class="container">
-    <div style="display:table;" class="input-group">
-        <span style="width: 1%;" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-        <input type="text" autofocus="autofocus" autocomplete="off" placeholder="Search Recipes Here..." name="search" style="" class="form-control" id="search" value="">
-    </div>
-    <br>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#settings" aria-controls="home" role="tab" data-toggle="tab">Settings</a></li>
+        <li role="presentation"><a href="#recipes" aria-controls="home" role="tab" data-toggle="tab">Recipes</a></li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="settings">
 
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        </div>
+        <div role="tabpanel" class="tab-pane" id="recipes">
+            <br>
 
+            <div style="display:table;" class="input-group">
+                <span style="width: 1%;" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                <input type="text" autofocus="autofocus" autocomplete="off" placeholder="Search Recipes Here..." name="search" style="" class="form-control" id="search" value="">
+            </div>
+            <br>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+            </div>
+        </div>
     </div>
 </div>
 <script src="options.js"></script>
+<script type="text/template" id="settings-template">
+    <form id="settings-form" role="form">
+        <ul class="list-unstyled">
+            <li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="popup" name="popup" <%-data.popup?'checked':''%>/> Extension As Popup
+                    </label>
+                </div>
+            </li>
+        </ul>
+        <button type="button" id="saveSettings" class="btn btn-primary">Save Settings</button>
+    </form>
+</script>
 <script type="text/template" id="accordion-panel-template">
     <div class="panel panel-default" id="recipe-<%=data.id%>">
         <div class="panel-heading" role="tab" id="<%=data.id%>">
