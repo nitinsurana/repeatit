@@ -361,5 +361,12 @@
         "password": "snapwiz"
       }
     }
+  },
+  {
+    "id" : "SignUpFlowFillCompanyDetailsRecipe",
+    "title": "Sign Up Employer : Company Name Page",
+    "description": "Fill Company Name & Location",
+    "project" : "glider",
+    "type": "parent"
   }
 ]
