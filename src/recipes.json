@@ -3,6 +3,7 @@
     "id": "FillClassicQuestionRecipe",
     "title": "Fill Any Classic Question Type",
     "description": "Fill TF, TE, ET, TDD, MS & MC question types",
+    "project" : "edulastic",
     "type": "parent",
     "version": "0.1",
     "params": {
@@ -26,6 +27,7 @@
     "id": "FillTrueFalseRecipe",
     "title": "Fill TrueFalse Question",
     "description": "It will fill T/F question, solution, hint & answerChoices",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child",
     "params": {
@@ -41,6 +43,7 @@
     "id": "FillTextEntryRecipe",
     "title": "Fill TextEntry Question",
     "description": "It will fill Text Entry question, solution, hint & answerChoice",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child",
     "params": {
@@ -56,6 +59,7 @@
     "id": "FillEssayRecipe",
     "title": "Fill Essay Question",
     "description": "It will fill Essay question, solution, hint",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child",
     "params": {
@@ -71,6 +75,7 @@
     "id": "FillTextDropdownRecipe",
     "title": "Fill Text Dropdown Question",
     "description": "It will fill Text Dropdown question, solution, hint",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child",
     "params": {
@@ -86,6 +91,7 @@
     "id": "FillMultipleSelectionRecipe",
     "title": "Fill Multiple Selection Question",
     "description": "It will fill Multiple Selection question, solution, hint & answerChoices",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child",
     "params": {
@@ -101,6 +107,7 @@
     "id": "FillMultipleChoiceRecipe",
     "title": "Fill Multiple Choice Question",
     "description": "It will fill Multiple Choice question, solution, hint & answerChoices",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child",
     "params": {
@@ -116,6 +123,7 @@
     "id": "PassageCreateRecipe",
     "title": "Create Assessment with passage having 3 T/F questions",
     "description": "Creates Assessment with passage having 3 T/F questions",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "parent"
   },
@@ -123,6 +131,7 @@
     "id": "TrueFalseCreateRecipe",
     "title": "Create Assessment with one True False Question",
     "description": "Creates Assessment with one TrueFalse question",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child"
   },
@@ -130,6 +139,7 @@
     "id": "TextEntryCreateRecipe",
     "title": "Create Assessment with one Text Entry Question",
     "description": "Creates Assessment with one TextEntry question",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child"
   },
@@ -137,6 +147,7 @@
     "id": "EssayCreateRecipe",
     "title": "Create Assessment with one Essay Question",
     "description": "Creates Assessment with one Essay question",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child"
   },
@@ -144,6 +155,7 @@
     "id": "TextDropdownCreateRecipe",
     "title": "Create Assessment with one Text Dropdown Question",
     "description": "Creates Assessment with one TextDropdown question",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child"
   },
@@ -151,6 +163,7 @@
     "id": "MultipleSelectionCreateRecipe",
     "title": "Create Assessment with one Multiple Selection Question",
     "description": "Creates Assessment with one MultipleSelection question",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child"
   },
@@ -158,6 +171,7 @@
     "id": "MultipleChoiceCreateRecipe",
     "title": "Create Assessment with one Multiple Choice Question",
     "description": "Creates Assessment with one MultipleChoice question",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "child"
   },
@@ -165,6 +179,7 @@
     "id": "CreateAssessmentWithClassicQuestionRecipe",
     "title": "Create Assessment with one Classic Question",
     "description": "Creates Assessment with one Classic question",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "parent",
     "params": {
@@ -192,6 +207,7 @@
     "id": "AddClassicQuestionToAssessmentRecipe",
     "title": "Add Classic Question to Assessment",
     "description": "Adds a classic question to assessment being review (#assessmentReview/close)",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "parent",
     "params": {
@@ -219,18 +235,21 @@
     "id": "OpenQuestionAuthoringRecipe",
     "title": "",
     "description": "From LOSV will select Create and then T/F questionType",
+    "project" : "edulastic",
     "type": "child"
   },
   {
     "id": "CreateAssessmentRecipe",
     "title": "",
     "description": "Will navigate to #createAssessment/close?cm=assessment and click on Create",
+    "project" : "edulastic",
     "type": "child"
   },
   {
     "id": "LoginRecipe",
     "title": "Login",
     "description": "Login into Edulastic",
+    "project" : "edulastic",
     "type": "parent",
     "params": {
       "default": {
@@ -255,6 +274,7 @@
     "id": "FillSolutionHintRecipe",
     "title": "",
     "description": "",
+    "project" : "edulastic",
     "type": "child",
     "params": {
       "solution": "Some sample solution",
@@ -265,6 +285,7 @@
     "id": "LoginLSRecipe",
     "title": "Login(LS)",
     "description": "Login into LS",
+    "project" : "ls",
     "type": "parent",
     "params": {
       "instructor": {
@@ -281,6 +302,7 @@
     "id": "CreateLSAssignmentRecipe",
     "title": "Create an Assignment(LS)",
     "description": "Creates an Assignment using on of the options",
+    "project" : "ls",
     "version": "0.1",
     "type": "parent",
     "params": {
@@ -299,6 +321,7 @@
     "id": "AssignAssessmentRecipe",
     "title": "Assign Assessment",
     "description": "Assigns an assessment which is in review screen",
+    "project" : "edulastic",
     "version": "0.1",
     "type": "parent",
     "params": {
@@ -314,6 +337,7 @@
     "id": "LoginGliderRecipe",
     "title": "Glider Login",
     "description": "Login into Glider",
+    "project" : "glider",
     "type": "parent",
     "params": {
       "hm": {

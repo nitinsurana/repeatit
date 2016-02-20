@@ -11,6 +11,23 @@ body, section {
     overflow-x: hidden;
 }
 
+/* Popup.html Page Styles */
+.popup-body {
+    padding: 0px 3px;
+}
+.popup-body .header-section {
+    height: 30px;
+    margin-bottom: 3px;
+}
+
+.popup-body .ri-record-btn {
+    padding: 2px 15px;
+}
+
+.popup-body .ri-tabs-container .ri-tabs li a {
+    padding: 4px 10px;
+}
+
 /* Basic style tweaks */
 section {
     padding: 5px;

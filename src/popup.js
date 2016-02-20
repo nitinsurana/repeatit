@@ -2,12 +2,16 @@ $(function () {
     var $results = $("#results");
     $results.html('<li>Loading...</li>');
 
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
     var recipelist = chrome.extension.getBackgroundPage().background.recipelist;
 
-    function createRecipeLIs() {
+    function createRecipeLIs(project) {
         $results.empty();
         for (var i in recipelist) {
-            if (recipelist[i].type === "child") {
+            if (recipelist[i].project != project || recipelist[i].type === "child") {
                 continue;
             }
             var $li = $("<li>", {
@@ -47,7 +51,7 @@ $(function () {
         });
     }
 
-    createRecipeLIs();
+    createRecipeLIs("ls");
 
     var runRecipe = function (recipeId, paramSetName) {
         chrome.storage.sync.get('settings', function (r) {
@@ -149,6 +153,11 @@ $(function () {
             var recordingCount = c.recordingCount || 0;
             runRecipe('RecordingRecipe-' + recordingCount);
         });
+    });
+
+    $("a[data-toggle='tab']").on('shown.bs.tab', function (e) {
+        var project = $(e.currentTarget).data('project') || "ls";
+        createRecipeLIs(project);
     });
 
     setTimeout(function () {
