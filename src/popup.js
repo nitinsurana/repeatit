@@ -46,7 +46,7 @@ $(function () {
                             code: code
                         });
                         chrome.storage.sync.get('settings', function (r) {
-                            if (!r.settings.popup) {        //Close the extension if popup is false
+                            if (!r.settings.newWindow) {        //Close the extension if newWindow is false
                                 window.close();
                             }
                         });

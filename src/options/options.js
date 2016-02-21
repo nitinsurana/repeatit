@@ -34,10 +34,10 @@ $(function () {
             _.each(this.$("form").serializeArray(), function (o) {
                 newSettings[o.name] = o.value;
             });
-            newSettings['popup'] = newSettings.popup === 'on' ? true : false;       //Converting checkbox to boolean
+            newSettings['newWindow'] = newSettings.newWindow === 'on' ? true : false;       //Converting checkbox to boolean
             chrome.storage.sync.set({settings: newSettings}, function () {
                 console.log("Saved settings form to storage");
-                self.background.updatePopup(newSettings.popup);
+                self.background.updatePopup(newSettings.newWindow);
                 window.alert("Saved Settings");
             });
         },

@@ -3,8 +3,8 @@
 
     window.background = {};
 
-    var defaultSettings = {
-        popup: false     //true means extension will open in a new window
+    var settings = window.background.settings = {
+        newWindow: false     //true means extension will open in a new window
     };
 
     chrome.browserAction.onClicked.addListener(function (activeTab) {       //DOCS - This event will not fire if the browser action has a popup.
@@ -16,8 +16,8 @@
         });
     });
 
-    window.background.updatePopup = function (popup) {
-        if (popup) {
+    window.background.updatePopup = function (newWindow) {
+        if (newWindow) {
             chrome.browserAction.setPopup({popup: ""});      //DOCS - If set to the empty string (''), no popup (new window) is shown.
         } else {
             chrome.browserAction.setPopup({popup: "popup.html"});
@@ -29,12 +29,12 @@
 
         chrome.storage.sync.get('settings', function (r) {
             if (r.settings) {
-                defaultSettings = _.extend(defaultSettings, r.settings);
+                settings = _.extend(settings, r.settings);
             }
-            chrome.storage.sync.set({"settings": defaultSettings}, function () {
+            chrome.storage.sync.set({"settings": settings}, function () {
                 console.log("Saved settings to storage: ");
             });
-            window.background.updatePopup(defaultSettings.popup);
+            window.background.updatePopup(settings.newWindow);
         });
 
         var recipesJsonUrl = 'https://rawgit.com/nitinsurana/repeatit/master/src/recipes.json';

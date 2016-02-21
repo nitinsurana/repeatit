@@ -54,6 +54,7 @@
   {
     "id": "AttemptStudentAssignmentRecipe",
     "title": "Attempt assignment with classic question type",
+    "description":"",
     "project": "edulastic",
     "type": "parent",
     "version": "0.1"
@@ -61,36 +62,42 @@
   {
     "id": "AttemptTrueFalseRecipe",
     "title": "Attempt true false ",
+    "description":"",
     "project": "edulastic",
     "type": "child"
   },
   {
     "id": "AttemptTextEntryRecipe",
     "title": "Attempt TextEntry question",
+    "description":"",
     "project": "edulastic",
     "type": "child"
   },
   {
     "id": "AttemptEssayRecipe",
     "title": "Attempt Essay question",
+    "description":"",
     "project": "edulastic",
     "type": "child"
   },
   {
     "id": "AttemptTextDropdownRecipe",
     "title": "Attempt TextDropdown question",
+    "description":"",
     "project": "edulastic",
     "type": "child"
   },
   {
     "id": "AttemptMultipleSelectRecipe",
     "title": "Attempt MultipleSelection question",
+    "description":"",
     "project": "edulastic",
     "type": "child"
   },
   {
     "id": "AttemptMultipleChoiceRecipe",
     "title": "Attempt MultipleChoice question",
+    "description":"",
     "project": "edulastic",
     "type": "child"
   },

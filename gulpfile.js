@@ -21,8 +21,8 @@ gulp.task('scripts', ['lint'], function () {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('watchjs', ['lint'], function () {
-    gulp.watch(['**/*.js', '!inject.js', '!options/*.js'], ['scripts']);
+gulp.task('watchjs', function () {
+    gulp.watch(['./src/**/*.js', '!./src/inject.js', '!./src/options/*.js'], ['scripts']);
     gulp.watch(['src/background.js', 'src/contentscript.js'], ['urls-dev']);
 });
 
