@@ -15,7 +15,8 @@
 
 
 
-## [Steps to create a new Recipe](https://github.com/nitinsurana/repeatit/wiki/How-to-create-a-new-Recipe)
+## How to contribute
+Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/repeatit/wiki#developerscontributors-)
 
 
 
