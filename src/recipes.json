@@ -27,6 +27,7 @@
     "id": "AttemptAssignmentRecipe",
     "title": "Attempt Any Classic Question Type",
     "description": "Attempt TF, TE, ET, TDD, MS & MC question types",
+	"project" : "edulastic",
     "type": "child",
     "version": "0.1",
     "params": {
@@ -53,37 +54,44 @@
   {
   	"id" : "AttemptStudentAssignmentRecipe",
 	"title" : "Attempt assignment with classic question type",
+	"project" : "edulastic",
 	"type" : "parent",
 	"version" : "0.1"
   },
   {
-	  "id" : "AttemptTrueFalseRecipe",
-	  "title" : "Attempt true false ",
-	  "type": "child"
+	"id" : "AttemptTrueFalseRecipe",
+    "title" : "Attempt true false ",
+	"project" : "edulastic",
+    "type": "child"
   },
   {
   	"id" : "AttemptTextEntryRecipe",
 	"title": "Attempt TextEntry question",
+	"project" : "edulastic",
 	"type" : "child"
   },
   {
   	"id" : "AttemptEssayRecipe",
 	"title": "Attempt Essay question",
+	"project" : "edulastic",
 	"type" : "child"
   },
   {
   	"id" : "AttemptTextDropdownRecipe",
 	"title": "Attempt TextDropdown question",
+	"project" : "edulastic",
 	"type" : "child"
   },
   {
   	"id" : "AttemptMultipleSelectRecipe",
 	"title": "Attempt MultipleSelection question",
+	"project" : "edulastic",
 	"type" : "child"
   },
   {
   	"id" : "AttemptMultipleChoiceRecipe",
 	"title": "Attempt MultipleChoice question",
+	"project" : "edulastic",
 	"type" : "child"
   },
   {
