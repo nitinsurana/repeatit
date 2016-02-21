@@ -3,13 +3,15 @@
 
 
 
-## Installation ([Video](https://www.youtube.com/watch?v=cnG9MnIIfjw))
+## Installation ([Video](https://youtu.be/GqB_R2ODFH0))
 
-1. Clone this repo
-2. Visit `chrome://extensions` in Chrome
-3. Select `Developer Mode`
-4. Click on `Load unpacked extension`
-5. Select the directory in which this repo is cloned
+1. Visit extension home page - "https://github.com/nitinsurana/repeatit"
+2. Click on "Release" Tab.
+3. Download the latest version ".crx" file.
+4. Visit "chrome://extensions/" url in Google Chrome.
+5. Drag the downloaded .crx file to the extension page.
+6. A popup window will appear saying "Add RepeatIt", click on "Add Extension"
+7. A message will appear showing the extension has been added successfully.
 
 
 
