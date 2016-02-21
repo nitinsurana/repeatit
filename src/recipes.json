@@ -24,6 +24,69 @@
     ]
   },
   {
+    "id": "AttemptAssignmentRecipe",
+    "title": "Attempt Any Classic Question Type",
+    "description": "Attempt TF, TE, ET, TDD, MS & MC question types",
+    "type": "child",
+    "version": "0.1",
+    "params": {
+      "tf": {
+        "qtype": 120
+      },
+      "te": {
+        "qtype": 125
+      },
+      "es": {
+        "qtype": 123
+      },
+      "tdd": {
+        "qtype": 129
+      },
+      "ms": {
+        "qtype": 122
+      },
+      "mc": {
+        "qtype": 116
+      }
+	}
+  },
+  {
+  	"id" : "AttemptStudentAssignmentRecipe",
+	"title" : "Attempt assignment with classic question type",
+	"type" : "parent",
+	"version" : "0.1"
+  },
+  {
+	  "id" : "AttemptTrueFalseRecipe",
+	  "title" : "Attempt true false ",
+	  "type": "child"
+  },
+  {
+  	"id" : "AttemptTextEntryRecipe",
+	"title": "Attempt TextEntry question",
+	"type" : "child"
+  },
+  {
+  	"id" : "AttemptEssayRecipe",
+	"title": "Attempt Essay question",
+	"type" : "child"
+  },
+  {
+  	"id" : "AttemptTextDropdownRecipe",
+	"title": "Attempt TextDropdown question",
+	"type" : "child"
+  },
+  {
+  	"id" : "AttemptMultipleSelectRecipe",
+	"title": "Attempt MultipleSelection question",
+	"type" : "child"
+  },
+  {
+  	"id" : "AttemptMultipleChoiceRecipe",
+	"title": "Attempt MultipleChoice question",
+	"type" : "child"
+  },
+  {
     "id": "FillTrueFalseRecipe",
     "title": "Fill TrueFalse Question",
     "description": "It will fill T/F question, solution, hint & answerChoices",

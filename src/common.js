@@ -1,4 +1,5 @@
 (function () {
+	"use strict";
     window.recipe = {};
 
     window.recipe.Recipe = function (steps) {
@@ -31,8 +32,9 @@
         var waitCount = 0;
 
         var play = function (steps, index) {
-            if (index == steps.length) {
-                return;
+            if (index === steps.length) {
+				recipe.stop.call(recipe);
+                return ;
             }
             var c = setInterval(function () {
                 var s = steps[index];
@@ -88,8 +90,8 @@
 
         recipe.start.call(recipe, processParams(params))
             .done(function () {
-                play(recipe.steps.slice(), index);      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
-                recipe.stop.call(recipe);
+                play(recipe.steps.slice(), index);
+				      //Using a copy of steps since at the run-time the recipe might contain other recipes as steps
             }).fail(function (msg) {
                 window.alert(msg);
             });
@@ -102,7 +104,7 @@
             str = str.replace(/{time}/g, new Date().toTimeString());
             return str;
         }
-    }
+    };
 
 })();
 
