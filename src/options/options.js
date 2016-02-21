@@ -55,12 +55,12 @@ $(function () {
                     paramSets[setName][paramKey] = paramValue;
                 });
             });
-            var storageKey = 'params-' + recipeId,
+            var storageKey = 'parameterSets-' + recipeId,
                 obj = {};
             obj[storageKey] = paramSets;
             chrome.storage.sync.set(obj, function () {
                 console.log("Saved ParameterSets to storage : " + recipeId);
-                window.location.reload();       //Todo re-render of reicpe instead of reload.
+                window.alert("Parameters Saved");
             });
         },
         resetParameterSets: function (e) {
@@ -70,13 +70,13 @@ $(function () {
                 return recipe.id === recipeId;
             });
             var parameterSets = {};
-            parameterSets["params-" + recipe.id] = recipe.params;
+            parameterSets["parameterSets-" + recipe.id] = recipe.parameterSets;
             chrome.storage.sync.set(parameterSets, function () {
                 console.log("Reset ParameterSets to default : " + recipe.id);
                 window.location.reload();       //Todo re-render of recipe accordion instead of reload
             });
             //Todo code to reset parameterSets for the clicked recipe
-            //Remove from storage params-recipeId
+            //Remove from storage parameterSets-recipeId
             //Take from storage - recipelist
             //Save in storage
             //Render this particular recipe
@@ -104,7 +104,7 @@ $(function () {
             _.each(this.collection.models, function (model) {
                 if (model.get('title').trim().length > 0) {
                     self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
-                    if (model.get('params')) {
+                    if (model.get('parameterSets')) {
                         self.renderParameterSets(model);
                         self.$("#recipe-" + model.get('id')).find(".actions").show();
                     }
@@ -114,7 +114,7 @@ $(function () {
         },
         renderParameterSets: function (model) {
             var self = this,
-                storageKey = 'params-' + model.get('id'),
+                storageKey = 'parameterSets-' + model.get('id'),
                 $parameterSets = self.$("#recipe-" + model.get('id') + " .parameter-sets ");
 
             chrome.storage.sync.get(storageKey, function (m) {

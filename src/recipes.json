@@ -6,7 +6,7 @@
     "project": "edulastic",
     "type": "parent",
     "version": "0.1",
-    "params": {
+    "parameterSets": {
       "default": {
         "content": "default"
       },
@@ -30,7 +30,7 @@
     "project": "edulastic",
     "type": "child",
     "version": "0.1",
-    "params": {
+    "parameterSets": {
       "tf": {
         "qtype": 120
       },
@@ -108,7 +108,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "params": {
+    "parameterSets": {
       "default": {
         "questionTitle": "Filling T/F {datetime}"
       },
@@ -124,7 +124,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "params": {
+    "parameterSets": {
       "default": {
         "questionTitle": "Filling T/F {datetime}"
       },
@@ -140,7 +140,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "params": {
+    "parameterSets": {
       "default": {
         "questionTitle": "Filling Essay Question {datetime}"
       },
@@ -156,7 +156,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "params": {
+    "parameterSets": {
       "default": {
         "questionTitle": "Filling Text Dropdown Question {datetime}"
       },
@@ -172,7 +172,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "params": {
+    "parameterSets": {
       "default": {
         "questionTitle": "Filling Multiple Selection Question {datetime}"
       },
@@ -188,7 +188,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "params": {
+    "parameterSets": {
       "default": {
         "questionTitle": "Filling Multiple Choice Question {datetime}"
       },
@@ -260,7 +260,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "parent",
-    "params": {
+    "parameterSets": {
       "tf": {
         "qtype": 120
       },
@@ -288,7 +288,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "parent",
-    "params": {
+    "parameterSets": {
       "tf": {
         "qtype": 120
       },
@@ -329,7 +329,7 @@
     "description": "Login into Edulastic",
     "project": "edulastic",
     "type": "parent",
-    "params": {
+    "parameterSets": {
       "default": {
         "email": "nitin.cool4urchat@gmail.com",
         "password": "snapwiz"
@@ -354,7 +354,7 @@
     "description": "",
     "project": "edulastic",
     "type": "child",
-    "params": {
+    "parameterSets": {
       "solution": "Some sample solution",
       "hint": "Some sample hint"
     }
@@ -365,7 +365,7 @@
     "description": "Login into LS",
     "project": "ls",
     "type": "parent",
-    "params": {
+    "parameterSets": {
       "instructor": {
         "email": "instructor1.biology@epub.com",
         "password": "snapwiz"
@@ -383,7 +383,7 @@
     "project": "ls",
     "version": "0.1",
     "type": "parent",
-    "params": {
+    "parameterSets": {
       "Custom": {
         "selector": ".ls--create-custom-assignment-view"
       },
@@ -402,7 +402,7 @@
     "project": "edulastic",
     "version": "0.1",
     "type": "parent",
-    "params": {
+    "parameterSets": {
       "r_n": {
         "type": "right_now"
       },
@@ -417,7 +417,7 @@
     "description": "Login into Glider",
     "project": "glider",
     "type": "parent",
-    "params": {
+    "parameterSets": {
       "hm": {
         "email": "nitin.cool4urchat@gmail.com",
         "password": "snapwiz"

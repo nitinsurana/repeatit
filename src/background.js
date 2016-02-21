@@ -47,10 +47,10 @@
         }).done(function (response) {
             window.background.recipelist = response;
             _.each(response, function (recipe) {
-                if (recipe.params) {
-                    var storageKey = 'params-' + recipe.id,
+                if (recipe.parameterSets) {
+                    var storageKey = 'parameterSets-' + recipe.id,
                         parameterSets = {};
-                    parameterSets[storageKey] = recipe.params;
+                    parameterSets[storageKey] = recipe.parameterSets;
                     chrome.storage.sync.get(storageKey, function (result) {
                         if (!result[storageKey]) {
                             chrome.storage.sync.set(parameterSets, function () {

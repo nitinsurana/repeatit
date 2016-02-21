@@ -17,8 +17,8 @@ $(function () {
             var $li = $("<li>", {
                 "data-recipeid": recipelist[i].id
             }).html("<span>" + recipelist[i].title + "</span>");
-            if (recipelist[i].params && Object.keys(recipelist[i].params).length > 0) {
-                for (var setName in recipelist[i].params) {
+            if (recipelist[i].parameterSets && Object.keys(recipelist[i].parameterSets).length > 0) {
+                for (var setName in recipelist[i].parameterSets) {
                     //Todo use <span class="badge">4</span> instead of button
                     $li.append('<button type="button" class="pull-right btn btn-default btn-xs" data-setname="' + setName + '">' + setName + '</button>');
                 }
@@ -66,7 +66,7 @@ $(function () {
             s.parentNode.removeChild(s);
         };
 
-        var storageKey = 'params-' + recipeId;
+        var storageKey = 'parameterSets-' + recipeId;
         chrome.storage.sync.get(storageKey, function (result) {
             var recipeParams = {
                 self: result[storageKey] && result[storageKey][paramSetName]
@@ -81,7 +81,7 @@ $(function () {
                         promises.push(defer.promise());
 
                         (function (childRecipeId, deferred) {
-                            var childStorageKey = 'params-' + childRecipeId;
+                            var childStorageKey = 'parameterSets-' + childRecipeId;
                             chrome.storage.sync.get(childStorageKey, function (childResult) {
                                 recipeParams[childRecipeId] = childResult[childStorageKey];      //all parameter-sets for child
                                 deferred.resolve();
