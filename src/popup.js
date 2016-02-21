@@ -45,6 +45,11 @@ $(function () {
                         chrome.tabs.executeScript(t[0].id, {
                             code: code
                         });
+                        chrome.storage.sync.get('settings', function (r) {
+                            if (!r.settings.popup) {        //Close the extension if popup is false
+                                window.close();
+                            }
+                        });
                     }
                 });
             }
@@ -54,12 +59,6 @@ $(function () {
     createRecipeLIs("ls");
 
     var runRecipe = function (recipeId, paramSetName) {
-        chrome.storage.sync.get('settings', function (r) {
-            if (!r.settings.popup) {        //Close the extension if popup is false
-                window.close();
-            }
-        });
-
         var nn = function () {
             var s = document.createElement('script');
             s.textContent = 'window.recipe.RecipePlayer(window.recipe["{recipe}"],"{params}")';
