@@ -1,4 +1,6 @@
 (function () {
+    'use strict';
+
     window.recipe = {};
 
     window.recipe.Recipe = function (steps) {
