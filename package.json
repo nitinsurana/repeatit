@@ -1,9 +1,17 @@
 {
   "devDependencies": {
+    "ghooks": "^1.0.3",
     "gulp": "^3.9.0",
     "gulp-concat": "*",
     "gulp-crx-pack": "^1.0.1",
+    "gulp-jshint": "^2.0.0",
     "gulp-preprocess": "^2.0.0",
-    "gulp-uglify": "*"
+    "gulp-uglify": "*",
+    "jshint": "^2.9.1"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "gulp lint"
+    }
   }
 }

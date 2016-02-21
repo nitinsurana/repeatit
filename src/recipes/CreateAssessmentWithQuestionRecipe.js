@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             type: 'recipe',
@@ -31,5 +32,5 @@
                 break;
         }
         return $.Deferred().resolve();
-    }
+    };
 })();

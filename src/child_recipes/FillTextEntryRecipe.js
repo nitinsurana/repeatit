@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '#question-raw-content',
@@ -7,7 +8,7 @@
         {
             selector: '.get-user-entry',
             action: function () {
-                this.val('Correct Answer').trigger('keyup')
+                this.val('Correct Answer').trigger('keyup');
             },
             value: 'Correct Answer'
         },
@@ -32,5 +33,5 @@
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
         return $.Deferred().resolve();
-    }
+    };
 })();

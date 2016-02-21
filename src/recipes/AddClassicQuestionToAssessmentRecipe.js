@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '#assessments-back-button'
@@ -34,5 +35,5 @@
                 break;
         }
         return $.Deferred().resolve();
-    }
+    };
 })();

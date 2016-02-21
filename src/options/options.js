@@ -1,4 +1,5 @@
 $(function () {
+    'use strict';
     var MainView = Backbone.View.extend({
         el: ".container",
         initialize: function () {
@@ -119,7 +120,7 @@ $(function () {
             chrome.storage.sync.get(storageKey, function (m) {
                 var params = m[storageKey];
                 _.each(params, function (value, key) {
-                    var tabTitle = '<li><a href="#parameterSet-' + model.get('id') + '-' + key + '" data-toggle="tab">' + key + '</a></li>'
+                    var tabTitle = '<li><a href="#parameterSet-' + model.get('id') + '-' + key + '" data-toggle="tab">' + key + '</a></li>';
                     $parameterSets.find(".tabs-left").append(tabTitle);
 
                     var tabContent = _.template(self.parameterSetTemplate)({
@@ -135,5 +136,5 @@ $(function () {
             });
         }
     });
-    new MainView();
+    var mainView = new MainView();
 });

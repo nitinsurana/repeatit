@@ -1,4 +1,6 @@
 (function () {
+    'use strict';
+
     var steps = [
         {
             selector: '#at-field-email',
@@ -17,5 +19,5 @@
         this.steps[0].value = params.self.email;
         this.steps[1].value = params.self.password;
         return $.Deferred().resolve();
-    }
+    };
 })();

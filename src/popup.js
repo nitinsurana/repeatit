@@ -1,4 +1,6 @@
 $(function () {
+    'use strict';
+
     var $results = $("#results");
     $results.html('<li>Loading...</li>');
 
@@ -44,7 +46,7 @@ $(function () {
                     if (t.length == 1) {
                         chrome.tabs.executeScript(t[0].id, {
                             code: code
-                        })
+                        });
                     }
                 });
             }
@@ -74,7 +76,7 @@ $(function () {
             };
             var promises = [];
             for (var i in recipelist) {
-                var recipe = recipelist[i]
+                var recipe = recipelist[i];
                 if (recipe.id === recipeId) {
                     for (var j in recipe.children) {
                         var childRecipeId = recipe.children[j];

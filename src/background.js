@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
 
     window.background = {};
 

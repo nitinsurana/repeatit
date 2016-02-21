@@ -1,5 +1,4 @@
 (function () {
-	"use strict";
     window.recipe = {};
 
     window.recipe.Recipe = function (steps) {
@@ -99,9 +98,9 @@
 
     window.recipe.utils = {
         evaluate: function (str) {
-            str = str.replace(/{datetime}/g, new Date().toUTCString());
-            str = str.replace(/{date}/g, new Date().toDateString());
-            str = str.replace(/{time}/g, new Date().toTimeString());
+            str = str.replace(/{datetime}/g, new Date().toUTCString());         //jshint ignore:line
+            str = str.replace(/{date}/g, new Date().toDateString());            //jshint ignore:line
+            str = str.replace(/{time}/g, new Date().toTimeString());            //jshint ignore:line
             return str;
         }
     };

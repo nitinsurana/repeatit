@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '.ls-dashboard-new-assignment, #new-assignment-button',
@@ -13,5 +14,5 @@
     recipe.start = function (params) {
         this.steps[1].selector = params.self.selector;
         return $.Deferred().resolve();
-    }
+    };
 })();

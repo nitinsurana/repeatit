@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '#content-solution',
@@ -14,5 +15,5 @@
         this.steps[0].value = params.solution;
         this.steps[1].value = params.hint;
         return $.Deferred().resolve();
-    }
+    };
 })();

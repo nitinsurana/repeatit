@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '#create-assessment-with-val'
@@ -10,5 +11,5 @@
         Backbone.history.navigate(url);
         Backbone.history.loadUrl(url);
         return $.Deferred().resolve();
-    }
+    };
 })();

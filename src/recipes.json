@@ -391,7 +391,7 @@
       "r_n": {
         "type": "right_now"
       },
-      "pbul": {
+      "pub_l": {
         "type": "publish_and_use_later"
       }
     }

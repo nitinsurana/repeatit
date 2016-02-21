@@ -1,0 +1,30 @@
+{
+  "nonew": true,
+  "curly": true,
+  "noarg": true,
+  "forin": true,
+  "noempty": true,
+
+  "-W116": false,
+  "-W069": false,
+  "-W089": false,
+  "-W083": false,
+
+  "strict": true,
+  "undef": true,
+  "expr": true,
+  "bitwise": true,
+  "browser": true,
+  "predef": [
+    "define",
+    "require",
+    "alert",
+    "requirejs",
+    "console",
+    "$",
+    "_",
+    "Backbone",
+    "chrome",
+    "window"
+  ]
+}

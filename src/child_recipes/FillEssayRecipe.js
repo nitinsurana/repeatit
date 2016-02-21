@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '#question-raw-content',
@@ -22,5 +23,5 @@
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
         return $.Deferred().resolve();
-    }
+    };
 })();

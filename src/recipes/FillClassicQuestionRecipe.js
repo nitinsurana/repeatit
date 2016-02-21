@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             type: 'recipe',
@@ -39,5 +40,5 @@
             this.steps[0].params = params[recipeId][params.self.content];
         }
         return defer.resolve();
-    }
+    };
 })();

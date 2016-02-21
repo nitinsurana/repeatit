@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: 'span.lsm-create-btn:visible:eq(0)'
@@ -33,5 +34,5 @@
         }
         this.steps[1].selector = s;
         return $.Deferred().resolve();
-    }
+    };
 })();

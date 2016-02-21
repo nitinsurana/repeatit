@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
 
     var recorder = window.recipe.Recorder = {
         isRecording: false,

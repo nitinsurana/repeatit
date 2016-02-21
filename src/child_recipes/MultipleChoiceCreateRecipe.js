@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             type: 'wait',
@@ -33,8 +34,8 @@
             this.steps[0] = {
                 type: 'wait',
                 seconds: 2
-            }
+            };
         }
         return $.Deferred().resolve();
-    }
+    };
 })();

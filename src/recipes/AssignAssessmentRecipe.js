@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '#assessments-use-button'
@@ -14,12 +15,12 @@
     recipe.start = function (params) {
         switch (params.self.type) {
             case "right_now":
-                this.steps[1].selector = ".share-with-wrap label.radio.i-checks:eq(" + 1 + ")"
+                this.steps[1].selector = ".share-with-wrap label.radio.i-checks:eq(" + 1 + ")";
                 break;
             case "publish_and_use_later":
-                this.steps[1].selector = ".share-with-wrap label.radio.i-checks:eq(" + 0 + ")"
+                this.steps[1].selector = ".share-with-wrap label.radio.i-checks:eq(" + 0 + ")";
                 break;
         }
         return $.Deferred().resolve();
-    }
+    };
 })();

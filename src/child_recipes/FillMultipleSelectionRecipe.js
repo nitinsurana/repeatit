@@ -1,4 +1,5 @@
 (function () {
+    'use strict';
     var steps = [
         {
             selector: '#question-ms-raw-content',
@@ -52,5 +53,5 @@
         this.steps[5].selector = '.multiple-select-choice-icon:eq(' + answerIndex + ')';
         this.steps[6].selector = '.multiple-select-choice-icon:eq(' + (2 + answerIndex) + ')';
         return $.Deferred().resolve();
-    }
+    };
 })();
