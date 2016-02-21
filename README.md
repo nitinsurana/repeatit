@@ -1,11 +1,11 @@
-# Repeat It
+# RepeatIt
 > A User Action Simulator Chrome Extension
 
 
 
 ## Installation ([Video](https://youtu.be/GqB_R2ODFH0))
 
-1. Visit extension home page - "https://github.com/nitinsurana/repeatit"
+1. Visit extension home page - `https://github.com/nitinsurana/repeatit`
 2. Click on "Release" Tab.
 3. Download the latest version ".crx" file.
 4. Visit "chrome://extensions/" url in Google Chrome.
