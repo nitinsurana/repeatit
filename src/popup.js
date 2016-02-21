@@ -4,9 +4,7 @@ $(function () {
     var $results = $("#results");
     $results.html('<li>Loading...</li>');
 
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+    $('[data-toggle="tooltip"]').tooltip();
 
     var recipelist = chrome.extension.getBackgroundPage().background.recipelist;
 
