@@ -49,6 +49,13 @@
     <form id="settings-form" role="form">
         <ul class="list-unstyled">
             <li>
+                <h4>Default Project</h4>
+                <label class="radio-inline"><input type="radio" name="defaultProject" value="ls" <%-data.defaultProject == 'ls'?'checked':''%>/>Learning Space</label>
+                <label class="radio-inline"><input type="radio" name="defaultProject" value="edulastic" <%-data.defaultProject == 'edulastic'?'checked':''%>/>Edulastic</label>
+                <label class="radio-inline"><input type="radio" name="defaultProject" value="glider" <%-data.defaultProject == 'glider'?'checked':''%>/>Glider</label>
+            </li>
+            <li>
+                <h4>Popup Settings</h4>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" id="newWindow" name="newWindow" <%-data.newWindow?'checked':''%>/> Open extension in new window

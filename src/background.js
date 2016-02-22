@@ -4,6 +4,7 @@
     window.background = {};
 
     var settings = window.background.settings = {
+        defaultProject: "ls",
         newWindow: false     //true means extension will open in a new window
     };
 

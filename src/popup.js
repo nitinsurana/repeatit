@@ -61,7 +61,11 @@ $(function () {
         });
     }
 
-    createRecipeLIs("ls");
+    // active project tab based on the "Default Project Settings".
+    chrome.storage.sync.get('settings', function (r) {
+        var defaultProject = r.settings['defaultProject'];
+        $(".nav a[data-project='" + defaultProject + "']").tab('show');
+    });
 
     var runRecipe = function (recipeId, paramSetName) {
         var nn = function () {
