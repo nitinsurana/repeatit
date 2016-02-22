@@ -445,32 +445,34 @@
     "title": "Sign Up Employer : Company Name Page",
     "description": "Fill Company Name & Location",
     "project": "glider",
-    "type": "parent"
+    "type": "child"
   },
   {
-    "id": "FillClassicAssignmenttoCreateAssignmentLSRecipe",
-    "title": "Fill Assignment Details(LS)",
-    "description": "Fill LS Assignment Details  ",
-    "version": "0.1",
-    "type": "parent",
-    "project": "ls"
+    "id" : "SignUpFlowYourRoleRecipe",
+    "title": "Sign Up Employer : Your Role",
+    "description": "Fill Employer Role",
+    "project": "glider",
+    "type": "child"
   },
   {
-    "id": "AddClassicQuestiontoAssignmentLSRecipe",
-    "title": "Add Classic Question to Custom Assignment(LS)",
-    "description": "Creates an Assignment using one of the options",
-    "version": "0.1",
-    "type": "parent",
-    "project": "ls",
-    "parameterSets": {
-      "tf": {
-        "qtype": "120"
-      },
-      "mc": {
-        "qtype": "116"
-      },
-      "ms": {
-        "qtype": "122"
+    "id" : "SignUpFlowFillSignUpPageRecipe",
+    "title": "Sign Up Employer : Sign Up",
+    "description": "Fill Sign Up Page",
+    "project": "glider",
+    "type": "child"
+  },
+  {
+    "id" : "GliderEmployerSignUpRecipe",
+    "title" : "Employer Sign Up",
+    "discription" : "Employer Sign Up with new company",
+    "project": "glider",
+    "type" : "parent",
+    "parameterSets" : {
+      "hm": {
+        "name": "Himadri",
+        "phone": "+919800473936",
+        "email": "himadri.ghosh+41@snapwiz.com",
+        "password": "snapwiz"
       }
     }
   }

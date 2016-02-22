@@ -15,14 +15,19 @@ $(function () {
                 continue;
             }
             var $li = $("<li>", {
-                "data-recipeid": recipelist[i].id
-            }).html("<span>" + recipelist[i].title + "</span>");
+                "data-recipeid": recipelist[i].id,
+                "class" : "row"
+            }).html("<div class='col-6 controlled-text'>" + recipelist[i].title + "</div>");
+            var $params = "";
             if (recipelist[i].parameterSets && Object.keys(recipelist[i].parameterSets).length > 0) {
                 for (var setName in recipelist[i].parameterSets) {
-                    //Todo use <span class="badge">4</span> instead of button
-                    $li.append('<button type="button" class="pull-right btn btn-default btn-xs" data-setname="' + setName + '">' + setName + '</button>');
+                    $params += "<span class='pull-right label label-primary ri-param-badge' data-setname='" + setName + "'>" + setName + "</span>";
                 }
             }
+            var $div = $("<div>", {
+                "class" : "col-6"
+            }).html($params);
+            $li.append($div);
             $results.append($li);
         }
     }
