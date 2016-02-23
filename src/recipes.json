@@ -441,6 +441,33 @@
     }
   },
   {
+    "id": "FillClassicAssignmenttoCreateAssignmentLSRecipe",
+    "title": "Fill Assignment Details(LS)",
+    "description": "Fill LS Assignment Details  ",
+    "version": "0.1",
+    "type": "parent",
+    "project": "ls"
+  },
+  {
+    "id": "AddClassicQuestiontoAssignmentLSRecipe",
+    "title": "Add Classic Question to Custom Assignment(LS)",
+    "description": "Creates an Assignment using one of the options",
+    "version": "0.1",
+    "type": "parent",
+    "project": "ls",
+    "parameterSets": {
+      "tf": {
+        "qtype": "120"
+      },
+      "mc": {
+        "qtype": "116"
+      },
+      "ms": {
+        "qtype": "122"
+      }
+    }
+  },
+  {
     "id": "SignUpFlowFillCompanyDetailsRecipe",
     "title": "Sign Up Employer : Company Name Page",
     "description": "Fill Company Name & Location",
