@@ -334,11 +334,11 @@
         "email": "nitin.cool4urchat@gmail.com",
         "password": "snapwiz"
       },
-      "instructor": {
+      "ins": {
         "email": "nteacher@snapwiz.com",
         "password": "snapwiz"
       },
-      "student": {
+      "stu": {
         "email": "nstudent@snapwiz.com",
         "password": "snapwiz"
       },
