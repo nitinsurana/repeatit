@@ -52,6 +52,26 @@
     }
   },
   {
+  	"id": "InstructorSignupRecipe",
+	"title" : "signup an instructor",
+	"description":"",
+	"project" : "edulastic",
+	"type" : "parent",
+	"parameterSets":{
+		"random" :{
+			"userName" : "user-",
+			"email" : "user-@test.com",
+			"password" : "snapwiz",
+			"schoolName": "my school",
+			"districtName" : "my district",
+			"address" : "My address",
+			"city" : "my city",
+			"zip" : "123123",
+			"state":"my state"
+		}
+	}
+  },
+  {
     "id": "AttemptStudentAssignmentRecipe",
     "title": "Attempt assignment with classic question type",
     "description":"",

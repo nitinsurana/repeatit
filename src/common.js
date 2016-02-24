@@ -104,7 +104,19 @@
             str = str.replace(/{date}/g, new Date().toDateString());            //jshint ignore:line
             str = str.replace(/{time}/g, new Date().toTimeString());            //jshint ignore:line
             return str;
-        }
+        },
+		randomString : function (length){
+			var lower = "abcdefghijklmnopqrstuvwxyz";
+			var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			var allChars = lower.split("").concat(upper.split(''));
+			var randomNumbers = [];
+			for(var i = 0; i < length ;i++){
+				randomNumbers.push(Math.floor(Math.random() * allChars.length));
+			}
+			return randomNumbers.map(function(index){
+				return allChars[index];
+			}).join('');
+		}
     };
 
 })();
