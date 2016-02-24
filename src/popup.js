@@ -16,7 +16,7 @@ $(function () {
             }
             var $li = $("<li>", {
                 "data-recipeid": recipelist[i].id,
-                "class" : "row"
+                "class": "row"
             }).html("<div class='col-6 controlled-text'>" + recipelist[i].title + "</div>");
             var $params = "";
             if (recipelist[i].parameterSets && Object.keys(recipelist[i].parameterSets).length > 0) {
@@ -25,7 +25,7 @@ $(function () {
                 }
             }
             var $div = $("<div>", {
-                "class" : "col-6"
+                "class": "col-6"
             }).html($params);
             $li.append($div);
             $results.append($li);
@@ -166,6 +166,8 @@ $(function () {
     $("a[data-toggle='tab']").on('shown.bs.tab', function (e) {
         var project = $(e.currentTarget).data('project') || "ls";
         createRecipeLIs(project);
+        var searchTerm = $("#search").val();
+        searchTerm && findRecipes(searchTerm);
     });
 
     setTimeout(function () {
