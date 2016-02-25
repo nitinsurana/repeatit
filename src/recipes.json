@@ -53,18 +53,18 @@
   },
   {
   	"id": "InstructorSignupRecipe",
-	"title" : "signup an instructor",
+	"title" : "Sign Up an instructor",
 	"description":"",
 	"project" : "edulastic",
 	"type" : "parent",
 	"parameterSets":{
 		"random" :{
-			"userName" : "user-",
-			"email" : "user-@test.com",
+			"userName" : "user-{randomString(5)}",
+			"email" : "user-{timeStamp(5)}@test.com",
 			"password" : "snapwiz",
-			"schoolName": "my school",
-			"districtName" : "my district",
-			"address" : "My address",
+			"schoolName": "my school-{randomString(5)}",
+			"districtName" : "my district-{randomString(5)}",
+			"address" : "My address-{timeStamp}",
 			"city" : "my city",
 			"zip" : "123123",
 			"state":"my state"

@@ -100,11 +100,33 @@
 
     window.recipe.utils = {
         evaluate: function (str) {
+			var self = this;
             str = str.replace(/{datetime}/g, new Date().toUTCString());         //jshint ignore:line
             str = str.replace(/{date}/g, new Date().toDateString());            //jshint ignore:line
             str = str.replace(/{time}/g, new Date().toTimeString());            //jshint ignore:line
+			str = str.replace(/{randomString\([\d]*\)}/g,function(match) {
+				return self.randomStringReplacer.call(self,match);
+			}); //jshint ignore:line
+			str = str.replace(/{timeStamp\(?[\d]*\)?}/g,function(match){
+				return self.timeStampReplacer.call(self,match);
+			}); //jshint ignore:line
             return str;
         },
+		randomStringReplacer : function(match){
+			var length = match.replace(/[a-zA-Z\(\)\{\}]/g,"");
+			length = window.isNaN(window.parseInt(length,10)) ? 5 : window.parseInt(length,10);
+			return this.randomString(length);
+		},
+		timeStampReplacer : function(match){
+			var length = match.replace(/[a-zA-Z\(\)\{\}]/g,"");
+			length = window.isNaN(window.parseInt(length,10)) ? 13 : window.parseInt(length,10);
+			return this.timeStamp(length);
+		
+		},
+		timeStamp: function(length){
+			length = length ? length : 13;
+			return new Date().getTime().toString().substr(-length);
+		},	
 		randomString : function (length){
 			var lower = "abcdefghijklmnopqrstuvwxyz";
 			var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

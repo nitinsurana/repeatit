@@ -51,7 +51,9 @@
         {
             selector: '.as-add-country-drop-down',
 			action: function(){
-				$(this).find('option').eq(1).attr('selected',true);
+				var numOfOptions = $(this).find('option').length;
+				var randomChoice = Math.floor(Math.random() * (numOfOptions - 1))+1;
+				$('option:eq('+randomChoice+')',this).attr('selected',true);
 			}
         },
         {
@@ -60,7 +62,9 @@
         {
             selector: '.as-add-subjectArea-dropDown',
 			action: function(){
-				$(this).find('option').eq(1).attr('selected',true);
+				var numOfOptions = $(this).find('option').length;
+				var randomChoice = Math.floor(Math.random() * (numOfOptions - 1))+1;
+				$('option:eq('+randomChoice+')',this).attr('selected',true);
 				$(this).trigger('change');
 			}
         },
@@ -73,7 +77,9 @@
         {
             selector: '.as-add-grade-dropDown',
 			action: function(){
-				$(this).find('option').eq(8).attr('selected',true);
+				var numOfOptions = $(this).find('option').length;
+				var randomChoice = Math.floor(Math.random() * (numOfOptions-1))+1;
+				$('option:eq('+randomChoice+')',this).attr('selected',true);
 			}
         },
         {
@@ -88,12 +94,12 @@
     recipe.start = function (params) {
 		// window.location.href = '/logout';
 		window.location.href = '/#register/close/teacher';
-		this.steps[0].value = "user-"+window.recipe.utils.randomString(5);
-        this.steps[1].value = "user-"+window.recipe.utils.randomString(5)+"@test.com";
+		this.steps[0].value = params.self.userName;
+        this.steps[1].value = params.self.email;
         this.steps[2].value = params.self.password;
         this.steps[3].value = params.self.password;
-        this.steps[6].value = params.self.schoolName+"-"+window.recipe.utils.randomString(5);
-        this.steps[7].value = params.self.districtName+"-"+window.recipe.utils.randomString(5);
+        this.steps[6].value = params.self.schoolName;
+        this.steps[7].value = params.self.districtName;
         this.steps[8].value = params.self.address;
         this.steps[9].value = params.self.city;
         this.steps[10].value = params.self.zip;
