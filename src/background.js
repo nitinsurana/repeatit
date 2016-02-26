@@ -25,41 +25,37 @@
         }
     };
 
-    chrome.runtime.onInstalled.addListener(function () {
-        chrome.storage.sync.clear();
-
-        chrome.storage.sync.get('settings', function (r) {
-            if (r.settings) {
-                settings = _.extend(settings, r.settings);
-            }
-            chrome.storage.sync.set({"settings": settings}, function () {
-                console.log("Saved settings to storage: ");
-            });
-            window.background.updatePopup(settings.newWindow);
+    chrome.storage.sync.get('settings', function (r) {
+        if (r.settings) {
+            settings = _.extend(settings, r.settings);
+        }
+        chrome.storage.sync.set({"settings": settings}, function () {
+            console.log("Saved settings to storage: ");
         });
+        window.background.updatePopup(settings.newWindow);
+    });
 
-        var recipesJsonUrl = chrome.extension.getURL('recipes.json');
-        $.ajax({
-            url: recipesJsonUrl,
-            dataType: 'json'
-        }).done(function (response) {
-            window.background.recipelist = response;
-            _.each(response, function (recipe) {
-                if (recipe.parameterSets) {
-                    var storageKey = 'parameterSets-' + recipe.id,
-                        parameterSets = {};
-                    parameterSets[storageKey] = recipe.parameterSets;
-                    chrome.storage.sync.get(storageKey, function (result) {
-                        if (!result[storageKey]) {
-                            chrome.storage.sync.set(parameterSets, function () {
-                                console.log("Saved ParameterSets to storage : " + recipe.id);
-                            });
-                        } else {
-                            console.log("ParameterSets already found : " + recipe.id);
-                        }
-                    });
-                }
-            });
+    var recipesJsonUrl = chrome.extension.getURL('recipes.json');
+    $.ajax({
+        url: recipesJsonUrl,
+        dataType: 'json'
+    }).done(function (response) {
+        window.background.recipelist = response;
+        _.each(response, function (recipe) {
+            if (recipe.parameterSets) {
+                var storageKey = 'parameterSets-' + recipe.id,
+                    parameterSets = {};
+                parameterSets[storageKey] = recipe.parameterSets;
+                chrome.storage.sync.get(storageKey, function (result) {
+                    if (!result[storageKey]) {
+                        chrome.storage.sync.set(parameterSets, function () {
+                            console.log("Saved ParameterSets to storage : " + recipe.id);
+                        });
+                    } else {
+                        console.log("ParameterSets already found : " + recipe.id);
+                    }
+                });
+            }
         });
     });
 })();
