@@ -23,7 +23,6 @@ Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/
 ## Todos
 
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
-7. Create a video showing how to use recipes (few recipes).
 8. When recording show some kind of highlighting in the extension icon and Record button.
 9. Create a options page to import/export all/selective recipes/recordings but these won't be available to all extension installations. (Needs fileSystem permission)
 10. Upgrade extension to use Backbone so that recipelist can be a Backbone collection with unique recipe ids and appropriate events to update popup.html DOM.
@@ -32,18 +31,14 @@ Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/
 13. Create a way for extension users to see the pre-requisite & description for every extension and then execute it when pre-requisities match. Best would be to create a page on github wiki 
 for every recipe with screenshots and if possible with videos showing how does that particular recipe works.
 14. Create a way for recipes to take input for e.g. "Create Assessment with 5 random qTypes" to take what qTypes and assessment-name. 
-15. Create a way for recipes to define pre-requisities and if not matched then show an error-dialog/alert to the user.
 17. Add ability in the UI to add multiple param-sets for a particular Recipe & then use one at a time. (Login - Instructor, Student, Admin)
 18. Add created_by and author_link to original author of Recipe and show them in popup.html
 19. In popup.html show recently used recipes at the top with search working in the same order.
-20. Add .jshintrc and a gulp task to run jshint over all .js files
 21. Add File-A-Bug feature in extension popup
-22. Create a markdown file explaining types of recipes, procedure to create recipe, params, start & stop callbacks.
 23. Create a screencast for every recipe showing how the recipe works and what is the pre-requisite.
 24. Add ability to add recipe description in html (add pre-requisities here)
-26. Create a child-recipe to save solution/hint & modify points and use it internally in FillQuestionRecipe
+26. Create a child-recipe to modify points and use it internally in FillQuestionRecipe
 27. Allow user to create custom recipes by combining recipes with parameters.
-28. Change params variable in recipes.json to parameterSets and fix all impacts.
 31. Add ability for selector to be a function which will be very useful for plugins, for e.g. the element might be present but it's still not initialized to redactor/select2 yet.
 
 
