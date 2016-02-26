@@ -53,5 +53,5 @@ app.get('/', function (req, res) {
 http.listen(process.env.PORT || 5000);
 
 io.on('connection', function (socket) {
-    console.log('a user connected');
+    console.log('A user connected');
 });
