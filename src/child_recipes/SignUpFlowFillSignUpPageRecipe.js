@@ -1,6 +1,7 @@
 (function(){
   'use strict';
 
+  var id = "SignUpFlowFillSignUpPageRecipe";
   var steps = [
     {
       selector: '#at-field-fullname',
@@ -26,7 +27,7 @@
     }
   ];
 
-  var recipe = window.recipe.SignUpFlowFillSignUpPageRecipe = new window.recipe.Recipe(steps);
+  var recipe = window.recipe.SignUpFlowFillSignUpPageRecipe = new window.recipe.Recipe(steps,id);
   recipe.start = function (params) {
     this.steps[0].value = params.name;
     this.steps[1].value = params.phone;

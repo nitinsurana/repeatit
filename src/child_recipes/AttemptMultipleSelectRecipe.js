@@ -1,5 +1,6 @@
 (function () {
 	"use strict";
+	var id = "AttemptMultipleSelectRecipe";
     var steps = [
         {
             selector: '.multiple-select-choice-icon-preview',
@@ -10,7 +11,7 @@
 			} 
         },
     ];
-    var recipe = window.recipe.AttemptMultipleSelectRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AttemptMultipleSelectRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function () {
         var defer = $.Deferred();
         if ($(this.steps[0].selector).length === 0) {

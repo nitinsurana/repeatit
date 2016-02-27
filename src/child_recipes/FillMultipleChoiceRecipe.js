@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "FillMultipleChoiceRecipe";
     var steps = [
         {
             selector: '#question-mc-raw-content',
@@ -42,7 +43,7 @@
         }
     ];
 
-    var recipe = window.recipe.FillMultipleChoiceRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillMultipleChoiceRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
 

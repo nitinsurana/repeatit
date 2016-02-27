@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "CreateAssessmentWithClassicQuestionRecipe";
     var steps = [
         {
             type: 'recipe',
@@ -9,7 +10,7 @@
             }
         }
     ];
-    var recipe = window.recipe.CreateAssessmentWithClassicQuestionRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.CreateAssessmentWithClassicQuestionRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         switch (params.self.qtype) {
             case 120:

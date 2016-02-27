@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "FillEssayRecipe";
     var steps = [
         {
             selector: '#question-raw-content',
@@ -19,7 +20,7 @@
         }
     ];
 
-    var recipe = window.recipe.FillEssayRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillEssayRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
         return $.Deferred().resolve();

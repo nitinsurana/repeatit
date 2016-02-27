@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "FillTextDropdownRecipe";
     var steps = [
         {
             selector: '#question-raw-content',
@@ -55,7 +56,7 @@
         }
     ];
 
-    var recipe = window.recipe.FillTextDropdownRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillTextDropdownRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
 

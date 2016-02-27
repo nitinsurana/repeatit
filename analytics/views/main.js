@@ -11,9 +11,10 @@
             var self = this;
             this.collection = new UsageCollection();
             this.usageTemplate = $("#usageTemplate").html();
-            this.collection.fetch().done(function () {
-                self.render();
-            });
+			this.collection.fetch();
+            // this.collection.fetch().done(function () {
+            //     self.render();
+            // });
             socket.on('new usage', function (model) {
                 self.collection.add(model);
             });

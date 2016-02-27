@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-
+	var id = "LoginRecipe";
     var steps = [
         {
             selector: '#login-email',
@@ -14,7 +14,7 @@
             selector: '#signIn'
         }
     ];
-    var recipe = window.recipe.LoginRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.LoginRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         this.steps[0].value = params.self.email;
         this.steps[1].value = params.self.password;

@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "OpenQuestionAuthoringRecipe";
     var steps = [
         {
             selector: 'span.lsm-create-btn:visible:eq(0)'
@@ -9,7 +10,7 @@
             action: 'click'
         }
     ];
-    var recipe = window.recipe.OpenQuestionAuthoringRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.OpenQuestionAuthoringRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         var s = '#';
         switch (params.qtype) {

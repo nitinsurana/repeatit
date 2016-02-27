@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-
+ 	var id = "LoginLSRecipe";
     var steps = [
         {
             selector: '#username',
@@ -14,7 +14,7 @@
             selector: '#loginSubmitBtn'
         }
     ];
-    var recipe = window.recipe.LoginLSRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.LoginLSRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         this.steps[0].value = params.self.email;
         this.steps[1].value = params.self.password;

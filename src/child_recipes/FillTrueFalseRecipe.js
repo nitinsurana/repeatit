@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "FillTrueFalseRecipe";
     var steps = [
         {
             selector: '#question-raw-content',
@@ -23,7 +24,7 @@
         }
     ];
 
-    var recipe = window.recipe.FillTrueFalseRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillTrueFalseRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         var defer = $.Deferred();
         if ($(this.steps[0].selector).length === 0) {

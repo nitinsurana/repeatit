@@ -1,5 +1,6 @@
 (function () {
 	"use strict";
+	var id = "AttemptAssignmentRecipe";
     var steps = [
         {
             type: 'recipe',
@@ -7,7 +8,7 @@
             params: {}
         }
     ];
-    var recipe = window.recipe.AttemptStudentAssignmentRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AttemptStudentAssignmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function () {
 		var selectorFound = false;
 		var questionTypeSelectorMap = {

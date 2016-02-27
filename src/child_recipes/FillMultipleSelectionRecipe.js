@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "FillMultipleSelectionRecipe";
     var steps = [
         {
             selector: '#question-ms-raw-content',
@@ -45,7 +46,7 @@
         }
     ];
 
-    var recipe = window.recipe.FillMultipleSelectionRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillMultipleSelectionRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
 

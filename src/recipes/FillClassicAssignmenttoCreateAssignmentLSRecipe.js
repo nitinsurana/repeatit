@@ -1,6 +1,7 @@
 (function () {
     'use strict';
     
+	var id = "FillClassicAssignmenttoCreateAssignmentLSRecipe";
     var steps = [
 				{
 					selector: '#ls-ins-assignment-name',
@@ -25,5 +26,5 @@
 					action: 'click'
 				}
     ];
-    var recipe = window.recipe.FillClassicAssignmenttoCreateAssignmentLSRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillClassicAssignmenttoCreateAssignmentLSRecipe = new window.recipe.Recipe(steps,id);
 })();

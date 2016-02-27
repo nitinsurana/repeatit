@@ -1,5 +1,6 @@
 (function () {
 	"use strict";
+	var id = "AttemptAssignmentRecipe";
     var steps = [
         {
             type: 'recipe',
@@ -11,7 +12,7 @@
 			action : 'click'
 		}
     ];
-    var recipe = window.recipe.AttemptAssignmentRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AttemptAssignmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         switch (params.qtype) {
 			case 0 :

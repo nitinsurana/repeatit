@@ -1,5 +1,6 @@
 (function () {
 	"use strict";
+	var id = "AttemptEssayRecipe";
     var steps = [
         {
             selector: '#html-editor-non-draggable',
@@ -7,7 +8,7 @@
 			value : "something"
         },
     ];
-    var recipe = window.recipe.AttemptEssayRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AttemptEssayRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         var defer = $.Deferred();
         if ($(this.steps[0].selector).length === 0) {

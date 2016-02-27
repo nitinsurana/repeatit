@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "MultipleChoiceCreateRecipe";
     var steps = [
         {
             type: 'wait',
@@ -23,7 +24,7 @@
             selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    var recipe = window.recipe.MultipleChoiceCreateRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.MultipleChoiceCreateRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         if (params && params.assessment) {
             this.steps[0] = {

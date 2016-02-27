@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var	id = "AssignAssessmentRecipe";
     var steps = [
         {
             selector: '#assessments-use-button'
@@ -11,7 +12,7 @@
             selector: '#assign-button'
         }
     ];
-    var recipe = window.recipe.AssignAssessmentRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AssignAssessmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         switch (params.self.type) {
             case "right_now":

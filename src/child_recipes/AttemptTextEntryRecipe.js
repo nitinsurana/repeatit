@@ -1,5 +1,6 @@
 (function () {
 	"use strict";
+	var id = "AttemptTextEntryRecipe";
     var steps = [
         {
             selector: '.visible_redactor_input',
@@ -7,7 +8,7 @@
 			value : "something"
         },
     ];
-    var recipe = window.recipe.AttemptTextEntryRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AttemptTextEntryRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         var defer = $.Deferred();
         if ($(this.steps[0].selector).length === 0) {

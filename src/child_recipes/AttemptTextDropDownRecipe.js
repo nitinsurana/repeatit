@@ -1,5 +1,6 @@
 (function () {
 	"use strict";
+	var id = "AttemptTextDropdownRecipe";
     var steps = [
         {
             selector: '.question-raw-content-dropdown',
@@ -11,7 +12,7 @@
 			} 
         },
     ];
-    var recipe = window.recipe.AttemptTextDropdownRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AttemptTextDropdownRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function () {
         var defer = $.Deferred();
         if ($(this.steps[0].selector).length === 0) {

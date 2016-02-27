@@ -25,6 +25,7 @@
         <td><%-moment(data.at).fromNow()%></td>
         <td><%-data.internalIp%></td>
         <td><%-data.externalIp%></td>
+        <td><%-(data.totalTime/1000)+' seconds'%></td>
     </tr>
 </script>
 <script src="views/main.js"></script>

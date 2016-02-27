@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "AddClassicQuestionToAssessmentRecipe";
     var steps = [
         {
             selector: '#assessments-back-button'
@@ -12,7 +13,7 @@
             }
         }
     ];
-    var recipe = window.recipe.AddClassicQuestionToAssessmentRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AddClassicQuestionToAssessmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         switch (params.self.qtype) {
             case 120:

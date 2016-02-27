@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+	var id = "FillClassicQuestionRecipe";
     var steps = [
         {
             type: 'recipe',
@@ -7,7 +8,7 @@
             params: {}
         }
     ];
-    var recipe = window.recipe.FillClassicQuestionRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.FillClassicQuestionRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         var defer = $.Deferred(),
             recipeId,

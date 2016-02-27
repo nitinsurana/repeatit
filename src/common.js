@@ -3,13 +3,16 @@
 
     window.recipe = {};
 
-    window.recipe.Recipe = function (steps) {
+    window.recipe.Recipe = function (steps,recipeId) {
         this.start = function () {
             return $.Deferred().resolve();
         };
         this.stop = function () {
             return $.Deferred().resolve();
         };
+		this.getId = function(){
+			return recipeId;
+		};
         this.steps = steps;
         this.wait = 20;      //10 seconds
     };
@@ -31,10 +34,13 @@
     window.recipe.RecipePlayer = function (recipe, params) {
         var index = 0;
         var waitCount = 0;
-
+		window.recipe.usageTracker.recipeStart(recipe.getId());
         var play = function (steps, index) {
             if (index === steps.length) {
 				recipe.stop.call(recipe);
+				if(recipe.getId() === window.recipe.usageTracker.getCurrentRecipe()){
+					window.recipe.usageTracker.sendUsageStatistics();	
+				}
                 return ;
             }
             var c = setInterval(function () {
@@ -140,6 +146,77 @@
 			}).join('');
 		}
     };
+	
+	window.recipe.UsageTracker = function(){
+		var isRunning = false;
+		var currentRecipeId = '';		
+		var currentIp = '';
+		var startTime = '';
+		this.sendUsageStatistics = function(){
+			if(!currentRecipeId ){
+				return;
+			}
+			var promise = $.Deferred();
+			getLocalIp(promise);
+			promise.done(function(){
+				postUsage();
+			});
+		};
+		var postUsage = function(){
+			var timeNow = new Date().getTime();
+			var timeTook = timeNow - startTime;
+			var self = this;
+			$.ajax({
+				url:'http://localhost:5000/usage',
+				type:'POST',
+				data:{
+					recipeName: currentRecipeId,
+					at: timeNow,
+					internalIp : currentIp,
+					totalTime : timeTook
+				}
+			}).always(function(){
+				self.recipeStop();			
+			});
+		};
+		var getLocalIp = function(promise){
+			var ips = [];
+			var RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+			var peerConnection = new RTCPeerConnection({
+				iceServers : []
+			});
+			peerConnection.createDataChannel('');
+			peerConnection.onicecandidate = function(e){
+				if(!e.candidate){
+					peerConnection.close();
+					currentIp = ips[0];
+					promise.resolve();
+					return;
+				}
+				var ip = /^candidate:.+ (\S+) \d+ typ/.exec(e.candidate.candidate)[1];
+				if (ips.indexOf(ip) == -1){
+					ips.push(ip);
+				} // avoid duplicate entries (tcp/udp)
+			};
+			peerConnection.createOffer(function(sdp) {
+				peerConnection.setLocalDescription(sdp);
+			}, function onerror() {});
+		};
+		this.recipeStart = function(id){
+			currentRecipeId = id;
+			startTime = new Date().getTime();
+		};
+		this.recipeStop = function(){
+			currentRecipeId = '';
+			startTime = '';
+		};
+		this.getCurrentRecipe = function(){
+			return currentRecipeId || '';	
+		};
+	};
+
+	window.recipe.usageTracker = new window.recipe.UsageTracker();
+
 
 })();
 

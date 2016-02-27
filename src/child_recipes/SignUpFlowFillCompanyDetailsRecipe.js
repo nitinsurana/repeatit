@@ -1,6 +1,7 @@
 (function () {
     'use strict';
 
+	var id = "SignUpFlowFillCompanyDetailsRecipe";
     var steps = [
         {
             selector: "input[name=companyName]",
@@ -22,7 +23,7 @@
         }
     ];
 
-    var recipe = window.recipe.SignUpFlowFillCompanyDetailsRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.SignUpFlowFillCompanyDetailsRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         return $.Deferred().resolve();
     };

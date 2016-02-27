@@ -1,6 +1,7 @@
 (function () {
     'use strict';
 
+	var id = "InstructorSignupRecipe";
     var steps = [
         {
             selector: '#first-name',
@@ -90,7 +91,7 @@
         }
 		
     ];
-    var recipe = window.recipe.InstructorSignupRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.InstructorSignupRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
 		// window.location.href = '/logout';
 		window.location.href = '/#register/close/teacher';

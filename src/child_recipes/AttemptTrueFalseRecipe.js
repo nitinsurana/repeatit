@@ -1,5 +1,6 @@
 (function () {
 	"use strict";
+	var id = "AttemptTrueFalseRecipe";
     var steps = [
         {
             selector: '.true-false-student-answer-select:eq(0)',
@@ -7,7 +8,7 @@
         },
     ];
 
-    var recipe = window.recipe.AttemptTrueFalseRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.AttemptTrueFalseRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
         var defer = $.Deferred();
         if ($(this.steps[0].selector).length === 0) {

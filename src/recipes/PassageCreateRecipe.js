@@ -1,6 +1,7 @@
 (function () {
     'use strict';
 
+	var id = "PassageCreateRecipe";
     var steps = [
         {
             type: 'recipe',
@@ -98,5 +99,5 @@
         }
     ];
 
-    var recipe = window.recipe.PassageCreateRecipe = new window.recipe.Recipe(steps);
+    var recipe = window.recipe.PassageCreateRecipe = new window.recipe.Recipe(steps,id);
 })();
