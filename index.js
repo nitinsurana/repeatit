@@ -24,7 +24,8 @@ var express = require('express'),
 /*
  * MONGOLAB_URI=mongodb://heroku_0k8m5frr:vkmas4ao9nllcp860810556rjl@ds055945.mongolab.com:55945/heroku_0k8m5frr
  */
-mongoose.connect('mongodb://localhost:27017/repeatit', function (error) {
+//mongoose.connect('mongodb://localhost:27017/repeatit', function (error) {
+mongoose.connect('mongodb://heroku_0k8m5frr:vkmas4ao9nllcp860810556rjl@ds055945.mongolab.com:55945/heroku_0k8m5frr', function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');
 });
