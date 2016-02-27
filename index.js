@@ -22,8 +22,7 @@ var express = require('express'),
     Usage = mongoose.model('Usage', Schema);
 
 /*
- * MONGOLAB_URI=mongodb://example:example@ds053312.mongolab.com:53312/todolist
- * 'mongodb://example:example@ds053312.mongolab.com:53312/todolist'
+ * MONGOLAB_URI=mongodb://heroku_0k8m5frr:vkmas4ao9nllcp860810556rjl@ds055945.mongolab.com:55945/heroku_0k8m5frr
  */
 mongoose.connect('mongodb://localhost:27017/repeatit', function (error) {
     if (error) console.error(error);
@@ -44,7 +43,7 @@ app.get('/', function (req, res) {
         usage.id = usage._id;
         usage.save(function (err) {     // http://mongoosejs.com/docs/api.html#model_Model-save
             res.status(200).json(usage);
-            io.emit('new usage',usage.toJSON());
+            io.emit('new usage', usage.toJSON());
         });
     })
 
