@@ -13,47 +13,31 @@
         },
         addEvent: function (data) {
             if (this.isRecording) {
-                this.steps.push(data);
+                var lastEntry = this.steps.pop();
+                if (!lastEntry) {
+                    this.steps.push(data);
+                } else {
+                    if (data.tagName === lastEntry.tagName &&
+                        data.index === lastEntry.index &&
+                        data.action === lastEntry.action &&
+                        data.xpath === lastEntry.xpath) {       //If the lastEntry is same as current one, then keep the current one with the updated value/keyCode
+                        this.steps.push(data);
+                    } else {
+                        this.steps.push(lastEntry);
+                        this.steps.push(data);
+                    }
+                }
             }
         }
     };
-
-    var findPerfectSelector = function ($ele) {
-        var id = $ele.attr('id');
-        var clazz = $ele.attr('id');
-        var selector = '';
-        if (id) {
-            $("[id='" + id + "']").each(function () {
-
-            });
-        } else if (clazz) {
-            return;
-        } else {
-            var elem = $ele.get(0);
-            var tagName = elem.tagName;
-            var index = getElementIndex(tagName, elem);
-            return {tagName: tagName, index: index};
-        }
-    };
-
 
     var getElementIndex = function (tagName, elem) {
         var allElems = document.getElementsByTagName(tagName);
         return Array.prototype.indexOf.call(allElems, elem);
     };
 
-    //var dispatcher = function (e) {
-    //    var $elem = $(e.target);
-    //    var data = {
-    //        action: event.type
-    //    };
-    //    recorder.addEvent(data);
-    //};
-
     var getXpath = function (el) {
-        //if (typeof el == "string") return document.evaluate(el, document, null, 0, null)
         if (!el || el.nodeType != 1) return '';
-        //if (el.id) return "//*[@id='" + el.id + "']"
         var sames = [].filter.call(el.parentNode.children, function (x) {
             return x.tagName == el.tagName;
         });
@@ -70,14 +54,22 @@
             action: event.type,
             xpath: getXpath(elem)
         };
-        if (elem.tagName === "INPUT" || elem.tagName === "TEXTAREA") {
-            data.value = elem.value;
-            data.action = 'input';
-        }
-        if (tagName === 'input' && event.type === 'keyup' || event.type === 'keydown' || event.type === 'keypress') {
-            data.keyCode = event.keyCode;
+
+        if (tagName === 'INPUT' && (event.type === 'keyup' || event.type === 'keydown' || event.type === 'keypress')) {
             if (event.keyCode === 13) {         // for <input> elements, set action to key events only when ENTER (13) is pressed.
+                data.keyCode = event.keyCode;
                 data.action = event.type;
+            } else {
+                data = null;
+            }
+        } else if (event.type === 'input') {               //Will be triggered for <input> also.
+            if (elem.contentEditable === true) {
+                data.action = 'contenteditable';
+                data.value = elem.innerHTML;
+            } else if (elem.tagName === "INPUT" || elem.tagName === "TEXTAREA") {
+                data.value = elem.value;
+            } else {
+                data = undefined;
             }
         }
         data && recorder.addEvent(data);
@@ -102,10 +94,11 @@
 
         var body = document.body;
         body.addEventListener('click', dispatcher, true);
-        //body.addEventListener('input', dispatcher, true);       //contenteditable
         body.addEventListener('mouseup', dispatcher, true);
         body.addEventListener('mousedown', dispatcher, true);
-        //
+
+        body.addEventListener('input', dispatcher, true);
+
         body.addEventListener('keypress', dispatcher, true);
         body.addEventListener('keydown', dispatcher, true);
         body.addEventListener('keyup', dispatcher, true);
