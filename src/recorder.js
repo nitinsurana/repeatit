@@ -74,10 +74,13 @@
             data.value = elem.value;
             data.action = 'input';
         }
-        if (tagName === 'input' && event.type === 'keyup' || event.type === 'keydown') {
+        if (tagName === 'input' && event.type === 'keyup' || event.type === 'keydown' || event.type === 'keypress') {
             data.keyCode = event.keyCode;
+            if (event.keyCode === 13) {         // for <input> elements, set action to key events only when ENTER (13) is pressed.
+                data.action = event.type;
+            }
         }
-        recorder.addEvent(data);
+        data && recorder.addEvent(data);
     };
 
 
@@ -99,10 +102,11 @@
 
         var body = document.body;
         body.addEventListener('click', dispatcher, true);
+        //body.addEventListener('input', dispatcher, true);       //contenteditable
         body.addEventListener('mouseup', dispatcher, true);
         body.addEventListener('mousedown', dispatcher, true);
         //
-        //body.addEventListener('keypress', dispatcher, true);
+        body.addEventListener('keypress', dispatcher, true);
         body.addEventListener('keydown', dispatcher, true);
         body.addEventListener('keyup', dispatcher, true);
         //window.addEventListener('scroll', dispatcher, true);

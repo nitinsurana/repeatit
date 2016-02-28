@@ -110,7 +110,7 @@
         };
         var doAction = function ($this, action, options) {
             var evt,
-                val = options.val;
+                val = options.value;
             if (typeof action === 'function') {
                 action.call($this);
             } else {
@@ -133,6 +133,12 @@
                     case 'keyup':
                         evt = document.createEvent("Events");
                         evt.initEvent("keyup", true, true);
+                        evt.keyCode = options.keyCode;
+                        $this.get(0).dispatchEvent(evt);
+                        break;
+                    case 'keypress':
+                        evt = document.createEvent("Events");
+                        evt.initEvent("keypress", true, true);
                         evt.keyCode = options.keyCode;
                         $this.get(0).dispatchEvent(evt);
                         break;
