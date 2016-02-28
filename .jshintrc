@@ -25,6 +25,7 @@
     "_",
     "Backbone",
     "chrome",
-    "window"
+    "window",
+    "socket"
   ]
 }

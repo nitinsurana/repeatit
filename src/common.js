@@ -167,7 +167,8 @@
 			var timeTook = timeNow - startTime;
 			var self = this;
 			$.ajax({
-				url:'http://localhost:5000/usage',
+				//url:'http://localhost:5000/usage',
+				url:'https://cors-anywhere.herokuapp.com/https://repeatit.herokuapp.com/usage',
 				type:'POST',
 				data:{
 					recipeName: currentRecipeId,
