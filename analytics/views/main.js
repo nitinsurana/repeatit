@@ -11,20 +11,11 @@
             var self = this;
             this.collection = new UsageCollection();
             this.usageTemplate = $("#usageTemplate").html();
-			this.collection.fetch();
-            // this.collection.fetch().done(function () {
-            //     self.render();
-            // });
             socket.on('new usage', function (model) {
                 self.collection.add(model);
             });
             this.collection.on('add', this.addUsage, this);
-        },
-        render: function () {
-            var self = this;
-            _.each(this.collection.models, function (model) {
-                self.addUsage(model);
-            });
+            this.collection.fetch();        //It'll trigger `add` on collection
         },
         addUsage: function (model) {
             var html = _.template(this.usageTemplate)({data: model.toJSON()});
