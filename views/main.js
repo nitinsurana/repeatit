@@ -15,15 +15,7 @@
                 self.collection.add(model);
             });
             this.collection.on('add', this.addUsage, this);
-            this.collection.fetch().done(function () {
-                self.render();
-            });
-        },
-        render: function () {
-            var self = this;
-            _.each(this.collection.models, function (model) {
-                self.addUsage(model);
-            });
+            this.collection.fetch();        //It'll trigger `add` on collection
         },
         addUsage: function (model) {
             var html = _.template(this.usageTemplate)({data: model.toJSON()});
