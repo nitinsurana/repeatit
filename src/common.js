@@ -93,7 +93,7 @@
                         $ele = $(getSingleElement(s.tagName, s.index));
                     }
                     if ($ele.length > 0) {
-                        doAction($ele, s.action, s.value);
+                        doAction($ele, s.action, s);
                         clearInterval(c);
                         waitCount = 0;
                         play(steps, ++index);
@@ -103,13 +103,14 @@
                         var count = steps.wait || recipe.wait;
                         if (waitCount > count) {
                             waitCount = 0;
-                            index--;
                         }
                     }
                 }
             }, 500);
         };
-        var doAction = function ($this, action, val) {
+        var doAction = function ($this, action, options) {
+            var evt,
+                val = options.val;
             if (typeof action === 'function') {
                 action.call($this);
             } else {
@@ -122,6 +123,34 @@
                         break;
                     case 'redactorInsert':
                         $this.redactor('getObject').insertHtml(window.recipe.utils.evaluate(val));
+                        break;
+                    case 'keydown':
+                        evt = document.createEvent("Events");
+                        evt.initEvent("keydown", true, true);
+                        evt.keyCode = options.keyCode;
+                        $this.get(0).dispatchEvent(evt);
+                        break;
+                    case 'keyup':
+                        evt = document.createEvent("Events");
+                        evt.initEvent("keyup", true, true);
+                        evt.keyCode = options.keyCode;
+                        $this.get(0).dispatchEvent(evt);
+                        break;
+                    case 'mouseup':
+                        evt = new MouseEvent('mouseup', {
+                            view: window,
+                            bubbles: true,
+                            cancelable: true
+                        });
+                        $this.get(0).dispatchEvent(evt);
+                        break;
+                    case 'mousedown':
+                        evt = new MouseEvent('mousedown', {
+                            view: window,
+                            bubbles: true,
+                            cancelable: true
+                        });
+                        $this.get(0).dispatchEvent(evt);
                         break;
                     default :
                         $this.get(0).click();
@@ -192,9 +221,7 @@
             }
             var promise = $.Deferred();
             getLocalIp(promise);
-            promise.done(function () {
-                postUsage();
-            });
+            promise.done($.proxy(postUsage, this));
         };
         var postUsage = function () {
             var timeNow = new Date().getTime();

@@ -52,7 +52,7 @@
 
     var getXpath = function (el) {
         //if (typeof el == "string") return document.evaluate(el, document, null, 0, null)
-        if (!el || el.nodeType != 1) return    '';
+        if (!el || el.nodeType != 1) return '';
         //if (el.id) return "//*[@id='" + el.id + "']"
         var sames = [].filter.call(el.parentNode.children, function (x) {
             return x.tagName == el.tagName;
@@ -73,6 +73,9 @@
         if (elem.tagName === "INPUT" || elem.tagName === "TEXTAREA") {
             data.value = elem.value;
             data.action = 'input';
+        }
+        if (tagName === 'input' && event.type === 'keyup' || event.type === 'keydown') {
+            data.keyCode = event.keyCode;
         }
         recorder.addEvent(data);
     };
@@ -96,11 +99,11 @@
 
         var body = document.body;
         body.addEventListener('click', dispatcher, true);
-        //body.addEventListener('mouseup', dispatcher, true);
-        //body.addEventListener('mousedown', dispatcher, true);
+        body.addEventListener('mouseup', dispatcher, true);
+        body.addEventListener('mousedown', dispatcher, true);
         //
         //body.addEventListener('keypress', dispatcher, true);
-        //body.addEventListener('keydown', dispatcher, true);
+        body.addEventListener('keydown', dispatcher, true);
         body.addEventListener('keyup', dispatcher, true);
         //window.addEventListener('scroll', dispatcher, true);
     };

@@ -152,7 +152,7 @@ $(function () {
             //    console.log("Updated recipelist in Chrome Storage");
             //});
 
-            createRecipeLIs("recording");
+            $("a[data-toggle='tab'][data-project='recording']").closest('li').removeClass('active').find('a').click();
         });
     });
 
