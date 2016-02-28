@@ -9,6 +9,7 @@
   "-W069": false,
   "-W089": false,
   "-W083": false,
+  "-W084": false,
 
   "strict": true,
   "undef": true,

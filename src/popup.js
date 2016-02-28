@@ -129,18 +129,16 @@ $(function () {
             chrome.storage.sync.set({'recordingCount': recordingCount}, function () {
                 console.log("Incremented recordingCount Chrome Storage");
             });
-            chrome.tabs.executeScript({
-                code: "window.postMessage({type:'FROM_REPEATIT',action:'START_RECORDING'},'*');"
-            });
+            var code = "window.postMessage({type:'FROM_REPEATIT',action:'START_RECORDING'},'*');";
+            executeScriptInCurrentTab(code);
         });
     });
 
     $("#stop-recording").click(function () {
         chrome.storage.sync.get('recordingCount', function (c) {
             var recordingCount = c.recordingCount;
-            chrome.tabs.executeScript({
-                code: "window.postMessage({type:'FROM_REPEATIT',action:'STOP_RECORDING', recordingCount:" + recordingCount + "},'*');"
-            });
+            var code = "window.postMessage({type:'FROM_REPEATIT',action:'STOP_RECORDING', recordingCount:" + recordingCount + "},'*');";
+            executeScriptInCurrentTab(code);
             var recipeData = {
                 "id": "RecordingRecipe-" + recordingCount,
                 "title": "Recording Recipe - " + recordingCount,

@@ -18,9 +18,46 @@
         }
     };
 
+    var findPerfectSelector = function ($ele) {
+        var id = $ele.attr('id');
+        var clazz = $ele.attr('id');
+        var selector = '';
+        if (id) {
+            $("[id='" + id + "']").each(function () {
+
+            });
+        } else if (clazz) {
+            return;
+        } else {
+            var elem = $ele.get(0);
+            var tagName = elem.tagName;
+            var index = getElementIndex(tagName, elem);
+            return {tagName: tagName, index: index};
+        }
+    };
+
+
     var getElementIndex = function (tagName, elem) {
         var allElems = document.getElementsByTagName(tagName);
         return Array.prototype.indexOf.call(allElems, elem);
+    };
+
+    //var dispatcher = function (e) {
+    //    var $elem = $(e.target);
+    //    var data = {
+    //        action: event.type
+    //    };
+    //    recorder.addEvent(data);
+    //};
+
+    var getXpath = function (el) {
+        //if (typeof el == "string") return document.evaluate(el, document, null, 0, null)
+        if (!el || el.nodeType != 1) return    '';
+        //if (el.id) return "//*[@id='" + el.id + "']"
+        var sames = [].filter.call(el.parentNode.children, function (x) {
+            return x.tagName == el.tagName;
+        });
+        return getXpath(el.parentNode) + '/' + el.tagName.toLowerCase() + (sames.length > 1 ? '[' + ([].indexOf.call(sames, el) + 1) + ']' : '');
     };
 
     var dispatcher = function (e) {
@@ -30,9 +67,13 @@
         var data = {
             tagName: tagName,
             index: index,
-            action: event.type
+            action: event.type,
+            xpath: getXpath(elem)
         };
-
+        if (elem.tagName === "INPUT" || elem.tagName === "TEXTAREA") {
+            data.value = elem.value;
+            data.action = 'input';
+        }
         recorder.addEvent(data);
     };
 
@@ -46,8 +87,8 @@
                         break;
                     case 'STOP_RECORDING':
                         var s = window.recipe.Recorder.stopRecording();
-                        var recipe = window.recipe["RecordingRecipe-" + event.data.recordingCount] = new window.recipe.Recipe();
-                        recipe.steps = s;
+                        var id = "RecordingRecipe-" + event.data.recordingCount;
+                        window.recipe[id] = new window.recipe.Recipe(s, id);
                         break;
                 }
             }
@@ -60,8 +101,7 @@
         //
         //body.addEventListener('keypress', dispatcher, true);
         //body.addEventListener('keydown', dispatcher, true);
-        //body.addEventListener('keyup', dispatcher, true);
-        //
+        body.addEventListener('keyup', dispatcher, true);
         //window.addEventListener('scroll', dispatcher, true);
     };
     attachEvents();
