@@ -158,6 +158,9 @@
                         });
                         $this.get(0).dispatchEvent(evt);
                         break;
+                    case 'contenteditable':
+                        $this.get(0).innerHTML = val;
+                        break;
                     default :
                         $this.get(0).click();
                 }
