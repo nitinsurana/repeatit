@@ -34,30 +34,25 @@ $(function () {
 
     function executeScriptInCurrentTab(code) {
         chrome.windows.getAll(function (r) {
-            var eduWindow;
             r.forEach(function (w) {
-                if (w.type === 'normal' && w.state === 'maximized') {
-                    eduWindow = w;
-                    return false;
+                if (w.type === 'normal') {
+                    chrome.tabs.query({
+                        active: true,
+                        windowId: w.id
+                    }, function (t) {
+                        if (t.length == 1) {
+                            chrome.tabs.executeScript(t[0].id, {
+                                code: code
+                            });
+                            chrome.storage.sync.get('settings', function (r) {
+                                if (!r.settings.newWindow) {        //Close the extension if newWindow is false
+                                    window.close();
+                                }
+                            });
+                        }
+                    });
                 }
             });
-            if (eduWindow) {
-                chrome.tabs.query({
-                    active: true,
-                    windowId: eduWindow.id
-                }, function (t) {
-                    if (t.length == 1) {
-                        chrome.tabs.executeScript(t[0].id, {
-                            code: code
-                        });
-                        chrome.storage.sync.get('settings', function (r) {
-                            if (!r.settings.newWindow) {        //Close the extension if newWindow is false
-                                window.close();
-                            }
-                        });
-                    }
-                });
-            }
         });
     }
 
