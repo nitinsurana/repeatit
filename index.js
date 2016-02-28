@@ -17,7 +17,9 @@ var express = require('express'),
 // Mongoose Schema definition
     Schema = new mongoose.Schema({
         at: Number,
-        recipeName: String
+        recipeName: String,
+		internalIp: String,
+		totalTime: Number
     }),
     Usage = mongoose.model('Usage', Schema);
 
