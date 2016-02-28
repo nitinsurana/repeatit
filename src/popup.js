@@ -14,19 +14,20 @@ $(function () {
             if (recipelist[i].project != project || recipelist[i].type === "child") {
                 continue;
             }
-            var $li = $("<li>", {
-                "data-recipeid": recipelist[i].id,
-                "class": "row"
-            }).html("<div class='col-6 controlled-text'>" + recipelist[i].title + "</div>");
+            var $div = $("<div>", {
+                "class": "col-12 controlled-text"
+            }).html(recipelist[i].title);
             var $params = "";
             if (recipelist[i].parameterSets && Object.keys(recipelist[i].parameterSets).length > 0) {
                 for (var setName in recipelist[i].parameterSets) {
                     $params += "<span class='pull-right label label-primary ri-param-badge' data-setname='" + setName + "'>" + setName + "</span>";
                 }
             }
-            var $div = $("<div>", {
-                "class": "col-6"
-            }).html($params);
+            $div.append($params);
+            var $li = $("<li>", {
+                "data-recipeid": recipelist[i].id,
+                "class": "row"
+            }).html($div);
             $li.append($div);
             $results.append($li);
         }
@@ -34,25 +35,30 @@ $(function () {
 
     function executeScriptInCurrentTab(code) {
         chrome.windows.getAll(function (r) {
+            var eduWindow;
             r.forEach(function (w) {
-                if (w.type === 'normal') {
-                    chrome.tabs.query({
-                        active: true,
-                        windowId: w.id
-                    }, function (t) {
-                        if (t.length == 1) {
-                            chrome.tabs.executeScript(t[0].id, {
-                                code: code
-                            });
-                            chrome.storage.sync.get('settings', function (r) {
-                                if (!r.settings.newWindow) {        //Close the extension if newWindow is false
-                                    window.close();
-                                }
-                            });
-                        }
-                    });
+                if (w.type === 'normal' && w.state === 'maximized') {
+                    eduWindow = w;
+                    return false;
                 }
             });
+            if (eduWindow) {
+                chrome.tabs.query({
+                    active: true,
+                    windowId: eduWindow.id
+                }, function (t) {
+                    if (t.length == 1) {
+                        chrome.tabs.executeScript(t[0].id, {
+                            code: code
+                        });
+                        chrome.storage.sync.get('settings', function (r) {
+                            if (!r.settings.newWindow) {        //Close the extension if newWindow is false
+                                window.close();
+                            }
+                        });
+                    }
+                });
+            }
         });
     }
 
