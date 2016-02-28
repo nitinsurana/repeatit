@@ -19,6 +19,7 @@ var express = require('express'),
         at: Number,
         recipeName: String,
 		internalIp: String,
+		externalIp: String,
 		totalTime: Number
     }),
     Usage = mongoose.model('Usage', Schema);
@@ -37,12 +38,13 @@ app.get('/', function (req, res) {
     res.render('home');
 })
     .get('/usages', function (req, res) {
-        Usage.find(function (err, usages) {     // http://mongoosejs.com/docs/api.html#query_Query-find
+        Usage.find({},{},{ limit: 100, sort:{ at : 1}}).find(function (err, usages) {     // http://mongoosejs.com/docs/api.html#query_Query-find
             res.status(200).json(usages)
         });
     })
     .post('/usage', function (req, res) {
         var usage = new Usage(req.body);
+		usage.externalIp = req.connection.remoteAddress;
         usage.id = usage._id;
         usage.save(function (err) {     // http://mongoosejs.com/docs/api.html#model_Model-save
             res.status(200).json(usage);
