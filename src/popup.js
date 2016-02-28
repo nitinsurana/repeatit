@@ -143,7 +143,8 @@ $(function () {
                 "id": "RecordingRecipe-" + recordingCount,
                 "title": "Recording Recipe - " + recordingCount,
                 "description": "...",
-                "version": "0.1"
+                "version": "0.1",
+                "project": "recording"
             };
             recipelist.push(recipeData);
             //Todo figure out a way to not lose recorded recipes
@@ -151,7 +152,7 @@ $(function () {
             //    console.log("Updated recipelist in Chrome Storage");
             //});
 
-            createRecipeLIs();
+            createRecipeLIs("recording");
         });
     });
 
