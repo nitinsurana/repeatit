@@ -22,6 +22,7 @@ Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/
 
 ## Todos
 
+5. Create feature "playback speed" for running recipes. Currently, it's 500ms.
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
 8. When recording show some kind of highlighting in the extension icon and Record button.
 9. Create a options page to import/export all/selective recipes/recordings but these won't be available to all extension installations. (Needs fileSystem permission)
