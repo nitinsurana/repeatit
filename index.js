@@ -27,7 +27,8 @@ var express = require('express'),
 var recordingSchema = new mongoose.Schema({
         steps: Array,
         recipeId: String,
-        userId: String
+        userId: String,
+        project:String
     }),
     Recording = mongoose.model('Recording', recordingSchema);
 
