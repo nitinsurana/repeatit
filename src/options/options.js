@@ -103,8 +103,8 @@ $(function () {
             var self = this;
             _.each(this.collection.models, function (model) {
                 if (model.get('title').trim().length > 0) {
-                    self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
                     if (model.get('parameterSets')) {
+                        self.$("#accordion").append(_.template(self.accordionChoiceTemplate)({data: model.toJSON()}));
                         self.renderParameterSets(model);
                         self.$("#recipe-" + model.get('id')).find(".actions").show();
                     }
