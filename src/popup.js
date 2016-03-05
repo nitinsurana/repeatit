@@ -147,19 +147,7 @@ $(function () {
                 "project": "recording"
             };
             recipelist.push(recipeData);
-            //Todo figure out a way to not lose recorded recipes
-            //chrome.storage.sync.set({'recipelist': recipelist}, function () {
-            //    console.log("Updated recipelist in Chrome Storage");
-            //});
-
             $("a[data-toggle='tab'][data-project='recording']").closest('li').removeClass('active').find('a').click();
-        });
-    });
-
-    $("#replay-recording").click(function () {
-        chrome.storage.sync.get('recordingCount', function (c) {
-            var recordingCount = c.recordingCount || 0;
-            runRecipe('RecordingRecipe-' + recordingCount);
         });
     });
 
