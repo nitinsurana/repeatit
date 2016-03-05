@@ -22,6 +22,7 @@ Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/
 
 ## Todos
 
+3. Add feature to steps to have actions array, instead of a single action on a single selector and add aggregation logic in recording.
 4. If an extension window is already open, then clicking on extension shouldn't show a new window, instead just make that visible.
 5. Create feature "playback speed" for running recipes. Currently, it's 500ms.
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
