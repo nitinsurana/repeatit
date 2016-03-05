@@ -204,14 +204,16 @@
             // Blink engine detection
             var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-            return (this.bowser =
-                isOpera ? 'Opera' :
-                    isFirefox ? 'Firefox' :
-                        isSafari ? 'Safari' :
-                            isChrome ? 'Chrome' :
-                                isIE ? 'IE' :
-                                    'other');
-        },
+			return (this.bowser =
+						isOpera ? 'Opera' :
+						isFirefox ? 'Firefox' :
+						isSafari ? 'Safari' :
+						isChrome ? 'Chrome' :
+						isIE ? 'IE' :
+						isEdge ? 'Edge' :
+						isBlink ? 'Blink' :
+						'other');
+		},
         randomStringReplacer: function (match) {
             var length = match.replace(/[a-zA-Z\(\)\{\}]/g, "");
             length = window.isNaN(window.parseInt(length, 10)) ? 5 : window.parseInt(length, 10);
