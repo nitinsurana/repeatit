@@ -15,11 +15,28 @@
     };
 
     chrome.browserAction.onClicked.addListener(function (activeTab) {       //DOCS - This event will not fire if the browser action has a popup.
-        chrome.windows.create({
-            url: chrome.extension.getURL('popup.html'),
-            type: 'panel',
-            height: 489,
-            width: 500
+        chrome.windows.getAll(function (r) {        //Close existing popup window
+            r.forEach(function (w) {
+                if (w.type === 'popup') {
+                    chrome.tabs.query({
+                        active: true,
+                        windowId: w.id
+                    }, function (tabs) {
+                        for (var i in tabs) {
+                            var t = tabs[i];
+                            if (t.title.indexOf("RepeatIt") > -1) {
+                                chrome.tabs.remove(t.id);
+                            }
+                        }
+                    });
+                }
+            });
+            chrome.windows.create({
+                url: chrome.extension.getURL('popup.html'),
+                type: 'panel',
+                height: 489,
+                width: 500
+            });
         });
     });
 
