@@ -3,6 +3,12 @@
 
     window.recipe = {};
 
+    window.recipe.extensionId = 'pohjmjecoffffpjpdgkafbmhpbhdgjbc';     //chrome store extension id
+    // @ifdef DEBUG
+    window.recipe.extensionId = 'lkfdehcacejaedoohjcjokmkijhicbah';     //local source-code installation extension id
+    // @endif
+    var extensionId = window.recipe.extensionId;
+
     window.recipe.Recipe = function (steps, recipeId) {
         this.start = function () {
             return $.Deferred().resolve();
@@ -32,28 +38,14 @@
     };
 
     var getElementByXPath = function (xpathExpression) {
-        //return document.evaluate(
-        //    xpath,
-        //    document,
-        //    null,
-        //    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-        //    null
-        //);
-        //$.fn.xpathEvaluate = function (xpathExpression) {
-        // NOTE: vars not declared local for debug purposes
-        //var $this = this.first(); // Don't make me deal with multiples before coffee
-
         // Evaluate xpath and retrieve matching nodes
         var xpathResult = document.evaluate(xpathExpression, document, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-
         var elem, result = [];
         while (elem = xpathResult.iterateNext()) {
             result.push(elem);
         }
-
         var $result = $([]).pushStack(result);
         return $result;
-        //}
     };
 
     window.recipe.RecipePlayer = function (recipe, params) {
@@ -188,38 +180,38 @@
             str = str.replace(/{timeStamp\(?[\d]*\)?}/g, function (match) {     //jshint ignore:line
                 return self.timeStampReplacer.call(self, match);
             }); //jshint ignore:line
-			str = str.replace(/{browser}/g,function(){
-				return self.detectBrowser();
-			});
+            str = str.replace(/{browser}/g, function () {                          //jshing ignore:line
+                return self.detectBrowser();
+            });
             return str;
         },
-		detectBrowser: function(){
-			// See http://stackoverflow.com/a/9851769
-			if(this.browser){
-				return this.browser;
-			}
-			var isOpera = (!!window.opr && !!window.opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-			// Firefox 1.0+
-			var isFirefox = typeof InstallTrigger !== 'undefined';
-			// At least Safari 3+: "[object HTMLElementConstructor]"
-			var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-			// Internet Explorer 6-11
+        detectBrowser: function () {
+            // See http://stackoverflow.com/a/9851769
+            if (this.browser) {
+                return this.browser;
+            }
+            var isOpera = (!!window.opr && !!window.opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+            // Firefox 1.0+
+            var isFirefox = typeof InstallTrigger !== 'undefined';
+            // At least Safari 3+: "[object HTMLElementConstructor]"
+            var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+            // Internet Explorer 6-11
             var isIE = /*@cc_on!@*/false || !!document.documentMode;
-			// Edge 20+
-			var isEdge = !isIE && !!window.StyleMedia;
-			// Chrome 1+
-			var isChrome = !!window.chrome && !!window.chrome.webstore;
-			// Blink engine detection
-			var isBlink = (isChrome || isOpera) && !!window.CSS;
+            // Edge 20+
+            var isEdge = !isIE && !!window.StyleMedia;
+            // Chrome 1+
+            var isChrome = !!window.chrome && !!window.chrome.webstore;
+            // Blink engine detection
+            var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-			return (this.bowser =
-			        isOpera ? 'Opera' :
-			        isFirefox ? 'Firefox' :
-			        isSafari ? 'Safari' :
-			        isChrome ? 'Chrome' :
-			        isIE ? 'IE' :
-			        'other');
-		},
+            return (this.bowser =
+                isOpera ? 'Opera' :
+                    isFirefox ? 'Firefox' :
+                        isSafari ? 'Safari' :
+                            isChrome ? 'Chrome' :
+                                isIE ? 'IE' :
+                                    'other');
+        },
         randomStringReplacer: function (match) {
             var length = match.replace(/[a-zA-Z\(\)\{\}]/g, "");
             length = window.isNaN(window.parseInt(length, 10)) ? 5 : window.parseInt(length, 10);
@@ -250,7 +242,6 @@
     };
 
     window.recipe.UsageTracker = function () {
-        var isRunning = false;
         var currentRecipeId = '';
         var currentIp = '';
         var startTime = '';
@@ -319,6 +310,24 @@
 
     window.recipe.usageTracker = new window.recipe.UsageTracker();
 
+    window.recipe.initRecordedRecipes = function (recipes) {
+        for (var index in recipes) {
+            var r = recipes[index];
+            var recipeId = r.recipeId;
+            var steps = r.steps;
+            window.recipe[recipeId] = new window.recipe.Recipe(steps, recipeId);
+        }
+    };
 
+    chrome.runtime.sendMessage(extensionId, {origin: 'repeatit', action: 'fetchRecordings'},
+        function (response) {
+            if (!response) {
+                console.log("Fetching recordings from extension failed : ");
+                console.log(response);
+            } else {
+                console.log("Fetched recordings from extension.");
+                window.recipe.initRecordedRecipes(response);
+            }
+        });
 })();
 

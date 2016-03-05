@@ -1,6 +1,8 @@
 (function () {
     'use strict';
 
+    var extensionId = window.recipe.extensionId;
+
     var recorder = window.recipe.Recorder = {
         isRecording: false,
         startRecording: function () {
@@ -75,6 +77,17 @@
         data && recorder.addEvent(data);
     };
 
+    var sendStepsToExtension = function (steps, recipeId) {
+        chrome.runtime.sendMessage(extensionId, {origin: 'repeatit', action: 'recording', steps: steps, recipeId: recipeId},
+            function (response) {
+                if (!response.status) {
+                    console.log("Sending steps to extension failed : ");
+                    console.log(response);
+                } else {
+                    console.log("Sent recorded steps to extension");
+                }
+            });
+    };
 
     var attachEvents = function () {
         window.addEventListener("message", function (event) {
@@ -87,6 +100,7 @@
                         var s = window.recipe.Recorder.stopRecording();
                         var id = "RecordingRecipe-" + event.data.recordingCount;
                         window.recipe[id] = new window.recipe.Recipe(s, id);
+                        sendStepsToExtension(s, id);
                         break;
                 }
             }

@@ -51,7 +51,9 @@
       "*://*.snapwiz.net/*",
       "*://*.edulastic.net/*",
       "*://*.edulastic.com/*",
-      "*://*.snapwiz.com/*"
+      "*://*.snapwiz.com/*",
+      "*://localhost/*",
+      "*://127.0.0.1/*"
     ]
   },
   "options_page": "options/options.html"
