@@ -45,13 +45,29 @@ app.get('/', function (req, res) {
     .post('/usage', function (req, res) {
         var usage = new Usage(req.body);
 		usage.externalIp = req.connection.remoteAddress;
+		console.log(req.ip);
+		console.log(req.socket.remoteAddress);
+
         usage.id = usage._id;
         usage.save(function (err) {     // http://mongoosejs.com/docs/api.html#model_Model-save
             res.status(200).json(usage);
             io.emit('new usage', usage.toJSON());
         });
     })
-
+	.get('/groupUsage',function(req,res){
+		var mapReduce = {
+			map: function(){
+				var date = new Date(this.at);
+				emit(date.toJSON().slice(0,10),1);
+			},
+			reduce: function(k,v){
+				return v.length;
+			}
+		};
+		Usage.mapReduce(mapReduce,function(err,result){
+			res.status(200).json(result);
+		});
+	})
     .use(express.static(__dirname + '/'));
 
 http.listen(process.env.PORT || 5000);
