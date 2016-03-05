@@ -45,9 +45,6 @@ app.get('/', function (req, res) {
     .post('/usage', function (req, res) {
         var usage = new Usage(req.body);
 		usage.externalIp = req.connection.remoteAddress;
-		console.log(req.ip);
-		console.log(req.socket.remoteAddress);
-
         usage.id = usage._id;
         usage.save(function (err) {     // http://mongoosejs.com/docs/api.html#model_Model-save
             res.status(200).json(usage);
