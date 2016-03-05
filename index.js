@@ -18,11 +18,18 @@ var express = require('express'),
     Schema = new mongoose.Schema({
         at: Number,
         recipeName: String,
-		internalIp: String,
-		externalIp: String,
-		totalTime: Number
+        internalIp: String,
+        externalIp: String,
+        totalTime: Number
     }),
     Usage = mongoose.model('Usage', Schema);
+
+var recordingSchema = new mongoose.Schema({
+        steps: Array,
+        recipeId: String,
+        userId: String
+    }),
+    Recording = mongoose.model('Recording', recordingSchema);
 
 /*
  * MONGOLAB_URI=mongodb://heroku_0k8m5frr:vkmas4ao9nllcp860810556rjl@ds055945.mongolab.com:55945/heroku_0k8m5frr
@@ -38,33 +45,46 @@ app.get('/', function (req, res) {
     res.render('home');
 })
     .get('/usages', function (req, res) {
-        Usage.find({},{},{ limit: 100, sort:{ at : 1}}).find(function (err, usages) {     // http://mongoosejs.com/docs/api.html#query_Query-find
+        Usage.find({}, {}, {limit: 100, sort: {at: 1}}).find(function (err, usages) {     // http://mongoosejs.com/docs/api.html#query_Query-find
             res.status(200).json(usages)
         });
     })
     .post('/usage', function (req, res) {
         var usage = new Usage(req.body);
-		usage.externalIp = req.connection.remoteAddress;
+        usage.externalIp = req.connection.remoteAddress;
         usage.id = usage._id;
         usage.save(function (err) {     // http://mongoosejs.com/docs/api.html#model_Model-save
             res.status(200).json(usage);
             io.emit('new usage', usage.toJSON());
         });
     })
-	.get('/groupUsage',function(req,res){
-		var mapReduce = {
-			map: function(){
-				var date = new Date(this.at);
-				emit(date.toJSON().slice(0,10),1);
-			},
-			reduce: function(k,v){
-				return v.length;
-			}
-		};
-		Usage.mapReduce(mapReduce,function(err,result){
-			res.status(200).json(result);
-		});
-	})
+    .get('/groupUsage', function (req, res) {
+        var mapReduce = {
+            map: function () {
+                var date = new Date(this.at);
+                emit(date.toJSON().slice(0, 10), 1);
+            },
+            reduce: function (k, v) {
+                return v.length;
+            }
+        };
+        Usage.mapReduce(mapReduce, function (err, result) {
+            res.status(200).json(result);
+        });
+    })
+    .post('/record', function (req, res) {
+        var recording = new Recording(req.body);
+        recording.id = recording._id;
+        recording.save(function (err) {
+            res.status(200).json(recording);
+            //io.emit('new recording',recording.toJSON());
+        });
+    })
+    .get('/recordings', function (req, res) {
+        Recording.find({userId: req.query.userId}, {}, {limit: 100}).find(function (err, recordings) {     // http://mongoosejs.com/docs/api.html#query_Query-find
+            res.status(200).json(recordings)
+        });
+    })
     .use(express.static(__dirname + '/'));
 
 http.listen(process.env.PORT || 5000);
