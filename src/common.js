@@ -256,7 +256,7 @@
             window.postMessage({
                 type: "TO_REPEATIT",
                 action: "RECORD_USAGE",
-                recipeId: currentRecipeId,
+                recipeName: currentRecipeId,
                 at: timeNow,
                 internalIp: currentIp,
                 totalTime: timeTook
