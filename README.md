@@ -22,7 +22,6 @@ Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/
 
 ## Todos
 
-2. Due to limitations of "externally_connectable" which means other domains won't be able to talk to extension, change the design to postMesages to contentScript instead of inject.js directly communicating with background.js.
 3. Add feature to steps to have actions array, instead of a single action on a single selector and add aggregation logic in recording.
 4. If an extension window is already open, then clicking on extension shouldn't show a new window, instead just make that visible.
 5. Create feature "playback speed" for running recipes. Currently, it's 500ms.
