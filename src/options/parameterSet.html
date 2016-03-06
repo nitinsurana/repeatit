@@ -1,0 +1,6 @@
+<div class="tab-pane" id="parameterSet-<%=data.id%>" data-paramset="<%=data.id%>">
+    <%_.each(data.params,function(paramValue, paramKey){%>
+    <label><%-paramKey%></label>
+    <input class="form-control param " data-paramkey="<%-paramKey%>" type="text" required autocomplete="off" value="<%-paramValue%>"/>
+    <%});%>
+</div>
