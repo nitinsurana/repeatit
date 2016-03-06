@@ -144,7 +144,8 @@ $(function () {
             executeScriptInCurrentTab(code);
             var recipeData = {
                 "id": "RecordingRecipe-" + recordingCount,
-                "title": "Recording Recipe - " + recordingCount,
+                "recipeId": "RecordingRecipe-" + recordingCount,
+                "title": "RecordingRecipe-" + recordingCount,
                 "description": "...",
                 "version": "0.1",
                 "project": "recording"

@@ -135,6 +135,9 @@
                     case 'fetchRecordings':
                         sendRecordingsToTab(sendResponse);
                         break;
+                    case 'recordUsage':
+                        recordRecipeUsage(sendResponse, message);
+                        break;
                 }
                 return true;
             } else {
@@ -143,6 +146,22 @@
                 sendResponse({status: false});
             }
         });
+
+    var recordRecipeUsage = function (sendResponse, message) {
+        chrome.storage.sync.get('userId', function (r) {
+            var userId = r.userId;
+            message.userId = userId;
+            $.ajax({
+                url: serverUrl + '/usage',
+                type: 'POST',
+                data: message
+            }).done(function () {
+                sendResponse({status: true});
+            }).fail(function () {
+                sendResponse({status: false});
+            });
+        });
+    };
 
     var sendRecordingsToTab = function (sendResponse) {
         chrome.storage.sync.get('userId', function (r) {
@@ -168,6 +187,7 @@
                 data: {
                     steps: steps,
                     recipeId: recipeId,
+                    title: recipeId,
                     userId: userId,
                     project: "recording"
                 }

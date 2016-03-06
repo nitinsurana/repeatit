@@ -198,16 +198,16 @@
             // Blink engine detection
             var isBlink = (isChrome || isOpera) && !!window.CSS;
 
-			return (this.bowser =
-						isOpera ? 'Opera' :
-						isFirefox ? 'Firefox' :
-						isSafari ? 'Safari' :
-						isChrome ? 'Chrome' :
-						isIE ? 'IE' :
-						isEdge ? 'Edge' :
-						isBlink ? 'Blink' :
-						'other');
-		},
+            return (this.bowser =
+                isOpera ? 'Opera' :
+                    isFirefox ? 'Firefox' :
+                        isSafari ? 'Safari' :
+                            isChrome ? 'Chrome' :
+                                isIE ? 'IE' :
+                                    isEdge ? 'Edge' :
+                                        isBlink ? 'Blink' :
+                                            'other');
+        },
         randomStringReplacer: function (match) {
             var length = match.replace(/[a-zA-Z\(\)\{\}]/g, "");
             length = window.isNaN(window.parseInt(length, 10)) ? 5 : window.parseInt(length, 10);
@@ -249,24 +249,21 @@
             getLocalIp(promise);
             promise.done($.proxy(postUsage, this));
         };
+
         var postUsage = function () {
             var timeNow = new Date().getTime();
             var timeTook = timeNow - startTime;
-            var self = this;
-            $.ajax({
-                //url:'http://localhost:5000/usage',
-                url: 'https://cors-anywhere.herokuapp.com/https://repeatit.herokuapp.com/usage',
-                type: 'POST',
-                data: {
-                    recipeName: currentRecipeId,
-                    at: timeNow,
-                    internalIp: currentIp,
-                    totalTime: timeTook
-                }
-            }).always(function () {
-                self.recipeStop();
-            });
+            window.postMessage({
+                type: "TO_REPEATIT",
+                action: "RECORD_USAGE",
+                recipeId: currentRecipeId,
+                at: timeNow,
+                internalIp: currentIp,
+                totalTime: timeTook
+            }, '*');
+            this.recipeStop();
         };
+
         var getLocalIp = function (promise) {
             var ips = [];
             var RTCPeerConnection = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;

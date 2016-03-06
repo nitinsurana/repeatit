@@ -14,6 +14,9 @@ window.addEventListener("message", function (event) {
             case 'FETCH_RECORDINGS':
                 fetchRecordingsFromBackground();
                 break;
+            case 'RECORD_USAGE':
+                recordUsage(event.data);
+                break;
         }
     }
 }, false);
@@ -47,5 +50,18 @@ function fetchRecordingsFromBackground() {
                 }, '*');
             }
         });
+}
+
+function recordUsage(params) {
+    'use strict';
+    params.origin = "repeatit";
+    params.action = 'recordUsage';
+    chrome.runtime.sendMessage(params, function (response) {
+        if (!response.status) {
+            console.log("Unable to record recipe usage : " + response);
+        } else {
+            console.log("Recorded recipe usage");
+        }
+    });
 }
 
