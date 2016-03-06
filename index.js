@@ -20,7 +20,8 @@ var express = require('express'),
         recipeName: String,
         internalIp: String,
         externalIp: String,
-        totalTime: Number
+        totalTime: Number,
+        userId:String
     }),
     Usage = mongoose.model('Usage', Schema);
 
@@ -28,7 +29,9 @@ var recordingSchema = new mongoose.Schema({
         steps: Array,
         recipeId: String,
         userId: String,
-        project:String
+        project:String,
+        title:String,
+        id:String
     }),
     Recording = mongoose.model('Recording', recordingSchema);
 
@@ -75,7 +78,7 @@ app.get('/', function (req, res) {
     })
     .post('/record', function (req, res) {
         var recording = new Recording(req.body);
-        recording.id = recording._id;
+        recording.id = recording.recipeId;
         recording.save(function (err) {
             res.status(200).json(recording);
             //io.emit('new recording',recording.toJSON());
