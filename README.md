@@ -23,10 +23,8 @@ Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/
 ## Todos
 
 3. Add feature to steps to have actions array, instead of a single action on a single selector and add aggregation logic in recording.
-4. If an extension window is already open, then clicking on extension shouldn't show a new window, instead just make that visible.
 5. Create feature "playback speed" for running recipes. Currently, it's 500ms.
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
-8. When recording show some kind of highlighting in the extension icon and Record button.
 9. Create a options page to import/export all/selective recipes/recordings but these won't be available to all extension installations. (Needs fileSystem permission)
 10. Upgrade extension to use Backbone so that recipelist can be a Backbone collection with unique recipe ids and appropriate events to update popup.html DOM.
 11. Recorded recipes should wait for DOM manipulation and ajax-requests to complete before triggering the next step.
