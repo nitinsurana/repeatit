@@ -1,8 +1,6 @@
 (function () {
     'use strict';
 
-    var extensionId = window.recipe.extensionId;
-
     var recorder = window.recipe.Recorder = {
         isRecording: false,
         startRecording: function () {
@@ -30,6 +28,15 @@
                     }
                 }
             }
+        }
+    };
+
+    window.recipe.initRecordedRecipes = function (recipes) {
+        for (var index in recipes) {
+            var r = recipes[index];
+            var recipeId = r.recipeId;
+            var steps = r.steps;
+            window.recipe[recipeId] = new window.recipe.Recipe(steps, recipeId);
         }
     };
 
@@ -78,15 +85,12 @@
     };
 
     var sendStepsToExtension = function (steps, recipeId) {
-        chrome.runtime.sendMessage(extensionId, {origin: 'repeatit', action: 'recording', steps: steps, recipeId: recipeId},
-            function (response) {
-                if (!response.status) {
-                    console.log("Sending steps to extension failed : ");
-                    console.log(response);
-                } else {
-                    console.log("Sent recorded steps to extension");
-                }
-            });
+        window.postMessage({
+            type: "TO_REPEATIT",
+            action: "SAVE_RECORDING_STEPS",
+            steps: steps,
+            recipeId: recipeId
+        }, '*');
     };
 
     var attachEvents = function () {
@@ -101,6 +105,10 @@
                         var id = "RecordingRecipe-" + event.data.recordingCount;
                         window.recipe[id] = new window.recipe.Recipe(s, id);
                         sendStepsToExtension(s, id);
+                        break;
+                    case 'FETCHED_RECORDINGS':
+                        console.log("Fetched recordings from extension.");
+                        window.recipe.initRecordedRecipes(event.data.recipes);
                         break;
                 }
             }
@@ -119,4 +127,10 @@
         //window.addEventListener('scroll', dispatcher, true);
     };
     attachEvents();
+
+
+    window.postMessage({
+        type: "TO_REPEATIT",
+        action: "FETCH_RECORDINGS"
+    }, '*');
 })();

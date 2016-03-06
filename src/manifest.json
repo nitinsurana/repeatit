@@ -46,15 +46,5 @@
       "dist/background.js"
     ]
   },
-  "externally_connectable": {
-    "matches": [
-      "*://*.snapwiz.net/*",
-      "*://*.edulastic.net/*",
-      "*://*.edulastic.com/*",
-      "*://*.snapwiz.com/*",
-      "*://localhost/*",
-      "*://127.0.0.1/*"
-    ]
-  },
   "options_page": "options/options.html"
 }

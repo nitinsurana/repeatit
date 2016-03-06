@@ -125,7 +125,7 @@
         window.background.recipelist = recipelist;
     };
 
-    chrome.runtime.onMessageExternal.addListener(
+    chrome.runtime.onMessage.addListener(
         function (message, sender, sendResponse) {
             if (message.origin === 'repeatit') {
                 switch (message.action) {

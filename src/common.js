@@ -3,12 +3,6 @@
 
     window.recipe = {};
 
-    window.recipe.extensionId = 'pohjmjecoffffpjpdgkafbmhpbhdgjbc';     //chrome store extension id
-    // @ifdef DEBUG
-    window.recipe.extensionId = 'lkfdehcacejaedoohjcjokmkijhicbah';     //local source-code installation extension id
-    // @endif
-    var extensionId = window.recipe.extensionId;
-
     window.recipe.Recipe = function (steps, recipeId) {
         this.start = function () {
             return $.Deferred().resolve();
@@ -311,25 +305,5 @@
     };
 
     window.recipe.usageTracker = new window.recipe.UsageTracker();
-
-    window.recipe.initRecordedRecipes = function (recipes) {
-        for (var index in recipes) {
-            var r = recipes[index];
-            var recipeId = r.recipeId;
-            var steps = r.steps;
-            window.recipe[recipeId] = new window.recipe.Recipe(steps, recipeId);
-        }
-    };
-
-    chrome.runtime.sendMessage(extensionId, {origin: 'repeatit', action: 'fetchRecordings'},
-        function (response) {
-            if (!response) {
-                console.log("Fetching recordings from extension failed : ");
-                console.log(response);
-            } else {
-                console.log("Fetched recordings from extension.");
-                window.recipe.initRecordedRecipes(response);
-            }
-        });
 })();
 
