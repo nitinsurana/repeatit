@@ -8,8 +8,11 @@ $(function () {
             this.parameterSetTemplate = $("#parameterSetTemplate").text();
             this.settingsTemplate = $("#settings-template").text();
             this.background = chrome.extension.getBackgroundPage().background;
-            this.recipelist = this.background.recipelist;
-            self.collection = new Backbone.Collection(this.recipelist);
+            var recipelist = this.background.recipelist;
+            recipelist = _.filter(recipelist, function (r) {
+                return r.project !== 'recording';
+            });
+            self.collection = new Backbone.Collection(recipelist);
             self.render();
         },
         events: {
@@ -65,8 +68,7 @@ $(function () {
         },
         resetParameterSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
-            var recipelist = this.recipelist;
-            var recipe = _.find(recipelist, function (recipe) {
+            var recipe = _.find(this.collection.toJSON(), function (recipe) {
                 return recipe.id === recipeId;
             });
             var parameterSets = {};
