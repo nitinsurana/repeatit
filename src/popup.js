@@ -122,7 +122,7 @@ $(function () {
         window.close();
     });
 
-    $("#start-recording").click(function () {
+    $("body").on('click', "#start-recording:not(.disabled)", function () {
         chrome.storage.sync.get('recordingCount', function (c) {
             var recordingCount = c.recordingCount || 0;
             recordingCount++;
@@ -131,10 +131,13 @@ $(function () {
             });
             var code = "window.postMessage({type:'FROM_REPEATIT',action:'START_RECORDING'},'*');";
             executeScriptInCurrentTab(code);
+            chrome.browserAction.setBadgeText({text: "Rec"});
+            $("#start-recording").addClass("disabled");
+            $("#stop-recording").removeClass("disabled");
         });
     });
 
-    $("#stop-recording").click(function () {
+    $("body").on('click', "#stop-recording:not(.disabled)", function () {
         chrome.storage.sync.get('recordingCount', function (c) {
             var recordingCount = c.recordingCount;
             var code = "window.postMessage({type:'FROM_REPEATIT',action:'STOP_RECORDING', recordingCount:" + recordingCount + "},'*');";
@@ -148,6 +151,9 @@ $(function () {
             };
             recipelist.push(recipeData);
             $("a[data-toggle='tab'][data-project='recording']").closest('li').removeClass('active').find('a').click();
+            chrome.browserAction.setBadgeText({text: ""});
+            $("#stop-recording").addClass("disabled");
+            $("#start-recording").removeClass("disabled");
         });
     });
 
