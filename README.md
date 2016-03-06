@@ -46,11 +46,7 @@ for every recipe with screenshots and if possible with videos showing how does t
 
 ## RoadMap
 
-1. Ability to record actions and create a recipe at run-time
 2. Ability to run these recipes from Selenium (Extension install and execute on console - `window.recipe.RecipePlayer(someRecipe)`
-3. Put this extension in Chrome Store
-4. Implement usageCount of every recipe globally (across all installations, probably use a heroku free nodejs-mongo webapp or free mongo with REST API)
-5. Implement normalCompletionTime for every recipes' manual execution and record actual execution average across all installations to show how much did we saved.
 6. Recipe options and a way to edit options for every recipe and local saving without affecting any other installation.
 7. Write a plugin for firefox
 8. Create gulp tasks to create packaged extensions to be installed in chrome & firefox, with versions and add them to releases.
