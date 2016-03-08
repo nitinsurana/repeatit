@@ -502,24 +502,49 @@
     "type": "child"
   },
   {
-    "id" : "SignUpFlowFillSignUpPageRecipe",
+    "id": "SignUpFlowFillSignUpPageRecipe",
     "title": "Sign Up Employer : Sign Up",
     "description": "Fill Sign Up Page",
     "project": "glider",
     "type": "child"
   },
   {
-    "id" : "GliderEmployerSignUpRecipe",
-    "title" : "Employer Sign Up",
-    "discription" : "Employer Sign Up with new company",
+    "id": "GliderEmployerSignUpRecipe",
+    "title": "Employer Sign Up",
+    "discription": "Employer Sign Up with new company",
     "project": "glider",
-    "type" : "parent",
-    "parameterSets" : {
+    "type": "parent",
+    "parameterSets": {
       "hm": {
         "name": "Himadri",
         "phone": "+919800473936",
         "email": "himadri.ghosh+41@snapwiz.com",
         "password": "snapwiz"
+      }
+    }
+  },
+  {
+    "id": "GliderFindIndustryRecipe",
+    "title": "Find Industry",
+    "discription": "Find Industry",
+    "project": "glider",
+    "type": "child"
+  },
+  {
+    "id": "GliderFillCompanyDescriptionRecipe",
+    "title": "Fill Company Description",
+    "discription": "Fill Company Description",
+    "project": "glider",
+    "type": "parent",
+    "parameterSets":{
+      "default" :{
+        "oneLinePitch": "One Line Pitch {randomString(5)}",
+        "oAStreet": "Some address {randomString(5)}, {randomString(5)}",
+        "oASuite": "#{timeStamp(3)}, {randomString(5)}",
+        "oAZipCode": "{timeStamp(6)}",
+        "phone": "+919800{timeStamp(6)}",
+        "website": "www.{randomString(5)}.com",
+        "invest": "{timeStamp(6)}"
       }
     }
   }
