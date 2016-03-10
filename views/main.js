@@ -25,21 +25,46 @@
 		getGroupedData: function(){
 			var self = this;
 			$.ajax({
-				url:"groupUsage"
+				url:"/usages"
 			}).done(function(response){
 				self.drawUsageChart(response);
 			});
 		},
 		drawUsageChart: function(response){
 			var data = response.map(function(usage){
-				return [(new Date(usage._id)).getTime(),usage.value];
+				return [usage.at,1];
 			});
 			this.$('#container').highcharts('StockChart', {
 				chart: {
 					alignTicks: false
 				},
 				rangeSelector: {
-					selected: 1
+					inputEnabled: false,
+					selected: 2,
+					buttons: [{
+						type: 'minute',
+						count: 60,
+						text: '1h'
+					}, {
+						type: 'day',
+						count: 1,
+						text: '1d'
+					}, {
+						type: 'week',
+						count: 1,
+						text: '1w'
+					}, {
+						type: 'month',
+						count: 1,
+						text: '1m'
+					}, {
+						type: 'year',
+						count: 1,
+						text: '1y'
+					}, {
+						type: 'all',
+						text: 'All'
+					}]
 				},
 				title: {
 					text: 'RepeatIt Usage'
@@ -50,6 +75,10 @@
 					data: data,
 					dataGrouping: {
 						units: [[
+							'minute',
+							[60]
+						],
+						[
 							'week', // unit name
 							[1] // allowed multiples
 						], [
