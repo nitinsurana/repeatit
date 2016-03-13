@@ -15,8 +15,10 @@
                 self.collection.add(model);
             });
             this.collection.on('add', this.addUsage, this);
-            this.collection.fetch();        //It'll trigger `add` on collection
-			this.getGroupedData();
+            this.collection.fetch().done(function(response){
+				self.drawUsageChart(response);
+			});        //It'll trigger `add` on collection
+			//this.getGroupedData();
         },
         addUsage: function (model) {
             var html = _.template(this.usageTemplate)({data: model.toJSON()});
@@ -39,7 +41,8 @@
 					alignTicks: false
 				},
 				rangeSelector: {
-					inputEnabled: false,
+					inputEnabled: true,
+					allButtonsEnabled: true,
 					selected: 2,
 					buttons: [{
 						type: 'minute',
@@ -57,7 +60,16 @@
 						type: 'month',
 						count: 1,
 						text: '1m'
-					}, {
+					},{
+						type: 'month',
+						count: 3,
+						text: '3m'
+					},{
+						type: 'month',
+						count: 6,
+						text: '6m'
+					},
+					{
 						type: 'year',
 						count: 1,
 						text: '1y'
