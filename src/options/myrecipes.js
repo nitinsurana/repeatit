@@ -65,7 +65,7 @@ define([
         },
         render: function () {
             var self = this;
-            this.$el.html(_.template(recipesTemplate)());
+            this.$el.html(_.template(recipesTemplate)({data: {placeholder: "Search my recipes..."}}));
             _.each(this.collection.models, function (model) {
                 if (model.get('title').trim().length > 0) {
                     self.$("#accordion").append(_.template(accordionChoiceTemplate)({data: model.toJSON()}));

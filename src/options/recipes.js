@@ -24,7 +24,7 @@ define([
         },
         render: function () {
             var self = this;
-            this.$el.html(_.template(recipesTemplate)());
+            this.$el.html(_.template(recipesTemplate)({data: {placeholder: "Search all recipes..."}}));
             _.each(this.collection.models, function (model) {
                 if (model.get('title').trim().length > 0) {
                     if (model.get('parameterSets')) {
