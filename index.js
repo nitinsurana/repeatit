@@ -4,6 +4,7 @@ var express = require('express'),
     exphbs = require('express-handlebars'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
+    _ = require('underscore'),
     app = express()
         .use(bodyParser.json()) // support json encoded bodies
         .use(bodyParser.urlencoded({extended: true})) // support encoded bodies
@@ -21,7 +22,7 @@ var express = require('express'),
         internalIp: String,
         externalIp: String,
         totalTime: Number,
-        userId:String
+        userId: String
     }),
     Usage = mongoose.model('Usage', Schema);
 
@@ -29,9 +30,9 @@ var recordingSchema = new mongoose.Schema({
         steps: Array,
         recipeId: String,
         userId: String,
-        project:String,
-        title:String,
-        id:String
+        project: String,
+        title: String,
+        id: String
     }),
     Recording = mongoose.model('Recording', recordingSchema);
 
@@ -78,10 +79,30 @@ app.get('/', function (req, res) {
     })
     .post('/record', function (req, res) {
         var recording = new Recording(req.body);
-        recording.id = recording.recipeId;
-        recording.save(function (err) {
-            res.status(200).json(recording);
-            //io.emit('new recording',recording.toJSON());
+        Recording.findById(recording._id && recording._id.toString(), function (err, savedRecording) {
+            if (!savedRecording) {
+                savedRecording = recording;
+            } else {
+                savedRecording.steps = recording.steps;
+                savedRecording.recipeId = recording.recipeId;
+                savedRecording.userId = recording.userId;
+                savedRecording.project = recording.project;
+                savedRecording.title = recording.title;
+                savedRecording.id = recording.recipeId;
+            }
+            savedRecording.save(function (err) {
+                res.status(200).json(savedRecording);
+            });
+        });
+    })
+    .get('/del-record', function (req, res) {
+        Recording.findById(req.query._id, function (err, recording) {
+            if (recording && recording.userId === req.query.userId) {
+                recording.remove();
+                res.status(200).json({status:true});
+            } else {
+                res.status(403).json({status:false});
+            }
         });
     })
     .get('/recordings', function (req, res) {
