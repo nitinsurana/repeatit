@@ -67,7 +67,7 @@ define([
         findRecipes: function (searchTerm) {
             var self = this;
             _.each(this.collection.models, function (model) {
-                if (model.get('title').toLowerCase().indexOf(searchTerm) > -1 || model.get('description').toLowerCase().indexOf(searchTerm) > -1) {
+                if (model.get('title').toLowerCase().indexOf(searchTerm) > -1) {
                     self.$("#recipe-" + model.get('id')).show();
                 } else {
                     self.$("#recipe-" + model.get('id')).hide();
