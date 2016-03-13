@@ -29,7 +29,25 @@ define([
         },
         events: {
             "keyup #search": "searchOnKeyup",
-            "submit form[data-recipeid]": "saveRecipe"
+            "submit form[data-recipeid]": "saveRecipe",
+            "click #delete": 'deleteRecipe'
+        },
+        deleteRecipe: function (e) {
+            var $target = $(e.currentTarget),
+                confirm = window.confirm("Are you sure you want to delete it ?");
+            if (confirm) {
+                chrome.runtime.sendMessage({
+                    origin: 'repeatit',
+                    action: 'deleteRecording',
+                    _id: $target.closest('form').find("input[name='_id']").val()
+                }, function (response) {
+                    if (response.status) {
+                        $target.closest('.panel-default').remove();
+                    } else {
+                        alert("Something went wrong, please try again later.");
+                    }
+                });
+            }
         },
         saveRecipe: function (e) {
             e.preventDefault();

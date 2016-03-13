@@ -107,17 +107,25 @@
             }
         });
     });
-    chrome.storage.sync.get('userId', function (r) {
-        var userId = r.userId;
-        $.ajax({
-            url: serverUrl + '/recordings',
-            data: {
-                userId: userId
-            }
-        }).done(function (response) {
-            updateRecipeList(response);
+    var fetchUserRecordings = function () {
+        //Remove existing user recordings
+        var recipelist = _.filter(window.background.recipelist, function (r) {
+            return r.project !== 'recording';
         });
-    });
+        window.background.recipelist = recipelist;
+        chrome.storage.sync.get('userId', function (r) {
+            var userId = r.userId;
+            $.ajax({
+                url: serverUrl + '/recordings',
+                data: {
+                    userId: userId
+                }
+            }).done(function (response) {
+                updateRecipeList(response);
+            });
+        });
+    };
+    fetchUserRecordings();
 
 
     var updateRecipeList = function (recipes) {
@@ -163,6 +171,9 @@
                     case 'updateRecording':
                         sendRecordingToMongo(sendResponse, message.recipe);
                         break;
+                    case 'deleteRecording':
+                        deleteRecordingFromMongo(sendResponse, message._id);
+                        break;
                 }
                 return true;
             } else {
@@ -196,6 +207,29 @@
         sendResponse(response);
     };
 
+
+    var deleteRecordingFromMongo = function (sendResponse, _id) {
+        chrome.storage.sync.get('userId', function (r) {
+            var userId = r.userId;
+            $.ajax({
+                url: serverUrl + '/del-record',
+                data: {
+                    _id: _id,
+                    userId: userId
+                }
+            }).done(function (response) {
+                console.log("Deleted recording from server : ");
+                console.log(response);
+                sendResponse({status: true});
+            }).fail(function (response) {
+                console.log("Unable to delete recording on server : ");
+                console.log(response);
+                sendResponse({status: false});
+            }).always(function () {
+                fetchUserRecordings();
+            });
+        });
+    };
 
     var sendRecordingToMongo = function (sendResponse, recipe) {
         chrome.storage.sync.get('userId', function (r) {
