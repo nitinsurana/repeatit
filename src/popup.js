@@ -52,7 +52,7 @@ $(function () {
                             code: code
                         });
                         chrome.storage.sync.get('settings', function (r) {
-                            if (!r.settings.newWindow) {        //Close the extension if newWindow is false
+                            if (!r.settings.newWindow && r.settings.autoClose) {        //Close extension if it's opened in popup and autoClose:true
                                 window.close();
                             }
                         });
