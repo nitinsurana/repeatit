@@ -107,18 +107,35 @@
             }
         });
     });
+    chrome.storage.sync.get('userId', function (r) {
+        var userId = r.userId;
+        $.ajax({
+            url: serverUrl + '/recordings',
+            data: {
+                userId: userId
+            }
+        }).done(function (response) {
+            updateRecipeList(response);
+        });
+    });
+
 
     var updateRecipeList = function (recipes) {
+        if (!Array.isArray(recipes)) {
+            recipes = [recipes];
+        }
         var recipelist = window.background.recipelist || [];
         if (recipelist.length === 0) {
             recipelist = recipes;
         } else {
             _.each(recipes, function (recipeToMerge) {
-                var found = _.find(recipelist, function (r) {
+                var foundRecipe = _.find(recipelist, function (r) {
                     return r.recipeId === recipeToMerge.recipeId;
                 });
-                if (!found) {
+                if (!foundRecipe) {
                     recipelist.push(recipeToMerge);
+                } else {
+                    _.extend(foundRecipe, recipeToMerge);
                 }
             });
         }
@@ -130,13 +147,21 @@
             if (message.origin === 'repeatit') {
                 switch (message.action) {
                     case 'recording':       //recording has been stopped
-                        sendRecordingToMongo(sendResponse, message.steps, message.recipeId);
+                        var recipe = {
+                            steps: message.steps,
+                            recipeId: message.recipeId,
+                            title: message.recipeId
+                        };
+                        sendRecordingToMongo(sendResponse, recipe);
                         break;
                     case 'fetchRecordings':
                         sendRecordingsToTab(sendResponse);
                         break;
                     case 'recordUsage':
                         recordRecipeUsage(sendResponse, message);
+                        break;
+                    case 'updateRecording':
+                        sendRecordingToMongo(sendResponse, message.recipe);
                         break;
                 }
                 return true;
@@ -164,36 +189,26 @@
     };
 
     var sendRecordingsToTab = function (sendResponse) {
-        chrome.storage.sync.get('userId', function (r) {
-            var userId = r.userId;
-            $.ajax({
-                url: serverUrl + '/recordings',
-                data: {
-                    userId: userId
-                }
-            }).done(function (response) {
-                updateRecipeList(response);
-                sendResponse(response);
-            });
+        var recipelist = window.background.recipelist;
+        var response = _.filter(recipelist, function (r) {
+            return r.project === 'recording';
         });
+        sendResponse(response);
     };
 
-    var sendRecordingToMongo = function (sendResponse, steps, recipeId) {
+
+    var sendRecordingToMongo = function (sendResponse, recipe) {
         chrome.storage.sync.get('userId', function (r) {
-            var userId = r.userId;
+            recipe.userId = recipe.userId || r.userId;
+            recipe.project = recipe.project || "recording";
             $.ajax({
                 url: serverUrl + '/record',
                 type: 'post',
-                data: {
-                    steps: steps,
-                    recipeId: recipeId,
-                    title: recipeId,
-                    userId: userId,
-                    project: "recording"
-                }
-            }).done(function () {
+                data: recipe
+            }).done(function (response) {
                 console.log("Recipe saved on server");
                 sendResponse({status: true});
+                updateRecipeList(response);
             }).fail(function () {
                 console.log("Unable to save recipe on server");
                 sendResponse({status: false});

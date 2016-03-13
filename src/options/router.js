@@ -39,6 +39,13 @@ define([
                     el: $("<div/>").appendTo(this.shellView.$("#content"))
                 });
             }, this));
+        },
+        myrecipes: function () {
+            require(['myrecipes'], $.proxy(function (View) {
+                this.currentView = new View({
+                    el: $("<div/>").appendTo(this.shellView.$("#content"))
+                });
+            }, this));
         }
     });
 });
