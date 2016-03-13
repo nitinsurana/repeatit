@@ -12,11 +12,31 @@ define([
         },
         render: function () {
             chrome.storage.sync.get('settings', $.proxy(function (r) {
-                this.$el.html(_.template(SettingsTemplate)({data: r.settings}));
+                var model = r.settings;
+                chrome.storage.sync.get('userId', $.proxy(function (u) {
+                    model.userId = u.userId;
+                    this.$el.html(_.template(SettingsTemplate)({data: model}));
+                }, this));
             }, this));
         },
         events: {
-            "click #saveSettings": "saveSettings"
+            "click #saveSettings": "saveSettings",
+            "click #userId": "selectUserId"
+        },
+        selectUserId: function () {
+            var doc = window.document,
+                text = doc.getElementById('userId'), range, selection;
+            if (doc.body.createTextRange) {
+                range = document.body.createTextRange();
+                range.moveToElementText(text);
+                range.select();
+            } else if (window.getSelection) {
+                selection = window.getSelection();
+                range = document.createRange();
+                range.selectNodeContents(text);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
         },
         saveSettings: function (e) {
             var self = this;

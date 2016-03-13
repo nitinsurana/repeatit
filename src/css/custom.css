@@ -90,6 +90,12 @@ section {
 }
 
 /* Options Html - Start */
+#settings-form ul li{
+    border-bottom: 2px solid grey;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
 .parameter-sets label{
     text-transform: capitalize;
 }
