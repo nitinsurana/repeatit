@@ -36,13 +36,10 @@ var recordingSchema = new mongoose.Schema({
     }),
     Recording = mongoose.model('Recording', recordingSchema);
 
-/*
- * MONGOLAB_URI=mongodb://heroku_0k8m5frr:vkmas4ao9nllcp860810556rjl@ds055945.mongolab.com:55945/heroku_0k8m5frr
- */
-//mongoose.connect('mongodb://localhost:27017/repeatit', function (error) {
-mongoose.connect('mongodb://heroku_0k8m5frr:vkmas4ao9nllcp860810556rjl@ds055945.mongolab.com:55945/heroku_0k8m5frr', function (error) {
+var MONGO_CONNECTION_URI = process.env.MONGO_CONNECTION_URI || 'mongodb://heroku_0k8m5frr:vkmas4ao9nllcp860810556rjl@ds055945.mongolab.com:55945/heroku_0k8m5frr';
+mongoose.connect(MONGO_CONNECTION_URI, function (error) {
     if (error) console.error(error);
-    else console.log('mongo connected');
+    else console.log('Mongo Connected : ' + MONGO_CONNECTION_URI);
 });
 
 
@@ -99,9 +96,9 @@ app.get('/', function (req, res) {
         Recording.findById(req.query._id, function (err, recording) {
             if (recording && recording.userId === req.query.userId) {
                 recording.remove();
-                res.status(200).json({status:true});
+                res.status(200).json({status: true});
             } else {
-                res.status(403).json({status:false});
+                res.status(403).json({status: false});
             }
         });
     })
