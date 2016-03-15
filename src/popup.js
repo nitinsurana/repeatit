@@ -112,7 +112,7 @@ $(function () {
     $results.on('click', 'li', function (e) {
         var recipeid = $(e.currentTarget).data('recipeid');
         var setName = $(e.target).data('setname');
-        if ($(e.currentTarget).find("button.btn-xs").length > 0 && !setName) {      //Don't run recipe with require paramSets without a paramSet (click on btn instead of li)
+        if ($(e.currentTarget).find("span.ri-param-badge").length > 0 && !setName) {      //Don't run recipe, which require paramSets, without a paramSet (click on li instead of span)
             return;
         }
         runRecipe(recipeid, setName);
