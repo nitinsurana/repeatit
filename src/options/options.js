@@ -6,7 +6,9 @@ requirejs.config({
         'underscore': '/js/underscore-min',
         'backbone': '/js/backbone-min',
         'bootstrap': '/js/bootstrap.min',
-        'text': '/js/text.min'
+        'text': '/js/text.min',
+        'select2': '/js/select2.min',
+        'jqueryui':'/js/jquery-ui.min'
     },
     shim: {
         'bootstrap': {
@@ -17,7 +19,7 @@ requirejs.config({
 
 requirejs.onError = function (e) {
     'use strict';
-    console.error(e);
+    console.error(e.stack);
 };
 
 require(['jquery', 'router'], function ($, Router) {

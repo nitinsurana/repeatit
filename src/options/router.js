@@ -46,6 +46,13 @@ define([
                     el: $("<div/>").appendTo(this.shellView.$("#content"))
                 });
             }, this));
+        },
+        generator: function () {
+            require(['generator'], $.proxy(function (View) {
+                this.currentView = new View({
+                    el: $("<div/>").appendTo(this.shellView.$("#content"))
+                });
+            }, this));
         }
     });
 });

@@ -11,6 +11,16 @@ body, section {
     overflow-x: hidden;
 }
 
+body.options {
+    width: 100%;
+    height: 100%;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+}
+
 .ri-param-badge {
     margin: 2px 5px 2px 0px;
     cursor: pointer;
@@ -37,6 +47,7 @@ body, section {
 .popup-body {
     padding: 0px 3px;
 }
+
 .popup-body .header-section {
     height: 30px;
     margin-bottom: 3px;
@@ -90,30 +101,77 @@ section {
 }
 
 /* Options Html - Start */
-#settings-form ul li{
+#settings-form ul li {
     border-bottom: 2px solid grey;
     margin-bottom: 20px;
     padding-bottom: 20px;
 }
 
-.parameter-sets label{
+.parameter-sets label {
     text-transform: capitalize;
 }
+
 .panel-title a {
     display: block;
     padding: 10px 15px;
     margin: -10px -15px;
 }
-.label-edulastic{
+
+.label-edulastic {
     background-color: #5cb85c;
 }
-.label-ls{
+
+.label-ls {
     background-color: #428bca;
 }
-.label-glider{
+
+.label-glider {
     background-color: #31b0d5;
 }
-.label-recording{
+
+.label-recording {
     background-color: #f0ad4e;
 }
+
 /* Options Html - Stop */
+
+/* Generator Page - Start */
+.generator-container div.sort-container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.generator-container .recipeItem {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.generator-container .recipeItem span{
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.generator-container span.removeStep{
+    color: #A42121;
+}
+
+
+.generator-container #recipe-form {
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 15px;
+}
+
+.generator-container .selection-placeholder {
+    padding: 10px;
+    border: 1px dashed;
+    background-color: lightyellow;
+    text-align: center;
+}
+
+.generator-container select.recipes {
+    width: 90%;
+}
+
+/* Generator Page - Stop */
