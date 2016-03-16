@@ -3,15 +3,15 @@
 
 
 
-## Installation ([Video](https://youtu.be/GqB_R2ODFH0))
+## ~~Installation ([Video](https://youtu.be/GqB_R2ODFH0))~~
 
-1. Visit extension home page - `https://github.com/nitinsurana/repeatit`
-2. Click on "Release" Tab.
-3. Download the latest version ".crx" file.
-4. Visit "chrome://extensions/" url in Google Chrome.
-5. Drag the downloaded .crx file to the extension page.
-6. A popup window will appear saying "Add RepeatIt", click on "Add Extension"
-7. A message will appear showing the extension has been added successfully.
+1. ~~Visit extension home page - `https://github.com/nitinsurana/repeatit`~~
+2. ~~Click on "Release" Tab.~~
+3. ~~Download the latest version ".crx" file.~~
+4. ~~Visit "chrome://extensions/" url in Google Chrome.~~
+5. ~~Drag the downloaded .crx file to the extension page.~~
+6. ~~A popup window will appear saying "Add RepeatIt", click on "Add Extension"~~
+7. ~~A message will appear showing the extension has been added successfully.~~
 
 
 
