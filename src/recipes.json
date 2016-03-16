@@ -87,6 +87,13 @@
     "type": "child"
   },
   {
+  	"id": "AddQuestionToPassageRecipe",
+	"title": "Add Question to Passage",
+	"project": "edulastic",
+	"description": "",
+	"type":"child"
+  },
+  {
     "id": "AttemptTextEntryRecipe",
     "title": "Attempt TextEntry question",
     "description":"",
@@ -303,7 +310,7 @@
   },
   {
     "id": "AddClassicQuestionToAssessmentRecipe",
-    "title": "Add Classic Question to Assessment",
+    "title": "Add Classic Question to Assessment/Passage",
     "description": "Adds a classic question to assessment being review (#assessmentReview/close)",
     "project": "edulastic",
     "version": "0.1",

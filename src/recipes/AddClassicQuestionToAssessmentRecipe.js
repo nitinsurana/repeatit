@@ -15,6 +15,15 @@
     ];
     var recipe = window.recipe.AddClassicQuestionToAssessmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
+		if($(".as-passage-preview-edit-button").length){
+			this.steps[0].recipeId = "AddQuestionToPassage";
+			this.steps[0].type = "recipe";
+			delete this.steps[0].selector;
+		}else{
+			this.steps[0].selector = "#assessments-back-button";
+			delete this.steps[0].recipeId;
+			delete this.steps[0].type ;
+		}
         switch (params.self.qtype) {
             case 120:
                 this.steps[1].recipeId = 'TrueFalseCreateRecipe';
