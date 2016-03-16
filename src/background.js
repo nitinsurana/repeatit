@@ -3,7 +3,7 @@
 
     window.background = {};
 
-    window.background.serverUrl = 'http://repeatit.herokuapp.com';
+    window.background.serverUrl = 'http://46.101.206.151:5000';
     //@ifdef DEBUG
     window.background.serverUrl = 'http://localhost:5000';
     //@endif
@@ -193,8 +193,10 @@
                 type: 'POST',
                 data: message
             }).done(function () {
+                console.log("Saved usage to Mongo");
                 sendResponse({status: true});
             }).fail(function () {
+                console.log("Unable to save usage to Mongo");
                 sendResponse({status: false});
             });
         });

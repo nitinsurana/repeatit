@@ -191,7 +191,7 @@ $(function () {
     });
 
     chrome.browserAction.getBadgeText({}, function (r) {
-        if (r === 'Rec') {      //if a recording is in progress and popup is re-opened
+        if (r === 'Rec') {      //If a recording is in progress and popup is re-opened
             $("#start-recording").addClass('disabled');
             $("#stop-recording").removeClass('disabled');
         }
