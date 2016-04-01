@@ -1,7 +1,7 @@
 # RepeatIt
 > A User Action Simulator Chrome Extension
 
-[![GitHub version](https://badge.fury.io/gh/nitinsurana%2Frepeatit.svg)](https://badge.fury.io/gh/nitinsurana%2Frepeatit) [![Build Status](https://travis-ci.org/chetanraj/repeatit.svg?branch=master)](https://travis-ci.org/chetanraj/repeatit)
+[![GitHub version](https://badge.fury.io/gh/nitinsurana%2Frepeatit.svg)](https://badge.fury.io/gh/nitinsurana%2Frepeatit) [![Build Status](https://travis-ci.org/nitinsurana/repeatit.svg?branch=master)](https://travis-ci.org/nitinsurana/repeatit)
 
 ## ~~Installation ([Video](https://youtu.be/GqB_R2ODFH0))~~
 
