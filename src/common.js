@@ -46,7 +46,7 @@
         var r = options.find(function (recipe) {
             return recipe._id === recipeId;
         });
-        return r.pSets.find && r.pSets.find(function (pset) {
+        return r.pSets && r.pSets.find && r.pSets.find(function (pset) {
                 return pset.title === setName;
             }).params;
     };

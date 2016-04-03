@@ -484,6 +484,15 @@
           "qtype": 116
         }
       }
+    ],
+    "dependsOn": [
+      "AddQuestionToPassageRecipe",
+      "TrueFalseCreateRecipe",
+      "TextEntryCreateRecipe",
+      "EssayCreateRecipe",
+      "TextDropdownCreateRecipe",
+      "MultipleSelectionCreateRecipe",
+      "MultipleChoiceCreateRecipe"
     ]
   },
   {
