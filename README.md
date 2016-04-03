@@ -35,7 +35,6 @@ for every recipe with screenshots and if possible with videos showing how does t
 17. Add ability in the UI to add multiple param-sets for a particular Recipe & then use one at a time. (Login - Instructor, Student, Admin)
 18. Add created_by and author_link to original author of Recipe and show them in popup.html
 19. In popup.html show recently used recipes at the top with search working in the same order.
-21. Add File-A-Bug feature in extension popup
 23. Create a screencast for every recipe showing how the recipe works and what is the pre-requisite.
 24. Add ability to add recipe description in html (add pre-requisities here)
 26. Create a child-recipe to modify points and use it internally in FillQuestionRecipe
