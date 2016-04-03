@@ -1,0 +1,22 @@
+<div class="recipeItem" data-order="<%-order%>">
+    <div class="row">
+        <div class="col-2">
+            <span class="move pull-left"><i class="glyphicon glyphicon-move"></i></span>
+        </div>
+        <div class="col-4">
+            <%-title%>
+        </div>
+        <div class="col-4">
+            <%if(typeof pSets !=='undefined'){%>
+            <select class="pSet form-control">
+                <% _.each(pSets,function(item){ %>
+                <option value="<%-item.title%>" <%-typeof pSet!==undefined && pSet===item.title?'selected':''%>><%-item.title%></option>
+                <% }); %>
+            </select>
+            <%}%>
+        </div>
+        <div class="col-2">
+            <span data-tooltip title="Delete" class="removeStep pull-right"><i class="glyphicon glyphicon-remove"></i></span>
+        </div>
+    </div>
+</div>

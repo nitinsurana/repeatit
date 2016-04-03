@@ -1,11 +1,10 @@
 <div class="generator-container">
     <form id="recipe-form" class="form-horizontal">
-        <input type="hidden" name="_id" value="<%-data._id%>"/>
         <div class="form-group">
-            <label for="title" class="col-2 control-label">Recipe Title</label>
+            <label class="col-2 control-label">Recipe Title</label>
 
             <div class="col-10">
-                <input type="text" class="form-control" id="title" name="title" placeholder="Recipe Name..." value="<%-data.title%>">
+                <input type="text" class="form-control flowRecipeTitle" name="flowRecipeTitle" placeholder="Recipe Name..." value="<%-data.title%>">
             </div>
         </div>
         <div class="form-group step-container">

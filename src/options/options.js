@@ -8,7 +8,8 @@ requirejs.config({
         'bootstrap': '/js/bootstrap.min',
         'text': '/js/text.min',
         'select2': '/js/select2.min',
-        'jqueryui':'/js/jquery-ui.min'
+        'jqueryui':'/js/jquery-ui.min',
+        'marionette':'/js/backbone.marionette.js'
     },
     shim: {
         'bootstrap': {

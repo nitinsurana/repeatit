@@ -140,7 +140,7 @@
         } else {
             _.each(recipes, function (recipeToMerge) {
                 var foundRecipe = _.find(recipelist, function (r) {
-                    return r.recipeId === recipeToMerge.recipeId;
+                    return r._id === recipeToMerge._id;
                 });
                 if (!foundRecipe) {
                     recipelist.push(recipeToMerge);
@@ -159,8 +159,8 @@
                     case 'recording':       //recording has been stopped
                         var recipe = {
                             steps: message.steps,
-                            recipeId: message.recipeId,
-                            title: message.recipeId
+                            _id: message._id,
+                            title: message.title
                         };
                         sendRecordingToMongo(sendResponse, recipe);
                         break;
@@ -245,7 +245,7 @@
                 data: recipe
             }).done(function (response) {
                 console.log("Recipe saved on server");
-                sendResponse({status: true});
+                sendResponse({status: true, recipe: response});
                 updateRecipeList(response);
             }).fail(function () {
                 console.log("Unable to save recipe on server");
