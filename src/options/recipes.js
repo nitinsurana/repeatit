@@ -19,24 +19,24 @@ define([
         },
         events: {
             "keyup #search": "searchOnKeyup",
-            "click .parameter-sets .reset": "resetParameterSets",
-            "click .parameter-sets .save": "saveParameterSets"
+            "click .parameter-sets .reset": "resetpSets",
+            "click .parameter-sets .save": "savepSets"
         },
         render: function () {
             var self = this;
             this.$el.html(_.template(recipesTemplate)({data: {placeholder: "Search all recipes..."}}));
             _.each(this.collection.models, function (model) {
                 if (model.get('title').trim().length > 0) {
-                    if (model.get('parameterSets')) {
+                    if (model.get('pSets')) {
                         self.$("#accordion").append(_.template(accordionChoiceTemplate)({data: model.toJSON()}));
-                        self.renderParameterSets(model);
+                        self.renderpSets(model);
                         self.$("#recipe-" + model.get('id')).find(".actions").show();
                     }
                 }
             });
             this.$(".collapse:eq(0)").addClass('in');
         },
-        saveParameterSets: function (e) {
+        savepSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
             var $recipeContainer = this.$("#recipe-" + recipeId);
             var paramSets = {};
@@ -50,27 +50,27 @@ define([
                     paramSets[setName][paramKey] = paramValue;
                 });
             });
-            var storageKey = 'parameterSets-' + recipeId,
+            var storageKey = 'pSets-' + recipeId,
                 obj = {};
             obj[storageKey] = paramSets;
             chrome.storage.sync.set(obj, function () {
-                console.log("Saved ParameterSets to storage : " + recipeId);
+                console.log("Saved pSets to storage : " + recipeId);
                 window.alert("Parameters Saved");
             });
         },
-        resetParameterSets: function (e) {
+        resetpSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
             var recipe = _.find(this.collection.toJSON(), function (recipe) {
                 return recipe.id === recipeId;
             });
-            var parameterSets = {};
-            parameterSets["parameterSets-" + recipe.id] = recipe.parameterSets;
-            chrome.storage.sync.set(parameterSets, function () {
-                console.log("Reset ParameterSets to default : " + recipe.id);
+            var pSets = {};
+            pSets["pSets-" + recipe.id] = recipe.pSets;
+            chrome.storage.sync.set(pSets, function () {
+                console.log("Reset pSets to default : " + recipe.id);
                 window.location.reload();       //Todo re-render of recipe accordion instead of reload
             });
-            //Todo code to reset parameterSets for the clicked recipe
-            //Remove from storage parameterSets-recipeId
+            //Todo code to reset pSets for the clicked recipe
+            //Remove from storage pSets-recipeId
             //Take from storage - recipelist
             //Save in storage
             //Render this particular recipe
@@ -93,16 +93,16 @@ define([
                 }
             });
         },
-        renderParameterSets: function (model) {
+        renderpSets: function (model) {
             var self = this,
-                storageKey = 'parameterSets-' + model.get('id'),
-                $parameterSets = self.$("#recipe-" + model.get('id') + " .parameter-sets ");
+                storageKey = 'pSets-' + model.get('id'),
+                $pSets = self.$("#recipe-" + model.get('id') + " .parameter-sets ");
 
             chrome.storage.sync.get(storageKey, function (m) {
                 var params = m[storageKey];
                 _.each(params, function (value, key) {
                     var tabTitle = '<li><a href="#parameterSet-' + model.get('id') + '-' + key + '" data-toggle="tab">' + key + '</a></li>';
-                    $parameterSets.find(".tabs-left").append(tabTitle);
+                    $pSets.find(".tabs-left").append(tabTitle);
 
                     var tabContent = _.template(parameterSetTemplate)({
                         data: {
@@ -110,10 +110,10 @@ define([
                             params: value
                         }
                     });
-                    $parameterSets.find(".tab-content").append(tabContent);
+                    $pSets.find(".tab-content").append(tabContent);
                 });
-                $parameterSets.find(".tabs-left li:first").addClass('active');
-                $parameterSets.find(".tab-content .tab-pane:first").addClass('active');
+                $pSets.find(".tabs-left li:first").addClass('active');
+                $pSets.find(".tab-content .tab-pane:first").addClass('active');
             });
         }
     });

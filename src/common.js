@@ -42,9 +42,19 @@
         return $result;
     };
 
-    window.recipe.RecipePlayer = function (recipe, params) {
+    var getRecipeParams = function (recipeId, setName, options) {
+        var r = options.find(function (recipe) {
+            return recipe._id === recipeId;
+        });
+        return r.pSets.find(function (pset) {
+            return pset.title === setName;
+        }).params;
+    };
+
+    window.recipe.RecipePlayer = function (recipe, setName, options) {
         var index = 0;
         var waitCount = 0;
+        typeof options === 'string' && (options = JSON.parse(window.decodeURIComponent(options)));
         window.recipe.usageTracker.recipeStart(recipe.getId());
         var play = function (steps, index) {
             if (index === steps.length) {
@@ -59,9 +69,9 @@
                 if (s.type === 'recipe') {
                     clearInterval(c);
                     waitCount = 0;
-                    var recipeToInject = window.recipe[s.recipeId];
+                    var recipeToInject = window.recipe[s._id];
                     //Todo convert below call to handle start promise success & failure
-                    recipeToInject.start.call(recipeToInject, processParams(s.params));
+                    recipeToInject.start.call(recipeToInject, processParams(getRecipeParams(recipeToInject.getId(), s.pSet, options)));
                     steps.splice.apply(steps, [index, 1].concat(recipeToInject.steps));
                     play(steps, index);
                 } else if (s.type === 'wait') {
@@ -153,7 +163,7 @@
             }
         };
 
-        recipe.start.call(recipe, processParams(params))
+        recipe.start.call(recipe, processParams(getRecipeParams(recipe.getId(), setName, options)))
             .done(function () {
                 play(recipe.steps.slice(), index);
                 //Using a copy of steps since at the run-time the recipe might contain other recipes as steps

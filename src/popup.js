@@ -18,14 +18,15 @@ $(function () {
                 "class": "col-12 controlled-text"
             }).html(recipelist[i].title);
             var $params = "";
-            if (recipelist[i].parameterSets && Object.keys(recipelist[i].parameterSets).length > 0) {
-                for (var setName in recipelist[i].parameterSets) {
-                    $params += "<span class='pull-right label label-primary ri-param-badge' data-setname='" + setName + "'>" + setName + "</span>";
-                }
+            if ("object" === typeof recipelist[i].pSets) {
+                recipelist[i].pSets.forEach(function (pset) {
+                    var setTitle = pset.title;
+                    $params += "<span class='pull-right label label-primary ri-param-badge' data-settitle='" + setTitle + "'>" + setTitle + "</span>";
+                });
             }
             $div.append($params);
             var $li = $("<li>", {
-                "data-recipeid": recipelist[i].id,
+                "data-recipeid": recipelist[i]._id,
                 "class": "row"
             }).html($div);
             $li.append($div);
@@ -63,54 +64,57 @@ $(function () {
         $(".nav a[data-project='" + defaultProject + "']").tab('show');
     });
 
-    var runRecipe = function (recipeId, paramSetName) {
+    var runRecipe = function (recipeId, pSetName) {
         var nn = function () {
             var s = document.createElement('script');
-            s.textContent = 'window.recipe.RecipePlayer(window.recipe["{recipe}"],"{params}")';
+            s.textContent = 'window.recipe.RecipePlayer(window.recipe["{id}"],"{set}","{options}")';
             (document.head || document.documentElement).appendChild(s);
             s.parentNode.removeChild(s);
         };
 
-        var storageKey = 'parameterSets-' + recipeId;
-        chrome.storage.sync.get(storageKey, function (result) {
-            var recipeParams = {
-                self: result[storageKey] && result[storageKey][paramSetName]
-            };
-            var promises = [];
-            for (var i in recipelist) {
-                var recipe = recipelist[i];
-                if (recipe.id === recipeId) {
-                    for (var j in recipe.children) {
-                        var childRecipeId = recipe.children[j];
-                        var defer = $.Deferred();
-                        promises.push(defer.promise());
+        var out = fetchRecurPSets(undefined, recipeId);
+        $.when.apply($, out.promises)
+            .then(function () {
+                var code = '(' + nn.toString();
+                code = code.replace('{id}', recipeId);
+                code = code.replace('{options}', window.encodeURIComponent(JSON.stringify(out.options)).replace(/'/g, ''));
+                code = code.replace('{set}', pSetName);
+                code = code + ')();';
+                executeScriptInCurrentTab(code);
+            });
+    };
 
-                        (function (childRecipeId, deferred) {
-                            var childStorageKey = 'parameterSets-' + childRecipeId;
-                            chrome.storage.sync.get(childStorageKey, function (childResult) {
-                                recipeParams[childRecipeId] = childResult[childStorageKey];      //all parameter-sets for child
-                                deferred.resolve();
-                            });
-                        })(childRecipeId, defer);
-                    }
-                    break;
-                }
-            }
-            $.when.apply($, promises)
-                .then(function () {
-                    var code = '(' + nn.toString().replace('{recipe}', recipeId).replace('{params}', window.encodeURIComponent(JSON.stringify(recipeParams)).replace('\'', '')) + ')();';
-                    executeScriptInCurrentTab(code);
-                });
+    var fetchRecurPSets = function (out, recipeId) {
+        out = out || {
+                promises: [],
+                options: []
+            };
+        var defer = $.Deferred();
+        out.promises.push(defer);
+        var storageKey = 'pSets-' + recipeId;
+        chrome.storage.sync.get(storageKey, function (result) {
+            var pSets = result[storageKey] || {};
+            out.options.push({_id: recipeId, pSets: pSets});
+            defer.resolve();
         });
+        var recipe = recipelist.find(function (r) {
+            return r._id === recipeId;
+        });
+        if (typeof recipe.dependsOn === 'object') {       //typeof array then
+            recipe.dependsOn.forEach(function (rId) {
+                fetchRecurPSets(out, rId);
+            });
+        }
+        return out;
     };
 
     $results.on('click', 'li', function (e) {
         var recipeid = $(e.currentTarget).data('recipeid');
-        var setName = $(e.target).data('setname');
-        if ($(e.currentTarget).find("span.ri-param-badge").length > 0 && !setName) {      //Don't run recipe, which require paramSets, without a paramSet (click on li instead of span)
+        var setTitle = $(e.target).data('settitle');
+        if ($(e.currentTarget).find("span.ri-param-badge").length > 0 && !setTitle) {      //Don't run recipe, which require paramSets, without a paramSet (click on li instead of span)
             return;
         }
-        runRecipe(recipeid, setName);
+        runRecipe(recipeid, setTitle);
     });
 
     $('#closePopup').click(function () {

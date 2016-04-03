@@ -1,17 +1,17 @@
 (function () {
     'use strict';
-	var id = "FillClassicQuestionRecipe";
+    var id = "FillClassicQuestionRecipe";
     var steps = [
         {
             type: 'recipe',
-            recipeId: '',
-            params: {}
+            _id: '',
+            pSet: "default"
         }
     ];
-    var recipe = window.recipe.FillClassicQuestionRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.FillClassicQuestionRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
         var defer = $.Deferred(),
-            recipeId,
+            _id,
             qtype = parseInt($("#questionType").val());
         if (window.isNaN(qtype)) {
             var msg = "Looks like you are not on any Classic Question authoring screen";
@@ -19,26 +19,26 @@
         } else {
             switch (qtype) {
                 case 120:
-                    recipeId = 'FillTrueFalseRecipe';
+                    _id = 'FillTrueFalseRecipe';
                     break;
                 case 125:
-                    recipeId = 'FillTextEntryRecipe';
+                    _id = 'FillTextEntryRecipe';
                     break;
                 case 123:
-                    recipeId = 'FillEssayRecipe';
+                    _id = 'FillEssayRecipe';
                     break;
                 case 129:
-                    recipeId = 'FillTextDropdownRecipe';
+                    _id = 'FillTextDropdownRecipe';
                     break;
                 case 122:
-                    recipeId = 'FillMultipleSelectionRecipe';
+                    _id = 'FillMultipleSelectionRecipe';
                     break;
                 case 116:
-                    recipeId = 'FillMultipleChoiceRecipe';
+                    _id = 'FillMultipleChoiceRecipe';
                     break;
             }
-            this.steps[0].recipeId = recipeId;
-            this.steps[0].params = params[recipeId][params.self.content];
+            this.steps[0]._id = _id;
+            this.steps[0].pSet = params.content;
         }
         return defer.resolve();
     };

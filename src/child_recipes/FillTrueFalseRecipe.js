@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-	var id = "FillTrueFalseRecipe";
+    var id = "FillTrueFalseRecipe";
     var steps = [
         {
             selector: '#question-raw-content',
@@ -12,11 +12,8 @@
         },
         {
             type: 'recipe',
-            recipeId: 'FillSolutionHintRecipe',
-            params: {
-                solution: "This is sample solution",
-                hint: "This is sample hint"
-            }
+            _id: 'FillSolutionHintRecipe',
+            pSet: "default"
         },
         {
             selector: '#saveQuestionDetails1',
@@ -24,7 +21,7 @@
         }
     ];
 
-    var recipe = window.recipe.FillTrueFalseRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.FillTrueFalseRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
         var defer = $.Deferred();
         if ($(this.steps[0].selector).length === 0) {

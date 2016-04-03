@@ -92,22 +92,23 @@
     }).done(function (response) {
         updateRecipeList(response);
         _.each(response, function (recipe) {
-            if (recipe.parameterSets) {
-                var storageKey = 'parameterSets-' + recipe.id,
-                    parameterSets = {};
-                parameterSets[storageKey] = recipe.parameterSets;
+            if (recipe.pSets) {
+                var storageKey = 'pSets-' + recipe._id,
+                    store = {};
+                store[storageKey] = recipe.pSets;
                 chrome.storage.sync.get(storageKey, function (result) {
                     if (!result[storageKey]) {
-                        chrome.storage.sync.set(parameterSets, function () {
-                            console.log("Saved ParameterSets to storage : " + recipe.id);
+                        chrome.storage.sync.set(store, function () {
+                            console.log("Saved pSets to storage : " + recipe._id);
                         });
                     } else {
-                        console.log("ParameterSets already found : " + recipe.id);
+                        console.log("pSets already found : " + recipe._id);
                     }
                 });
             }
         });
     });
+
     var fetchUserRecordings = function () {
         //Remove existing user recordings
         var recipelist = _.filter(window.background.recipelist, function (r) {
