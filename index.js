@@ -28,7 +28,7 @@ var express = require('express'),
 
 var recordingSchema = new mongoose.Schema({
         steps: Array,
-        recipeId: String,
+        dependsOn: Array,
         userId: String,
         project: String,
         title: String,
@@ -81,11 +81,10 @@ app.get('/', function (req, res) {
                 savedRecording = recording;
             } else {
                 savedRecording.steps = recording.steps;
-                savedRecording.recipeId = recording.recipeId;
+                savedRecording.dependsOn = recording.dependsOn;
                 savedRecording.userId = recording.userId;
                 savedRecording.project = recording.project;
                 savedRecording.title = recording.title;
-                savedRecording.id = recording.recipeId;
             }
             savedRecording.save(function (err) {
                 res.status(200).json(savedRecording);
