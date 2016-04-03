@@ -46,9 +46,9 @@
         var r = options.find(function (recipe) {
             return recipe._id === recipeId;
         });
-        return r.pSets.find(function (pset) {
-            return pset.title === setName;
-        }).params;
+        return r.pSets.find && r.pSets.find(function (pset) {
+                return pset.title === setName;
+            }).params;
     };
 
     window.recipe.RecipePlayer = function (recipe, setName, options) {

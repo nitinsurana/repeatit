@@ -1,9 +1,9 @@
 (function () {
     'use strict';
-    var id = "AddClassicQuestionToAssessmentRecipe";
+    var id = "CreateAssessmentWithClassicQuestionRecipe";
     var steps = [
         {
-            selector: '#assessments-back-button'
+            type: 'skip'
         },
         {
             type: 'recipe',
@@ -11,17 +11,13 @@
             pSet: ""
         }
     ];
-    var recipe = window.recipe.AddClassicQuestionToAssessmentRecipe = new window.recipe.Recipe(steps, id);
+    var recipe = window.recipe.CreateAssessmentWithClassicQuestionRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
-        if ($(".as-passage-preview-edit-button").length) {
-            this.steps[0]._id = "AddQuestionToPassage";
-            this.steps[0].type = "recipe";
-            delete this.steps[0].selector;
-        } else {
-            this.steps[0].selector = "#assessments-back-button";
-            delete this.steps[0]._id;
-            delete this.steps[0].type;
-        }
+        this.steps[0] = {
+            type: 'recipe',
+            _id: 'CreateAssessmentRecipe',
+            pSet: ""
+        };
         switch (params.qtype) {
             case 120:
                 this.steps[1]._id = 'TrueFalseCreateRecipe';

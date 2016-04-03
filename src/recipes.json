@@ -319,7 +319,11 @@
     "description": "Creates Assessment with one TrueFalse question",
     "project": "edulastic",
     "version": "0.1",
-    "type": "child"
+    "type": "child",
+    "dependsOn":[
+      "OpenQuestionAuthoringRecipe",
+      "FillTrueFalseRecipe"
+    ]
   },
   {
     "_id": "TextEntryCreateRecipe",
@@ -327,7 +331,11 @@
     "description": "Creates Assessment with one TextEntry question",
     "project": "edulastic",
     "version": "0.1",
-    "type": "child"
+    "type": "child",
+    "dependsOn":[
+      "OpenQuestionAuthoringRecipe",
+      "FillTextEntryRecipe"
+    ]
   },
   {
     "_id": "EssayCreateRecipe",
@@ -335,7 +343,11 @@
     "description": "Creates Assessment with one Essay question",
     "project": "edulastic",
     "version": "0.1",
-    "type": "child"
+    "type": "child",
+    "dependsOn":[
+      "OpenQuestionAuthoringRecipe",
+      "FillEssayRecipe"
+    ]
   },
   {
     "_id": "TextDropdownCreateRecipe",
@@ -343,7 +355,11 @@
     "description": "Creates Assessment with one TextDropdown question",
     "project": "edulastic",
     "version": "0.1",
-    "type": "child"
+    "type": "child",
+    "dependsOn":[
+      "OpenQuestionAuthoringRecipe",
+      "FillTextDropdownRecipe"
+    ]
   },
   {
     "_id": "MultipleSelectionCreateRecipe",
@@ -351,7 +367,11 @@
     "description": "Creates Assessment with one MultipleSelection question",
     "project": "edulastic",
     "version": "0.1",
-    "type": "child"
+    "type": "child",
+    "dependsOn":[
+      "OpenQuestionAuthoringRecipe",
+      "FillMultipleSelectionRecipe"
+    ]
   },
   {
     "_id": "MultipleChoiceCreateRecipe",
@@ -359,7 +379,11 @@
     "description": "Creates Assessment with one MultipleChoice question",
     "project": "edulastic",
     "version": "0.1",
-    "type": "child"
+    "type": "child",
+    "dependsOn":[
+      "OpenQuestionAuthoringRecipe",
+      "FillMultipleChoiceRecipe"
+    ]
   },
   {
     "_id": "CreateAssessmentWithClassicQuestionRecipe",
@@ -405,6 +429,15 @@
           "qtype": 116
         }
       }
+    ],
+    "dependsOn": [
+      "CreateAssessmentRecipe",
+      "TrueFalseCreateRecipe",
+      "TextEntryCreateRecipe",
+      "EssayCreateRecipe",
+      "TextDropdownCreateRecipe",
+      "MultipleSelectionCreateRecipe",
+      "MultipleChoiceCreateRecipe"
     ]
   },
   {
