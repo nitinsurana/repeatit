@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-	var id = "TrueFalseCreateRecipe";
+    var id = "TrueFalseCreateRecipe";
     var steps = [
         {
             type: 'wait',
@@ -8,28 +8,24 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenQuestionAuthoringRecipe',
-            params: {
-                qtype: 120
-            }
+            _id: 'OpenQuestionAuthoringRecipe',
+            pSet: "tf"
         },
         {
             type: 'recipe',
-            recipeId: 'FillTrueFalseRecipe',
-            params: {
-                questionTitle: 'Creating Normal True False {datetime}'
-            }
+            _id: 'FillTrueFalseRecipe',
+            pSet: "default"
         },
         {
             selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    var recipe = window.recipe.TrueFalseCreateRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.TrueFalseCreateRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
         if (params && params.assessment) {
             this.steps[0] = {
                 type: 'recipe',
-                recipeId: 'CreateAssessmentRecipe'
+                _id: 'CreateAssessmentRecipe'
             };
         } else {
             this.steps[0] = {

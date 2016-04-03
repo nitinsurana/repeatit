@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-	var id = "PassageCreateRecipe";
+    var id = "PassageCreateRecipe";
     var steps = [
         {
             type: 'recipe',
-            recipeId: 'CreateAssessmentRecipe'
+            _id: 'CreateAssessmentRecipe'
         },
         {
             selector: 'span.lsm-create-btn:first'
@@ -40,17 +40,13 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenQuestionAuthoringRecipe',
-            params: {
-                qtype: 120
-            }
+            _id: 'OpenQuestionAuthoringRecipe',
+            pSet: "tf"
         },
         {
             type: 'recipe',
-            recipeId: 'FillTrueFalseRecipe',
-            params: {
-                questionTitle: 'p0 {datetime}'
-            }
+            _id: 'FillTrueFalseRecipe',
+            pSet: "default"
         },
         {
             selector: '.as-question-editor-back'
@@ -61,17 +57,13 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenQuestionAuthoringRecipe',
-            params: {
-                qtype: 120
-            }
+            _id: 'OpenQuestionAuthoringRecipe',
+            pSet: "tf"
         },
         {
             type: 'recipe',
-            recipeId: 'FillTrueFalseRecipe',
-            params: {
-                questionTitle: 'p1 {datetime}'
-            }
+            _id: 'FillTrueFalseRecipe',
+            pSet: "default"
         },
         {
             selector: '.as-question-editor-back'
@@ -82,22 +74,18 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenQuestionAuthoringRecipe',
-            params: {
-                qtype: 120
-            }
+            _id: 'OpenQuestionAuthoringRecipe',
+            pSet: "tf"
         },
         {
             type: 'recipe',
-            recipeId: 'FillTrueFalseRecipe',
-            params: {
-                questionTitle: 'p2 {datetime}'
-            }
+            _id: 'FillTrueFalseRecipe',
+            pSet: "default"
         },
         {
             selector: '.as-question-editor-back'
         }
     ];
 
-    var recipe = window.recipe.PassageCreateRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.PassageCreateRecipe = new window.recipe.Recipe(steps, id);
 })();

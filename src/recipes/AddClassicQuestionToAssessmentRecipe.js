@@ -7,7 +7,7 @@
         },
         {
             type: 'recipe',
-            recipeId: '',
+            _id: '',
             params: {
                 assessment: false
             }
@@ -16,32 +16,32 @@
     var recipe = window.recipe.AddClassicQuestionToAssessmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
 		if($(".as-passage-preview-edit-button").length){
-			this.steps[0].recipeId = "AddQuestionToPassage";
+			this.steps[0]._id = "AddQuestionToPassage";
 			this.steps[0].type = "recipe";
 			delete this.steps[0].selector;
 		}else{
 			this.steps[0].selector = "#assessments-back-button";
-			delete this.steps[0].recipeId;
+			delete this.steps[0]._id;
 			delete this.steps[0].type ;
 		}
         switch (params.self.qtype) {
             case 120:
-                this.steps[1].recipeId = 'TrueFalseCreateRecipe';
+                this.steps[1]._id = 'TrueFalseCreateRecipe';
                 break;
             case 125:
-                this.steps[1].recipeId = 'TextEntryCreateRecipe';
+                this.steps[1]._id = 'TextEntryCreateRecipe';
                 break;
             case 123:
-                this.steps[1].recipeId = 'EssayCreateRecipe';
+                this.steps[1]._id = 'EssayCreateRecipe';
                 break;
             case 129:
-                this.steps[1].recipeId = 'TextDropdownCreateRecipe';
+                this.steps[1]._id = 'TextDropdownCreateRecipe';
                 break;
             case 122:
-                this.steps[1].recipeId = 'MultipleSelectionCreateRecipe';
+                this.steps[1]._id = 'MultipleSelectionCreateRecipe';
                 break;
             case 116:
-                this.steps[1].recipeId = 'MultipleChoiceCreateRecipe';
+                this.steps[1]._id = 'MultipleChoiceCreateRecipe';
                 break;
         }
         return $.Deferred().resolve();

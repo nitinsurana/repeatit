@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-	var id = "FillMultipleSelectionRecipe";
+    var id = "FillMultipleSelectionRecipe";
     var steps = [
         {
             selector: '#question-ms-raw-content',
@@ -34,11 +34,8 @@
         },
         {
             type: 'recipe',
-            recipeId: 'FillSolutionHintRecipe',
-            params: {
-                solution: "This is sample solution",
-                hint: "This is sample hint"
-            }
+            _id: 'FillSolutionHintRecipe',
+            pSet: "default"
         },
         {
             selector: '#saveQuestionDetails1',
@@ -46,7 +43,7 @@
         }
     ];
 
-    var recipe = window.recipe.FillMultipleSelectionRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.FillMultipleSelectionRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
         this.steps[0].value = params.questionTitle;
 

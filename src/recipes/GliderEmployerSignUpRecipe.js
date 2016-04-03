@@ -5,15 +5,15 @@
   var steps = [
     {
       type: 'recipe',
-      recipeId: 'SignUpFlowFillCompanyDetailsRecipe'
+      _id: 'SignUpFlowFillCompanyDetailsRecipe'
     },
     {
       type: 'recipe',
-      recipeId: "SignUpFlowYourRoleRecipe"
+      _id: "SignUpFlowYourRoleRecipe"
     },
     {
       type: 'recipe',
-      recipeId: "SignUpFlowFillSignUpPageRecipe",
+      _id: "SignUpFlowFillSignUpPageRecipe",
       params: {}
     }
   ];

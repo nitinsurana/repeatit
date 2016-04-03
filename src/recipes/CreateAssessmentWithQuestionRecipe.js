@@ -4,7 +4,7 @@
     var steps = [
         {
             type: 'recipe',
-            recipeId: '',
+            _id: '',
             params: {
                 assessment: true
             }
@@ -14,22 +14,22 @@
     recipe.start = function (params) {
         switch (params.self.qtype) {
             case 120:
-                this.steps[0].recipeId = 'TrueFalseCreateRecipe';
+                this.steps[0]._id = 'TrueFalseCreateRecipe';
                 break;
             case 125:
-                this.steps[0].recipeId = 'TextEntryCreateRecipe';
+                this.steps[0]._id = 'TextEntryCreateRecipe';
                 break;
             case 123:
-                this.steps[0].recipeId = 'EssayCreateRecipe';
+                this.steps[0]._id = 'EssayCreateRecipe';
                 break;
             case 129:
-                this.steps[0].recipeId = 'TextDropdownCreateRecipe';
+                this.steps[0]._id = 'TextDropdownCreateRecipe';
                 break;
             case 122:
-                this.steps[0].recipeId = 'MultipleSelectionCreateRecipe';
+                this.steps[0]._id = 'MultipleSelectionCreateRecipe';
                 break;
             case 116:
-                this.steps[0].recipeId = 'MultipleChoiceCreateRecipe';
+                this.steps[0]._id = 'MultipleChoiceCreateRecipe';
                 break;
         }
         return $.Deferred().resolve();

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-	var id = "TextEntryCreateRecipe";
+    var id = "TextEntryCreateRecipe";
     var steps = [
         {
             type: 'wait',
@@ -8,28 +8,24 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenQuestionAuthoringRecipe',
-            params: {
-                qtype: 125
-            }
+            _id: 'OpenQuestionAuthoringRecipe',
+            pSet: "te"
         },
         {
             type: 'recipe',
-            recipeId: 'FillTextEntryRecipe',
-            params: {
-                questionTitle: 'Creating Normal Text Entry Question - {datetime}'
-            }
+            _id: 'FillTextEntryRecipe',
+            pSet: "te"
         },
         {
             selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    var recipe = window.recipe.TextEntryCreateRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.TextEntryCreateRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
         if (params && params.assessment) {
             this.steps[0] = {
                 type: 'recipe',
-                recipeId: 'CreateAssessmentRecipe'
+                _id: 'CreateAssessmentRecipe'
             };
         } else {
             this.steps[0] = {

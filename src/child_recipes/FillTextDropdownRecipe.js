@@ -44,11 +44,8 @@
         },
         {
             type: 'recipe',
-            recipeId: 'FillSolutionHintRecipe',
-            params: {
-                solution: "This is sample solution",
-                hint: "This is sample hint"
-            }
+            _id: 'FillSolutionHintRecipe',
+            pSet:"default"
         },
         {
             selector: '#saveQuestionDetails1',

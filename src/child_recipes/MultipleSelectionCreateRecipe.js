@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-	var id = "MultipleSelectionCreateRecipe";
+    var id = "MultipleSelectionCreateRecipe";
     var steps = [
         {
             type: 'wait',
@@ -8,28 +8,24 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenQuestionAuthoringRecipe',
-            params: {
-                qtype: 122
-            }
+            _id: 'OpenQuestionAuthoringRecipe',
+            pSet: "ms"
         },
         {
             type: 'recipe',
-            recipeId: 'FillMultipleSelectionRecipe',
-            params: {
-                questionTitle: 'Creating Multiple Selection Question {datetime}'
-            }
+            _id: 'FillMultipleSelectionRecipe',
+            pSet: "default"
         },
         {
             selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    var recipe = window.recipe.MultipleSelectionCreateRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.MultipleSelectionCreateRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
         if (params && params.assessment) {
             this.steps[0] = {
                 type: 'recipe',
-                recipeId: 'CreateAssessmentRecipe'
+                _id: 'CreateAssessmentRecipe'
             };
         } else {
             this.steps[0] = {

@@ -4,8 +4,8 @@
     var steps = [
         {
             type: 'recipe',
-            recipeId: 'AttemptAssignmentRecipe',
-            params: {}
+            _id: 'AttemptAssignmentRecipe',
+            pSet:""
         }
     ];
     var recipe = window.recipe.AttemptStudentAssignmentRecipe = new window.recipe.Recipe(steps,id);

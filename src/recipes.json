@@ -1,20 +1,26 @@
 [
   {
-    "id": "FillClassicQuestionRecipe",
+    "_id": "FillClassicQuestionRecipe",
     "title": "Fill Any Classic Question Type",
     "description": "Fill TF, TE, ET, TDD, MS & MC question types",
     "project": "edulastic",
     "type": "parent",
     "version": "0.1",
-    "parameterSets": {
-      "default": {
-        "content": "default"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "content": "default"
+        }
       },
-      "ipsum": {
-        "content": "ipsum"
+      {
+        "title": "ipsum",
+        "params": {
+          "content": "ipsum"
+        }
       }
-    },
-    "children": [
+    ],
+    "dependsOn": [
       "FillTrueFalseRecipe",
       "FillTextEntryRecipe",
       "FillEssayRecipe",
@@ -24,208 +30,283 @@
     ]
   },
   {
-    "id": "AttemptAssignmentRecipe",
+    "_id": "AttemptAssignmentRecipe",
     "title": "Attempt Any Classic Question Type",
     "description": "Attempt TF, TE, ET, TDD, MS & MC question types",
     "project": "edulastic",
     "type": "child",
     "version": "0.1",
-    "parameterSets": {
-      "tf": {
-        "qtype": 120
+    "pSets": [
+      {
+        "title": "tf",
+        "params": {
+          "qtype": 120
+        }
       },
-      "te": {
-        "qtype": 125
+      {
+        "title": "te",
+        "params": {
+          "qtype": 125
+        }
       },
-      "es": {
-        "qtype": 123
+      {
+        "title": "es",
+        "params": {
+          "qtype": 123
+        }
       },
-      "tdd": {
-        "qtype": 129
+      {
+        "title": "tdd",
+        "params": {
+          "qtype": 129
+        }
       },
-      "ms": {
-        "qtype": 122
+      {
+        "title": "ms",
+        "params": {
+          "qtype": 122
+        }
       },
-      "mc": {
-        "qtype": 116
+      {
+        "title": "mc",
+        "params": {
+          "qtype": 116
+        }
       }
-    }
+    ]
   },
   {
-  	"id": "InstructorSignupRecipe",
-	"title" : "Sign Up an instructor",
-	"description":"",
-	"project" : "edulastic",
-	"type" : "parent",
-	"parameterSets":{
-		"random" :{
-			"userName" : "user-{randomString(5)}",
-			"email" : "user-{timeStamp(5)}@test.com",
-			"password" : "snapwiz",
-			"schoolName": "my school-{randomString(5)}",
-			"districtName" : "my district-{randomString(5)}",
-			"address" : "My address-{timeStamp}",
-			"city" : "my city",
-			"zip" : "123123",
-			"state":"my state"
-		}
-	}
+    "_id": "InstructorSignupRecipe",
+    "title": "Sign Up an instructor",
+    "description": "",
+    "project": "edulastic",
+    "type": "parent",
+    "pSets": [
+      {
+        "title": "random",
+        "params": {
+          "userName": "user-{randomString(5)}",
+          "email": "user-{timeStamp(5)}@test.com",
+          "password": "snapwiz",
+          "schoolName": "my school-{randomString(5)}",
+          "districtName": "my district-{randomString(5)}",
+          "address": "My address-{timeStamp}",
+          "city": "my city",
+          "zip": "123123",
+          "state": "my state"
+        }
+      }
+    ]
   },
   {
-    "id": "AttemptStudentAssignmentRecipe",
+    "_id": "AttemptStudentAssignmentRecipe",
     "title": "Attempt assignment with classic question type",
-    "description":"",
+    "description": "",
     "project": "edulastic",
     "type": "parent",
     "version": "0.1"
   },
   {
-    "id": "AttemptTrueFalseRecipe",
+    "_id": "AttemptTrueFalseRecipe",
     "title": "Attempt true false ",
-    "description":"",
+    "description": "",
     "project": "edulastic",
     "type": "child"
   },
   {
-  	"id": "AddQuestionToPassageRecipe",
-	"title": "Add Question to Passage",
-	"project": "edulastic",
-	"description": "",
-	"type":"child"
+    "_id": "AddQuestionToPassageRecipe",
+    "title": "Add Question to Passage",
+    "project": "edulastic",
+    "description": "",
+    "type": "child"
   },
   {
-    "id": "AttemptTextEntryRecipe",
+    "_id": "AttemptTextEntryRecipe",
     "title": "Attempt TextEntry question",
-    "description":"",
+    "description": "",
     "project": "edulastic",
     "type": "child"
   },
   {
-    "id": "AttemptEssayRecipe",
+    "_id": "AttemptEssayRecipe",
     "title": "Attempt Essay question",
-    "description":"",
+    "description": "",
     "project": "edulastic",
     "type": "child"
   },
   {
-    "id": "AttemptTextDropdownRecipe",
+    "_id": "AttemptTextDropdownRecipe",
     "title": "Attempt TextDropdown question",
-    "description":"",
+    "description": "",
     "project": "edulastic",
     "type": "child"
   },
   {
-    "id": "AttemptMultipleSelectRecipe",
+    "_id": "AttemptMultipleSelectRecipe",
     "title": "Attempt MultipleSelection question",
-    "description":"",
+    "description": "",
     "project": "edulastic",
     "type": "child"
   },
   {
-    "id": "AttemptMultipleChoiceRecipe",
+    "_id": "AttemptMultipleChoiceRecipe",
     "title": "Attempt MultipleChoice question",
-    "description":"",
+    "description": "",
     "project": "edulastic",
     "type": "child"
   },
   {
-    "id": "FillTrueFalseRecipe",
+    "_id": "FillTrueFalseRecipe",
     "title": "Fill TrueFalse Question",
     "description": "It will fill T/F question, solution, hint & answerChoices",
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "parameterSets": {
-      "default": {
-        "questionTitle": "Filling T/F {datetime}"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "questionTitle": "Filling T/F {datetime}"
+        }
       },
-      "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      {
+        "title": "ipsum",
+        "params": {
+          "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
       }
-    }
+    ],
+    "dependsOn": [
+      "FillSolutionHintRecipe"
+    ]
   },
   {
-    "id": "FillTextEntryRecipe",
+    "_id": "FillTextEntryRecipe",
     "title": "Fill TextEntry Question",
     "description": "It will fill Text Entry question, solution, hint & answerChoice",
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "parameterSets": {
-      "default": {
-        "questionTitle": "Filling T/F {datetime}"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "questionTitle": "Filling T/F {datetime}"
+        }
       },
-      "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      {
+        "title": "ipsum",
+        "params": {
+          "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
       }
-    }
+    ],
+    "dependsOn": [
+      "FillSolutionHintRecipe"
+    ]
   },
   {
-    "id": "FillEssayRecipe",
+    "_id": "FillEssayRecipe",
     "title": "Fill Essay Question",
     "description": "It will fill Essay question, solution, hint",
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "parameterSets": {
-      "default": {
-        "questionTitle": "Filling Essay Question {datetime}"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "questionTitle": "Filling Essay Question {datetime}"
+        }
       },
-      "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      {
+        "title": "ipsum",
+        "params": {
+          "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
       }
-    }
+    ],
+    "dependsOn": [
+      "FillSolutionHintRecipe"
+    ]
   },
   {
-    "id": "FillTextDropdownRecipe",
+    "_id": "FillTextDropdownRecipe",
     "title": "Fill Text Dropdown Question",
     "description": "It will fill Text Dropdown question, solution, hint",
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "parameterSets": {
-      "default": {
-        "questionTitle": "Filling Text Dropdown Question {datetime}"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "questionTitle": "Filling Text Dropdown Question {datetime}"
+        }
       },
-      "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      {
+        "title": "ipsum",
+        "params": {
+          "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
       }
-    }
+    ],
+    "dependsOn": [
+      "FillSolutionHintRecipe"
+    ]
   },
   {
-    "id": "FillMultipleSelectionRecipe",
+    "_id": "FillMultipleSelectionRecipe",
     "title": "Fill Multiple Selection Question",
     "description": "It will fill Multiple Selection question, solution, hint & answerChoices",
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "parameterSets": {
-      "default": {
-        "questionTitle": "Filling Multiple Selection Question {datetime}"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "questionTitle": "Filling Multiple Selection Question {datetime}"
+        }
       },
-      "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      {
+        "title": "ipsum",
+        "params": {
+          "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
       }
-    }
+    ],
+    "dependsOn": [
+      "FillSolutionHintRecipe"
+    ]
   },
   {
-    "id": "FillMultipleChoiceRecipe",
+    "_id": "FillMultipleChoiceRecipe",
     "title": "Fill Multiple Choice Question",
     "description": "It will fill Multiple Choice question, solution, hint & answerChoices",
     "project": "edulastic",
     "version": "0.1",
     "type": "child",
-    "parameterSets": {
-      "default": {
-        "questionTitle": "Filling Multiple Choice Question {datetime}"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "questionTitle": "Filling Multiple Choice Question {datetime}"
+        }
       },
-      "ipsum": {
-        "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+      {
+        "title": "ipsum",
+        "params": {
+          "questionTitle": "Lorem {datetime} Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        }
       }
-    }
+    ],
+    "dependsOn": [
+      "FillSolutionHintRecipe"
+    ]
   },
   {
-    "id": "PassageCreateRecipe",
+    "_id": "PassageCreateRecipe",
     "title": "Create Assessment with passage having 3 T/F questions",
     "description": "Creates Assessment with passage having 3 T/F questions",
     "project": "edulastic",
@@ -233,7 +314,7 @@
     "type": "parent"
   },
   {
-    "id": "TrueFalseCreateRecipe",
+    "_id": "TrueFalseCreateRecipe",
     "title": "Create Assessment with one True False Question",
     "description": "Creates Assessment with one TrueFalse question",
     "project": "edulastic",
@@ -241,7 +322,7 @@
     "type": "child"
   },
   {
-    "id": "TextEntryCreateRecipe",
+    "_id": "TextEntryCreateRecipe",
     "title": "Create Assessment with one Text Entry Question",
     "description": "Creates Assessment with one TextEntry question",
     "project": "edulastic",
@@ -249,7 +330,7 @@
     "type": "child"
   },
   {
-    "id": "EssayCreateRecipe",
+    "_id": "EssayCreateRecipe",
     "title": "Create Assessment with one Essay Question",
     "description": "Creates Assessment with one Essay question",
     "project": "edulastic",
@@ -257,7 +338,7 @@
     "type": "child"
   },
   {
-    "id": "TextDropdownCreateRecipe",
+    "_id": "TextDropdownCreateRecipe",
     "title": "Create Assessment with one Text Dropdown Question",
     "description": "Creates Assessment with one TextDropdown question",
     "project": "edulastic",
@@ -265,7 +346,7 @@
     "type": "child"
   },
   {
-    "id": "MultipleSelectionCreateRecipe",
+    "_id": "MultipleSelectionCreateRecipe",
     "title": "Create Assessment with one Multiple Selection Question",
     "description": "Creates Assessment with one MultipleSelection question",
     "project": "edulastic",
@@ -273,7 +354,7 @@
     "type": "child"
   },
   {
-    "id": "MultipleChoiceCreateRecipe",
+    "_id": "MultipleChoiceCreateRecipe",
     "title": "Create Assessment with one Multiple Choice Question",
     "description": "Creates Assessment with one MultipleChoice question",
     "project": "edulastic",
@@ -281,194 +362,300 @@
     "type": "child"
   },
   {
-    "id": "CreateAssessmentWithClassicQuestionRecipe",
+    "_id": "CreateAssessmentWithClassicQuestionRecipe",
     "title": "Create Assessment with one Classic Question",
     "description": "Creates Assessment with one Classic question",
     "project": "edulastic",
     "version": "0.1",
     "type": "parent",
-    "parameterSets": {
-      "tf": {
-        "qtype": 120
+    "pSets": [
+      {
+        "title": "tf",
+        "params": {
+          "qtype": 120
+        }
       },
-      "te": {
-        "qtype": 125
+      {
+        "title": "te",
+        "params": {
+          "qtype": 125
+        }
       },
-      "es": {
-        "qtype": 123
+      {
+        "title": "es",
+        "params": {
+          "qtype": 123
+        }
       },
-      "tdd": {
-        "qtype": 129
+      {
+        "title": "tdd",
+        "params": {
+          "qtype": 129
+        }
       },
-      "ms": {
-        "qtype": 122
+      {
+        "title": "ms",
+        "params": {
+          "qtype": 122
+        }
       },
-      "mc": {
-        "qtype": 116
+      {
+        "title": "mc",
+        "params": {
+          "qtype": 116
+        }
       }
-    }
+    ]
   },
   {
-    "id": "AddClassicQuestionToAssessmentRecipe",
+    "_id": "AddClassicQuestionToAssessmentRecipe",
     "title": "Add Classic Question to Assessment/Passage",
     "description": "Adds a classic question to assessment being review (#assessmentReview/close)",
     "project": "edulastic",
     "version": "0.1",
     "type": "parent",
-    "parameterSets": {
-      "tf": {
-        "qtype": 120
+    "pSets": [
+      {
+        "title": "tf",
+        "params": {
+          "qtype": 120
+        }
       },
-      "te": {
-        "qtype": 125
+      {
+        "title": "te",
+        "params": {
+          "qtype": 125
+        }
       },
-      "es": {
-        "qtype": 123
+      {
+        "title": "es",
+        "params": {
+          "qtype": 123
+        }
       },
-      "tdd": {
-        "qtype": 129
+      {
+        "title": "tdd",
+        "params": {
+          "qtype": 129
+        }
       },
-      "ms": {
-        "qtype": 122
+      {
+        "title": "ms",
+        "params": {
+          "qtype": 122
+        }
       },
-      "mc": {
-        "qtype": 116
+      {
+        "title": "mc",
+        "params": {
+          "qtype": 116
+        }
       }
-    }
+    ]
   },
   {
-    "id": "OpenQuestionAuthoringRecipe",
+    "_id": "OpenQuestionAuthoringRecipe",
     "title": "",
     "description": "From LOSV will select Create and then T/F questionType",
     "project": "edulastic",
-    "type": "child"
+    "type": "child",
+    "pSets": [
+      {
+        "title": "tf",
+        "params": {
+          "qtype": 120
+        }
+      },
+      {
+        "title": "te",
+        "params": {
+          "qtype": 125
+        }
+      },
+      {
+        "title": "es",
+        "params": {
+          "qtype": 123
+        }
+      },
+      {
+        "title": "tdd",
+        "params": {
+          "qtype": 129
+        }
+      },
+      {
+        "title": "ms",
+        "params": {
+          "qtype": 122
+        }
+      },
+      {
+        "title": "mc",
+        "params": {
+          "qtype": 116
+        }
+      }
+    ]
   },
   {
-    "id": "CreateAssessmentRecipe",
+    "_id": "CreateAssessmentRecipe",
     "title": "",
     "description": "Will navigate to #createAssessment/close?cm=assessment and click on Create",
     "project": "edulastic",
     "type": "child"
   },
   {
-    "id": "LoginRecipe",
+    "_id": "LoginRecipe",
     "title": "Login",
     "description": "Login into Edulastic",
     "project": "edulastic",
     "type": "parent",
-    "parameterSets": {
-      "default": {
-        "email": "nitin.cool4urchat@gmail.com",
-        "password": "snapwiz"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "email": "nitin.cool4urchat@gmail.com",
+          "password": "snapwiz"
+        }
       },
-      "ins": {
-        "email": "nteacher@snapwiz.com",
-        "password": "snapwiz"
+      {
+        "title": "ins",
+        "params": {
+          "email": "nteacher@snapwiz.com",
+          "password": "snapwiz"
+        }
       },
-      "stu": {
-        "email": "nstudent@snapwiz.com",
-        "password": "snapwiz"
+      {
+        "title": "stu",
+        "params": {
+          "email": "nstudent@snapwiz.com",
+          "password": "snapwiz"
+        }
       },
-      "admin": {
-        "email": "gaurav.author@snapwiz.com",
-        "password": "snapwiz"
+      {
+        "title": "admin",
+        "params": {
+          "email": "gaurav.author@snapwiz.com",
+          "password": "snapwiz"
+        }
       }
-    }
+    ]
   },
   {
-    "id": "FillSolutionHintRecipe",
+    "_id": "FillSolutionHintRecipe",
     "title": "",
     "description": "",
     "project": "edulastic",
     "type": "child",
-    "parameterSets": {
-      "solution": "Some sample solution",
-      "hint": "Some sample hint"
-    }
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "solution": "Some sample solution {datetime}",
+          "hint": "Some sample hint {datetime}"
+        }
+      }
+    ]
   },
   {
-    "id": "LoginLSRecipe",
+    "_id": "LoginLSRecipe",
     "title": "Login(LS)",
     "description": "Login into LS",
     "project": "ls",
     "type": "parent",
-    "parameterSets": {
-      "instructor": {
-        "email": "instructor1.biology@epub.com",
-        "password": "snapwiz"
+    "pSets": [
+      {
+        "title": "instructor",
+        "params": {
+          "email": "instructor1.biology@epub.com",
+          "password": "snapwiz"
+        }
       },
-      "student": {
-        "email": "student1.biology@epub.com",
-        "password": "snapwiz"
+      {
+        "title": "student",
+        "params": {
+          "email": "student1.biology@epub.com",
+          "password": "snapwiz"
+        }
       }
-    }
+    ]
   },
   {
-    "id": "CreateLSAssignmentRecipe",
+    "_id": "CreateLSAssignmentRecipe",
     "title": "Create an Assignment(LS)",
     "description": "Creates an Assignment using on of the options",
     "project": "ls",
     "version": "0.1",
     "type": "parent",
-    "parameterSets": {
-      "Custom": {
-        "selector": ".ls--create-custom-assignment-view"
+    "pSets": [
+      {
+        "title": "Custom",
+        "params": {
+          "selector": ".ls--create-custom-assignment-view"
+        }
       },
-      "PreCreated": {
-        "selector": ".ls--question-banks-view"
+      {
+        "title": "PreCreated",
+        "params": {
+          "selector": ".ls--question-banks-view"
+        }
       },
-      "FileBased": {
-        "selector": ".ls--custom-file-assignment-view"
+      {
+        "title": "FileBased",
+        "params": {
+          "selector": ".ls--custom-file-assignment-view"
+        }
       }
-    }
+    ]
   },
   {
-    "id": "AssignAssessmentRecipe",
+    "_id": "AssignAssessmentRecipe",
     "title": "Assign Assessment",
     "description": "Assigns an assessment which is in review screen",
     "project": "edulastic",
     "version": "0.1",
     "type": "parent",
-    "parameterSets": {
-      "r_n": {
-        "type": "right_now"
+    "pSets": [
+      {
+        "title": "r_n",
+        "params": {
+          "type": "right_now"
+        }
       },
-      "pub_l": {
-        "type": "publish_and_use_later"
+      {
+        "title": "pub_l",
+        "params": {
+          "type": "publish_and_use_later"
+        }
       }
-    }
+    ]
   },
   {
-    "id": "LoginGliderRecipe",
+    "_id": "LoginGliderRecipe",
     "title": "Glider Login",
     "description": "Login into Glider",
     "project": "glider",
     "type": "parent",
-    "parameterSets": {
-      "hm": {
-        "email": "nitin.cool4urchat@gmail.com",
-        "password": "snapwiz"
+    "pSets": [
+      {
+        "title": "hm",
+        "params": {
+          "email": "nitin.cool4urchat@gmail.com",
+          "password": "snapwiz"
+        }
       },
-      "hrm": {
-        "email": "nteacher@snapwiz.com",
-        "password": "snapwiz"
-      },
-      "ir": {
-        "email": "nstudent@snapwiz.com",
-        "password": "snapwiz"
-      },
-      "i": {
-        "email": "gaurav.author@snapwiz.com",
-        "password": "snapwiz"
-      },
-      "er": {
-        "email": "gaurav.author@snapwiz.com",
-        "password": "snapwiz"
+      {
+        "title": "hrm",
+        "params": {
+          "email": "nteacher@snapwiz.com",
+          "password": "snapwiz"
+        }
       }
-    }
+    ]
   },
   {
-    "id": "FillClassicAssignmenttoCreateAssignmentLSRecipe",
+    "_id": "FillClassicAssignmenttoCreateAssignmentLSRecipe",
     "title": "Fill Assignment Details(LS)",
     "description": "Fill LS Assignment Details  ",
     "version": "0.1",
@@ -476,83 +663,98 @@
     "project": "ls"
   },
   {
-    "id": "AddClassicQuestiontoAssignmentLSRecipe",
+    "_id": "AddClassicQuestiontoAssignmentLSRecipe",
     "title": "Add Classic Question to Custom Assignment(LS)",
     "description": "Creates an Assignment using one of the options",
     "version": "0.1",
     "type": "parent",
     "project": "ls",
-    "parameterSets": {
-      "tf": {
-        "qtype": "120"
+    "pSets": [
+      {
+        "title": "tf",
+        "params": {
+          "qtype": "120"
+        }
       },
-      "mc": {
-        "qtype": "116"
+      {
+        "title": "mc",
+        "params": {
+          "qtype": "116"
+        }
       },
-      "ms": {
-        "qtype": "122"
+      {
+        "title": "ms",
+        "params": {
+          "qtype": "122"
+        }
       }
-    }
+    ]
   },
   {
-    "id": "SignUpFlowFillCompanyDetailsRecipe",
+    "_id": "SignUpFlowFillCompanyDetailsRecipe",
     "title": "Sign Up Employer : Company Name Page",
     "description": "Fill Company Name & Location",
     "project": "glider",
     "type": "child"
   },
   {
-    "id" : "SignUpFlowYourRoleRecipe",
+    "_id": "SignUpFlowYourRoleRecipe",
     "title": "Sign Up Employer : Your Role",
     "description": "Fill Employer Role",
     "project": "glider",
     "type": "child"
   },
   {
-    "id": "SignUpFlowFillSignUpPageRecipe",
+    "_id": "SignUpFlowFillSignUpPageRecipe",
     "title": "Sign Up Employer : Sign Up",
     "description": "Fill Sign Up Page",
     "project": "glider",
     "type": "child"
   },
   {
-    "id": "GliderEmployerSignUpRecipe",
+    "_id": "GliderEmployerSignUpRecipe",
     "title": "Employer Sign Up",
     "discription": "Employer Sign Up with new company",
     "project": "glider",
     "type": "parent",
-    "parameterSets": {
-      "hm": {
-        "name": "Himadri",
-        "phone": "+919800473936",
-        "email": "himadri.ghosh+41@snapwiz.com",
-        "password": "snapwiz"
+    "pSets": [
+      {
+        "title": "hm",
+        "params": {
+          "name": "Himadri",
+          "phone": "+919800473936",
+          "email": "himadri.ghosh+41@snapwiz.com",
+          "password": "snapwiz"
+        }
       }
-    }
+    ]
   },
   {
-    "id": "GliderFindIndustryRecipe",
+    "_id": "GliderFindIndustryRecipe",
     "title": "Find Industry",
     "discription": "Find Industry",
     "project": "glider",
     "type": "child"
   },
   {
-    "id": "GliderFillCompanyDescriptionRecipe",
+    "_id": "GliderFillCompanyDescriptionRecipe",
     "title": "Fill Company Description",
     "discription": "Fill Company Description",
     "project": "glider",
     "type": "parent",
-    "parameterSets":{
-      "default" :{
-        "oneLinePitch": "One Line Pitch {randomString(5)}",
-        "oAStreet": "Some address {randomString(5)}, {randomString(5)}",
-        "oASuite": "#{timeStamp(3)}, {randomString(5)}",
-        "oAZipCode": "{timeStamp(6)}",
-        "phone": "+919800{timeStamp(6)}",
-        "website": "www.{randomString(5)}.com",
-        "invest": "{timeStamp(6)}"
+    "pSets": [
+      {
+        "title": "default",
+        "params": {
+          "oneLinePitch": "One Line Pitch {randomString(5)}",
+          "oAStreet": "Some address {randomString(5)}, {randomString(5)}",
+          "oASuite": "#{timeStamp(3)}, {randomString(5)}",
+          "oAZipCode": "{timeStamp(6)}",
+          "phone": "+919800{timeStamp(6)}",
+          "website": "www.{randomString(5)}.com",
+          "invest": "{timeStamp(6)}"
+        }
       }
-    }
+    ]
   }
 ]

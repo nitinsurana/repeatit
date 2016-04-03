@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-	var id = "EssayCreateRecipe";
+    var id = "EssayCreateRecipe";
     var steps = [
         {
             type: 'wait',
@@ -8,28 +8,24 @@
         },
         {
             type: 'recipe',
-            recipeId: 'OpenQuestionAuthoringRecipe',
-            params: {
-                qtype: 123
-            }
+            _id: 'OpenQuestionAuthoringRecipe',
+            pSet: "es",
         },
         {
             type: 'recipe',
-            recipeId: 'FillEssayRecipe',
-            params: {
-                questionTitle: 'Creating Essay Question - {datetime}'
-            }
+            _id: 'FillEssayRecipe',
+            pSet: "default"
         },
         {
             selector: '.lsm-createAssignment-done.selected'
         }
     ];
-    var recipe = window.recipe.EssayCreateRecipe = new window.recipe.Recipe(steps,id);
+    var recipe = window.recipe.EssayCreateRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
         if (params && params.assessment) {
             this.steps[0] = {
                 type: 'recipe',
-                recipeId: 'CreateAssessmentRecipe'
+                _id: 'CreateAssessmentRecipe'
             };
         } else {
             this.steps[0] = {

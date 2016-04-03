@@ -5,7 +5,7 @@
   var steps = [
     {
       type: 'recipe',
-      recipeId: "GliderFindIndustryRecipe"
+      _id: "GliderFindIndustryRecipe"
     },
     {
       selector: 'textarea[name=empPitch]',
