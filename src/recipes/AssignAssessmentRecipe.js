@@ -14,7 +14,7 @@
     ];
     var recipe = window.recipe.AssignAssessmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
-        switch (params.self.type) {
+        switch (params.type) {
             case "right_now":
                 this.steps[1].selector = ".share-with-wrap label.radio.i-checks:eq(" + 1 + ")";
                 break;
