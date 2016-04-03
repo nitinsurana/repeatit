@@ -10,10 +10,9 @@
     </div>
     <div id="collapse-<%=data.id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%=data.id%>">
         <div class="panel-body">
-            <form data-recipeid="<%=data.recipeId%>">
+            <form data-recipeid="<%=data._id%>">
                 <input type="hidden" name="id" value="<%-data.id%>"/>
                 <input type="hidden" name="_id" value="<%-data._id?data._id.toString():""%>"/>
-                <input type="hidden" name="recipeId" value="<%-data.recipeId%>"/>
                 <input type="hidden" name="userId" value="<%-data.userId%>"/>
                 <input type="hidden" name="project" value="<%-data.project%>"/>
                 <input type="hidden" name="steps" value="<%-JSON.stringify(data.steps)%>"/>

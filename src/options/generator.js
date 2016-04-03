@@ -46,14 +46,17 @@ define([
         parseAndSet: function (json) {
             this.set('title', json.title);
             var steps = [];
+            var dependsOn = [];
             _.each(json.steps, function (r) {
                 steps.push({
                     type: 'recipe',
                     _id: r._id,
                     pSet: r.pSet
                 });
+                dependsOn.push(r._id);
             });
             this.set('steps', steps);
+            this.set('dependsOn', dependsOn);
             return this;
         },
         save: function () {

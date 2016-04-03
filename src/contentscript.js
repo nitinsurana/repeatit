@@ -9,7 +9,7 @@ window.addEventListener("message", function (event) {
     if (event.data.type === "TO_REPEATIT") {        //Will be sent from inject.js
         switch (event.data.action) {
             case 'SAVE_RECORDING_STEPS':
-                sendRecordingToBackground(event.data.steps, event.data.recipeId);
+                sendRecordingToBackground(event.data.steps, event.data._id);
                 break;
             case 'FETCH_RECORDINGS':
                 fetchRecordingsFromBackground();

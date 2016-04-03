@@ -43,6 +43,9 @@
     };
 
     var getRecipeParams = function (recipeId, setName, options) {
+        if (!setName) {
+            return;
+        }
         var r = options.find(function (recipe) {
             return recipe._id === recipeId;
         });

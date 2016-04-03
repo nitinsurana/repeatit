@@ -34,7 +34,7 @@
     window.recipe.initRecordedRecipes = function (recipes) {
         for (var index in recipes) {
             var r = recipes[index];
-            var recipeId = r.recipeId;
+            var recipeId = r._id;
             var steps = r.steps;
             window.recipe[recipeId] = new window.recipe.Recipe(steps, recipeId);
         }
