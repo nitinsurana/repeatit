@@ -3,13 +3,9 @@
     var id = "TextDropdownCreateRecipe";
     var steps = [
         {
-            type: 'wait',
-            seconds: 2
-        },
-        {
             type: 'recipe',
             _id: 'OpenQuestionAuthoringRecipe',
-            pSet: "td"
+            pSet: "tdd"
         },
         {
             type: 'recipe',
@@ -22,17 +18,6 @@
     ];
     var recipe = window.recipe.TextDropdownCreateRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
-        if (params && params.assessment) {
-            this.steps[0] = {
-                type: 'recipe',
-                _id: 'CreateAssessmentRecipe'
-            };
-        } else {
-            this.steps[0] = {
-                type: 'wait',
-                seconds: 2
-            };
-        }
         return $.Deferred().resolve();
     };
 })();
