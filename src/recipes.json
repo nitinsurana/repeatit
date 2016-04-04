@@ -769,6 +769,11 @@
           "password": "snapwiz"
         }
       }
+    ],
+    "dependsOn": [
+      "SignUpFlowFillCompanyDetailsRecipe",
+      "SignUpFlowYourRoleRecipe",
+      "SignUpFlowFillSignUpPageRecipe"
     ]
   },
   {
@@ -794,9 +799,13 @@
           "oAZipCode": "{timeStamp(6)}",
           "phone": "+919800{timeStamp(6)}",
           "website": "www.{randomString(5)}.com",
-          "invest": "{timeStamp(6)}"
+          "invest": "{timeStamp(6)}",
+          "estMonth": "March 2001"
         }
       }
+    ],
+    "dependsOn": [
+      "GliderFindIndustryRecipe"
     ]
   }
 ]

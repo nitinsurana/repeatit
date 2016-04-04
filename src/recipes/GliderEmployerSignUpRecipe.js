@@ -14,14 +14,14 @@
     {
       type: 'recipe',
       _id: "SignUpFlowFillSignUpPageRecipe",
-      params: {}
+      pSets: {}
     }
   ];
 
   var recipe = window.recipe.GliderEmployerSignUpRecipe = new window.recipe.Recipe(steps,id);
   recipe.start = function (params) {
     console.log(params);
-    this.steps[2].params = params.self;
+    this.steps[2].pSets.params = params;
     return $.Deferred().resolve();
   };
 })();

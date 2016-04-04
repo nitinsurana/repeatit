@@ -17,8 +17,8 @@
     ];
     var recipe = window.recipe.LoginGliderRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
-        this.steps[0].value = params.self.email;
-        this.steps[1].value = params.self.password;
+        this.steps[0].value = params.email;
+        this.steps[1].value = params.password;
         return $.Deferred().resolve();
     };
 })();

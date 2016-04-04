@@ -29,10 +29,10 @@
 
   var recipe = window.recipe.SignUpFlowFillSignUpPageRecipe = new window.recipe.Recipe(steps,id);
   recipe.start = function (params) {
-    this.steps[0].value = params.name;
-    this.steps[1].value = params.phone;
-    this.steps[2].value = params.email;
-    this.steps[3].value = params.password;
+    this.steps[0].value = "Himadri";
+    this.steps[1].value = "+919800{timeStamp(6)}";
+    this.steps[2].value = "himadri.ghosh+{randomString(5)}@snapwiz.com";
+    this.steps[3].value = "snapwiz";
     return $.Deferred().resolve();
   };
 })();
