@@ -53,7 +53,7 @@ define([
             var storageKey = 'pSets-' + recipeId,
                 obj = {};
             obj[storageKey] = paramSets;
-            chrome.storage.sync.set(obj, function () {
+            chrome.storage.local.set(obj, function () {
                 console.log("Saved pSets to storage : " + recipeId);
                 window.alert("Parameters Saved");
             });
@@ -65,7 +65,7 @@ define([
             });
             var pSets = {};
             pSets["pSets-" + recipe.id] = recipe.pSets;
-            chrome.storage.sync.set(pSets, function () {
+            chrome.storage.local.set(pSets, function () {
                 console.log("Reset pSets to default : " + recipe.id);
                 window.location.reload();       //Todo re-render of recipe accordion instead of reload
             });
@@ -98,7 +98,7 @@ define([
                 storageKey = 'pSets-' + model.get('id'),
                 $pSets = self.$("#recipe-" + model.get('id') + " .parameter-sets ");
 
-            chrome.storage.sync.get(storageKey, function (m) {
+            chrome.storage.local.get(storageKey, function (m) {
                 var params = m[storageKey];
                 _.each(params, function (value, key) {
                     var tabTitle = '<li><a href="#parameterSet-' + model.get('id') + '-' + key + '" data-toggle="tab">' + key + '</a></li>';

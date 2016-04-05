@@ -46,7 +46,7 @@ $(function () {
                             chrome.tabs.executeScript(t[0].id, {
                                 code: code
                             });
-                            chrome.storage.sync.get('settings', function (r) {
+                            chrome.storage.local.get('settings', function (r) {
                                 if (!r.settings.newWindow && r.settings.autoClose) {        //Close extension if it's opened in popup and autoClose:true
                                     window.close();
                                 }
@@ -59,7 +59,7 @@ $(function () {
     }
 
     // active project tab based on the "Default Project Settings".
-    chrome.storage.sync.get('settings', function (r) {
+    chrome.storage.local.get('settings', function (r) {
         var defaultProject = r.settings['defaultProject'];
         $(".nav a[data-project='" + defaultProject + "']").tab('show');
     });
@@ -92,7 +92,7 @@ $(function () {
         var defer = $.Deferred();
         out.promises.push(defer);
         var storageKey = 'pSets-' + recipeId;
-        chrome.storage.sync.get(storageKey, function (result) {
+        chrome.storage.local.get(storageKey, function (result) {
             var pSets = result[storageKey] || {};
             out.options.push({_id: recipeId, pSets: pSets});
             defer.resolve();
@@ -122,10 +122,10 @@ $(function () {
     });
 
     $("body").on('click', "#start-recording:not(.disabled)", function () {
-        chrome.storage.sync.get('recordingCount', function (c) {
+        chrome.storage.local.get('recordingCount', function (c) {
             var recordingCount = c.recordingCount || 0;
             recordingCount++;
-            chrome.storage.sync.set({'recordingCount': recordingCount}, function () {
+            chrome.storage.local.set({'recordingCount': recordingCount}, function () {
                 console.log("Incremented recordingCount Chrome Storage");
             });
             var code = "window.postMessage({type:'FROM_REPEATIT',action:'START_RECORDING'},'*');";
@@ -137,7 +137,7 @@ $(function () {
     });
 
     $("body").on('click', "#stop-recording:not(.disabled)", function () {
-        chrome.storage.sync.get('recordingCount', function (c) {
+        chrome.storage.local.get('recordingCount', function (c) {
             var recordingCount = c.recordingCount;
             var code = "window.postMessage({type:'FROM_REPEATIT',action:'STOP_RECORDING', recordingCount:" + recordingCount + "},'*');";
             executeScriptInCurrentTab(code);

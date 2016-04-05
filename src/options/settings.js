@@ -11,9 +11,9 @@ define([
             this.render();
         },
         render: function () {
-            chrome.storage.sync.get('settings', $.proxy(function (r) {
+            chrome.storage.local.get('settings', $.proxy(function (r) {
                 var model = r.settings;
-                chrome.storage.sync.get('userId', $.proxy(function (u) {
+                chrome.storage.local.get('userId', $.proxy(function (u) {
                     model.userId = u.userId;
                     this.$el.html(_.template(SettingsTemplate)({data: model}));
                 }, this));
@@ -46,7 +46,7 @@ define([
                 newSettings[o.name] = o.value;
             });
             newSettings['newWindow'] = newSettings.newWindow === 'on' ? true : false;       //Converting checkbox to boolean
-            chrome.storage.sync.set({settings: newSettings}, function () {
+            chrome.storage.local.set({settings: newSettings}, function () {
                 console.log("Saved settings form to storage");
                 self.background.updatePopup(newSettings.newWindow);
                 window.alert("Saved Settings");

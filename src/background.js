@@ -49,11 +49,11 @@
         }
     };
 
-    chrome.storage.sync.get('settings', function (r) {
+    chrome.storage.local.get('settings', function (r) {
         if (r.settings) {
             settings = _.extend(settings, r.settings);
         }
-        chrome.storage.sync.set({"settings": settings}, function () {
+        chrome.storage.local.set({"settings": settings}, function () {
             console.log("Saved settings to storage: ");
         });
         window.background.updatePopup(settings.newWindow);
@@ -72,10 +72,10 @@
     }
 
     chrome.runtime.onInstalled.addListener(function () {
-        chrome.storage.sync.get('userId', function (r) {
+        chrome.storage.local.get('userId', function (r) {
             if (!r.userId) {
                 var uniqueKey = getRandomToken();
-                chrome.storage.sync.set({"userId": uniqueKey}, function () {
+                chrome.storage.local.set({"userId": uniqueKey}, function () {
                     console.log("Saved unique installationId in storage : " + uniqueKey);
                 });
             } else {
@@ -86,19 +86,22 @@
 
 
     var recipesJsonUrl = chrome.extension.getURL('recipes.json');
+    console.log(recipesJsonUrl);
     $.ajax({
         url: recipesJsonUrl,
         dataType: 'json'
     }).done(function (response) {
+        console.log('loading json');
+        console.log(response);
         updateRecipeList(response);
         _.each(response, function (recipe) {
             if (recipe.pSets) {
                 var storageKey = 'pSets-' + recipe._id,
                     store = {};
                 store[storageKey] = recipe.pSets;
-                chrome.storage.sync.get(storageKey, function (result) {
+                chrome.storage.local.get(storageKey, function (result) {
                     if (!result[storageKey]) {
-                        chrome.storage.sync.set(store, function () {
+                        chrome.storage.local.set(store, function () {
                             console.log("Saved pSets to storage : " + recipe._id);
                         });
                     } else {
@@ -115,7 +118,7 @@
             return r.project !== 'recording';
         });
         window.background.recipelist = recipelist;
-        chrome.storage.sync.get('userId', function (r) {
+        chrome.storage.local.get('userId', function (r) {
             var userId = r.userId;
             $.ajax({
                 url: serverUrl + '/recordings',
@@ -186,7 +189,7 @@
         });
 
     var recordRecipeUsage = function (sendResponse, message) {
-        chrome.storage.sync.get('userId', function (r) {
+        chrome.storage.local.get('userId', function (r) {
             var userId = r.userId;
             message.userId = userId;
             $.ajax({
@@ -213,7 +216,7 @@
 
 
     var deleteRecordingFromMongo = function (sendResponse, _id) {
-        chrome.storage.sync.get('userId', function (r) {
+        chrome.storage.local.get('userId', function (r) {
             var userId = r.userId;
             $.ajax({
                 url: serverUrl + '/del-record',
@@ -236,7 +239,7 @@
     };
 
     var sendRecordingToMongo = function (sendResponse, recipe) {
-        chrome.storage.sync.get('userId', function (r) {
+        chrome.storage.local.get('userId', function (r) {
             recipe.userId = recipe.userId || r.userId;
             recipe.project = recipe.project || "recording";
             $.ajax({
