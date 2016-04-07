@@ -756,7 +756,7 @@
   {
     "_id": "GliderEmployerSignUpRecipe",
     "title": "Employer Sign Up",
-    "discription": "Employer Sign Up with new company",
+    "description": "Employer Sign Up with new company",
     "project": "glider",
     "type": "parent",
     "pSets": [
@@ -779,14 +779,14 @@
   {
     "_id": "GliderFindIndustryRecipe",
     "title": "Find Industry",
-    "discription": "Find Industry",
+    "description": "Find Industry",
     "project": "glider",
     "type": "child"
   },
   {
     "_id": "GliderFillCompanyDescriptionRecipe",
     "title": "Fill Company Description",
-    "discription": "Fill Company Description",
+    "description": "Fill Company Description",
     "project": "glider",
     "type": "parent",
     "pSets": [

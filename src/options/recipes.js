@@ -30,7 +30,7 @@ define([
                     if (model.get('pSets')) {
                         self.$("#accordion").append(_.template(accordionChoiceTemplate)({data: model.toJSON()}));
                         self.renderpSets(model);
-                        self.$("#recipe-" + model.get('id')).find(".actions").show();
+                        self.$("#recipe-" + model.get('_id')).find(".actions").show();
                     }
                 }
             });
@@ -87,27 +87,27 @@ define([
             var self = this;
             _.each(this.collection.models, function (model) {
                 if (model.get('title').toLowerCase().indexOf(searchTerm) > -1 || model.get('description').toLowerCase().indexOf(searchTerm) > -1) {
-                    self.$("#recipe-" + model.get('id')).show();
+                    self.$("#recipe-" + model.get('_id')).show();
                 } else {
-                    self.$("#recipe-" + model.get('id')).hide();
+                    self.$("#recipe-" + model.get('_id')).hide();
                 }
             });
         },
         renderpSets: function (model) {
             var self = this,
-                storageKey = 'pSets-' + model.get('id'),
-                $pSets = self.$("#recipe-" + model.get('id') + " .parameter-sets ");
+                storageKey = 'pSets-' + model.get('_id'),
+                $pSets = self.$("#recipe-" + model.get('_id') + " .parameter-sets ");
 
             chrome.storage.sync.get(storageKey, function (m) {
-                var params = m[storageKey];
-                _.each(params, function (value, key) {
-                    var tabTitle = '<li><a href="#parameterSet-' + model.get('id') + '-' + key + '" data-toggle="tab">' + key + '</a></li>';
+                var pSets = m[storageKey];
+                _.each(pSets, function (obj) {
+                    var tabTitle = '<li><a href="#parameterSet-' + model.get('_id') + '-' + obj.title + '" data-toggle="tab">' + obj.title + '</a></li>';
                     $pSets.find(".tabs-left").append(tabTitle);
 
                     var tabContent = _.template(parameterSetTemplate)({
                         data: {
-                            id: model.get('id') + '-' + key,
-                            params: value
+                            id: model.get('_id') + '-' + obj.title,
+                            params: obj.params
                         }
                     });
                     $pSets.find(".tab-content").append(tabContent);
