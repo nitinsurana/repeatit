@@ -58,7 +58,8 @@ function recordUsage(params) {
     params.action = 'recordUsage';
     chrome.runtime.sendMessage(params, function (response) {
         if (!response.status) {
-            console.log("Unable to record recipe usage : " + response);
+            console.log("Unable to record recipe usage : ");
+            console.log(response);
         } else {
             console.log("Recorded recipe usage");
         }

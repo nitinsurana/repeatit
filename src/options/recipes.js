@@ -39,21 +39,25 @@ define([
         savepSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
             var $recipeContainer = this.$("#recipe-" + recipeId);
-            var paramSets = {};
+            var pSets = [];
             //{setName:{paramKey:paramValue}, setName2:{paramKey2:paramValue2, paramKey3:paramValue3}}
             $recipeContainer.find("[data-paramset]").each(function () {
                 var setName = $(this).data('paramset').replace(recipeId + '-', '');
-                paramSets[setName] = {};
+                var obj = {
+                    title: setName,
+                    params: {}
+                };
                 $(this).find("[data-paramkey]").each(function () {
                     var paramKey = $(this).data('paramkey');
                     var paramValue = $(this).val();
-                    paramSets[setName][paramKey] = paramValue;
+                    obj.params[paramKey] = paramValue;
                 });
+                pSets.push(obj);
             });
             var storageKey = 'pSets-' + recipeId,
-                obj = {};
-            obj[storageKey] = paramSets;
-            chrome.storage.sync.set(obj, function () {
+                store = {};
+            store[storageKey] = pSets;
+            chrome.storage.sync.set(store, function () {
                 console.log("Saved pSets to storage : " + recipeId);
                 window.alert("Parameters Saved");
             });
@@ -61,12 +65,12 @@ define([
         resetpSets: function (e) {
             var recipeId = $(e.currentTarget).data('recipeid');
             var recipe = _.find(this.collection.toJSON(), function (recipe) {
-                return recipe.id === recipeId;
+                return recipe._id === recipeId;
             });
             var pSets = {};
-            pSets["pSets-" + recipe.id] = recipe.pSets;
+            pSets["pSets-" + recipe._id] = recipe.pSets;
             chrome.storage.sync.set(pSets, function () {
-                console.log("Reset pSets to default : " + recipe.id);
+                console.log("Reset pSets to default : " + recipe._id);
                 window.location.reload();       //Todo re-render of recipe accordion instead of reload
             });
             //Todo code to reset pSets for the clicked recipe
