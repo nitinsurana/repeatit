@@ -12,7 +12,8 @@
     var settings = window.background.settings = {
         defaultProject: "edulastic",
         newWindow: false,     //true means extension will open in a new window
-        autoClose: true
+        autoClose: true,
+        playbackSpeed: 500
     };
 
     chrome.browserAction.onClicked.addListener(function (activeTab) {       //DOCS - This event will not fire if the browser action has a popup.

@@ -54,10 +54,11 @@
             }).params;
     };
 
-    window.recipe.RecipePlayer = function (recipe, setName, options) {
+    window.recipe.RecipePlayer = function (recipe, setName, options, settings) {
         var index = 0;
         var waitCount = 0;
         typeof options === 'string' && (options = JSON.parse(window.decodeURIComponent(options)));
+        typeof settings === 'string' && (settings = JSON.parse(window.decodeURIComponent(settings)));
         window.recipe.usageTracker.recipeStart(recipe.getId());
         var play = function (steps, index) {
             if (index === steps.length) {
@@ -105,7 +106,7 @@
                         }
                     }
                 }
-            }, 500);
+            }, settings.playbackSpeed);
         };
         var doAction = function ($this, action, options) {
             var evt,

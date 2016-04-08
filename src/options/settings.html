@@ -19,6 +19,12 @@
                     <input type="checkbox" id="autoClose" name="autoClose" <%-data.autoClose?'checked':''%>/> Auto close popup on click
                 </label>
             </div>
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="playbackSpeed">Playback Speed (ms)</label>
+                    <input class="form-control" required type="number" min="100" max="5000" id="playbackSpeed" name="playbackSpeed" value="<%-data.playbackSpeed%>"/>
+                </div>
+            </div>
         </li>
         <li>
             <h4>User</h4>

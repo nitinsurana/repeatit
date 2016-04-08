@@ -67,20 +67,25 @@ $(function () {
     var runRecipe = function (recipeId, pSetName) {
         var nn = function () {
             var s = document.createElement('script');
-            s.textContent = 'window.recipe.RecipePlayer(window.recipe["{id}"],"{set}","{options}")';
+            s.textContent = 'window.recipe.RecipePlayer(window.recipe["{id}"],"{set}","{options}","{settings}")';
             (document.head || document.documentElement).appendChild(s);
             s.parentNode.removeChild(s);
         };
 
         var out = fetchRecurPSets(undefined, recipeId);
+
         $.when.apply($, out.promises)
             .then(function () {
-                var code = '(' + nn.toString();
-                code = code.replace('{id}', recipeId);
-                code = code.replace('{options}', window.encodeURIComponent(JSON.stringify(out.options)).replace(/'/g, ''));
-                code = code.replace('{set}', pSetName);
-                code = code + ')();';
-                executeScriptInCurrentTab(code);
+                chrome.storage.sync.get('settings', function (r) {
+                    var settings = r.settings;
+                    var code = '(' + nn.toString();
+                    code = code.replace('{id}', recipeId);
+                    code = code.replace('{options}', window.encodeURIComponent(JSON.stringify(out.options)).replace(/'/g, ''));
+                    code = code.replace('{settings}', window.encodeURIComponent(JSON.stringify(settings)).replace(/'/g, ''));
+                    code = code.replace('{set}', pSetName);
+                    code = code + ')();';
+                    executeScriptInCurrentTab(code);
+                });
             });
     };
 
