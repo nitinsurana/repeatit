@@ -13,7 +13,7 @@
     ];
     var recipe = window.recipe.AddClassicQuestionToAssessmentRecipe = new window.recipe.Recipe(steps, id);
     recipe.start = function (params) {
-        if ($(".as-passage-preview-edit-button").length) {
+        if ($("#question-passage-based-right-section .add-question[style]").length) {
             this.steps[0]._id = "AddQuestionToPassageRecipe";
             this.steps[0].type = "recipe";
             delete this.steps[0].selector;

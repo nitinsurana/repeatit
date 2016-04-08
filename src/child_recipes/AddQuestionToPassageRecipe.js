@@ -2,9 +2,6 @@
     'use strict';
 	var id = "AddQuestionToPassageRecipe";
     var steps = [
-        {
-            selector: '.as-passage-preview-edit-button'
-        },
 		{
 			selector: '.add-question'
 		}
