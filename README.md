@@ -22,6 +22,9 @@ Visit [Developers/Contributors section in Wiki.](https://github.com/nitinsurana/
 
 ## Todos
 
+0. Ability to decide which pSets should be visible in the UI
+1. Ability to add more pSets for a recipe
+2. Ability to make pSet readOnly
 3. Add feature to steps to have actions array, instead of a single action on a single selector and add aggregation logic in recording.
 5. Create feature "playback speed" for running recipes. Currently, it's 500ms.
 6. Test to make sure all Recipes are present in inject.js combined and every recipe contains `steps`
