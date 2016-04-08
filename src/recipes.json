@@ -311,7 +311,11 @@
     "description": "Creates Assessment with passage having 3 T/F questions",
     "project": "edulastic",
     "version": "0.1",
-    "type": "parent"
+    "type": "parent",
+    "dependsOn":[
+      "OpenQuestionAuthoringRecipe",
+      "FillTrueFalseRecipe"
+    ]
   },
   {
     "_id": "TrueFalseCreateRecipe",
