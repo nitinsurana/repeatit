@@ -8,6 +8,7 @@
     window.background.serverUrl = 'http://localhost:5000';
     //@endif
     var serverUrl = window.background.serverUrl;
+    chrome.storage.sync = chrome.storage.local;
 
     var settings = window.background.settings = {
         defaultProject: "edulastic",
@@ -71,7 +72,7 @@
         return hex;
     }
 
-    chrome.runtime.onInstalled.addListener(function () {
+    //chrome.runtime.onInstalled.addListener(function () {
         chrome.storage.local.get('userId', function (r) {
             if (!r.userId) {
                 var uniqueKey = getRandomToken();
@@ -82,7 +83,7 @@
                 console.log("Found unique installationId in storage :" + r.userId);
             }
         });
-    });
+    //});
 
 
     var recipesJsonUrl = chrome.extension.getURL('recipes.json');
