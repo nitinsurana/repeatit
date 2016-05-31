@@ -8,7 +8,7 @@
     window.background.serverUrl = 'http://localhost:5000';
     //@endif
     var serverUrl = window.background.serverUrl;
-    chrome.storage.sync = chrome.storage.local;
+    chrome.storage.sync = chrome.storage.sync || chrome.storage.local; //firefox webextensions does not support sync (as of v48)
 
     var settings = window.background.settings = {
         defaultProject: "edulastic",
