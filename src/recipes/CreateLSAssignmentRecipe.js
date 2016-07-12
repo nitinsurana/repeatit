@@ -13,7 +13,7 @@
     ];
     var recipe = window.recipe.CreateLSAssignmentRecipe = new window.recipe.Recipe(steps,id);
     recipe.start = function (params) {
-        this.steps[1].selector = params.self.selector;
+        this.steps[1].selector = params.selector;
         return $.Deferred().resolve();
     };
 })();
