@@ -1,7 +1,7 @@
 (function () {
     'use strict';
-    
-	var id = "AddClassicQuestionToAssessmentRecipe";
+
+	var id = "AddClassicQuestiontoAssignmentLSRecipe";
     var steps = [
         {
             selector: '.ls-ins-browse-icon',
@@ -30,7 +30,7 @@
     ];
     var recipe = window.recipe.AddClassicQuestiontoAssignmentLSRecipe = new window.recipe.Recipe(steps,id);
 		recipe.start = function (params) {
-				this.steps[3].selector = '.ui-dropdownchecklist-item input[value="' + params.self.qtype + '"]';
+				this.steps[3].selector = '.ui-dropdownchecklist-item input[value="' + params.qtype + '"]';
         return $.Deferred().resolve();
     };
 })();
